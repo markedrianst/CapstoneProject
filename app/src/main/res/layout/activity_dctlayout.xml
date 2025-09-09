@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center_horizontal"
+    android:background="#D9D9D9"
+    tools:context=".IOL3">
+
+    <!-- Header Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rectangleContainer"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_header"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circular_button"
+                android:contentDescription="@string/back"
+                android:src="@drawable/back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/circular_button"
+                android:contentDescription="@string/home"
+                android:src="@drawable/home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lessonsText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_italic"
+                android:text="Dominican College of Tarlac Map"
+                android:textColor="#468288"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnHome"
+                app:layout_constraintStart_toEndOf="@id/backButton"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Main Content Area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rectangleContainer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <!-- Building Map Container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mapContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/selectbuilding"
+                android:foregroundGravity="center_horizontal"
+                android:padding="8dp"
+                app:layout_constraintDimensionRatio="1:1.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.36"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints">
+
+                <!-- Guidelines for positioning -->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideV10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.0" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideV30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.30" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideV50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideV70"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.74" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideV90"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.96" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideH20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="25dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideH40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.45" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideH60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.62" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideH80"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="549dp" />
+
+                <!-- Building Buttons -->
+                <!-- Top Row -->
+                <ImageButton
+                    android:id="@+id/btn_st_nicholas"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/st_nicholas_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/st_nicholas_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH40"
+                    app:layout_constraintEnd_toStartOf="@id/guideV30"
+                    app:layout_constraintStart_toStartOf="@id/guideV10"
+                    app:layout_constraintTop_toTopOf="@id/guideH20" />
+
+                <ImageButton
+                    android:id="@+id/btn_san_lorenzo"
+                    android:layout_width="146dp"
+                    android:layout_height="51dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/san_lorenzo_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/san_lorenzo_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH40"
+                    app:layout_constraintEnd_toStartOf="@id/guideV70"
+                    app:layout_constraintHorizontal_bias="0.633"
+                    app:layout_constraintStart_toStartOf="@id/guideV30"
+                    app:layout_constraintTop_toTopOf="@id/guideH20"
+                    app:layout_constraintVertical_bias="0.018" />
+
+                <ImageButton
+                    android:id="@+id/btn_our_lady_peace"
+                    android:layout_width="69dp"
+                    android:layout_height="215dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/our_lady_peace_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/our_lady_peace_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH40"
+                    app:layout_constraintEnd_toEndOf="@id/guideV90"
+                    app:layout_constraintStart_toStartOf="@id/guideV70"
+                    app:layout_constraintTop_toTopOf="@id/guideH20" />
+
+                <!-- Middle Row -->
+                <ImageButton
+                    android:id="@+id/btn_holy_rosary"
+                    android:layout_width="322dp"
+                    android:layout_height="62dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/holy_rosary_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/holy_rosary_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH60"
+                    app:layout_constraintEnd_toEndOf="@id/guideV70"
+                    app:layout_constraintStart_toStartOf="@id/guideV30"
+                    app:layout_constraintTop_toTopOf="@id/guideH40" />
+
+                <!-- Bottom Row -->
+
+                <ImageButton
+                    android:id="@+id/btn_st_dominic"
+                    android:layout_width="59dp"
+                    android:layout_height="207dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/st_dominic_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/st_dominic_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH80"
+                    app:layout_constraintEnd_toStartOf="@id/guideV30"
+                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintStart_toStartOf="@id/guideV10"
+                    app:layout_constraintTop_toTopOf="@id/guideH60"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/btn_st_catherine"
+                    android:layout_width="144dp"
+                    android:layout_height="61dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/st_catherine_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/st_catherine_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH80"
+                    app:layout_constraintEnd_toEndOf="@id/guideV70"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/guideV30"
+                    app:layout_constraintTop_toTopOf="@id/guideH60"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/btn_our_lady_fatima"
+                    android:layout_width="70dp"
+                    android:layout_height="219dp"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/our_lady_fatima_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/our_lady_fatima_image"
+                    app:layout_constraintBottom_toTopOf="@id/guideH80"
+                    app:layout_constraintEnd_toEndOf="@id/guideV90"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@id/guideV70"
+                    app:layout_constraintTop_toTopOf="@id/guideH60"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

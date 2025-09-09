@@ -1,3 +1,35 @@
 <resources>
-    <string name="app_name">Orient 1 Capstone2</string>
+    <string name="app_name">Orient 1</string>
+    <string name="credits">"@2025 Dominican College Of Tarlac. All rights reserved."</string>
+    <string name="back">Backbutton</string>
+    <string name="home">Home</string>
+
+    <string name="st_nicholas_description">"St. Nicholas of Tolentino\n\nBorn in 1245 after his parents prayed at a saint's shrine for a child, Nicholas grew up with a deep sense of faith. At 18, he entered the monastic life, and by 25, he was ordained a priest.\n\nUnlike many caught in the political conflicts of Italy between the Pope and the Emperor, Nicholas avoided division and instead devoted himself to serving others. He was known for caring for the poor, comforting prisoners, and even blessing bread that many believed healed the sick—earning a reputation for working miracles.\n\nIn 1274, he moved to Tolentino, where his humble preaching and holy life inspired great devotion among the people. After a long illness, he died in 1305, and devotion to him quickly grew. He was canonized in 1446, and in 1926, his relics were rediscovered, renewing the faithful's admiration for this 'saint of miracles.'\n\n <b>—Source: catholic.org</b>"</string>
+
+    <string name="san_lorenzo_description">"San Lorenzo Ruiz\n\nLorenzo Ruiz, born in Manila to a Chinese father and Filipino mother, grew up Catholic and served the Dominicans before becoming a calligrapher, husband, and father of three. Falsely accused of murder, he fled with missionaries to Japan, where Christians faced brutal persecution.\n\nCaptured in Nagasaki, Lorenzo endured torture but refused to renounce his faith. He was executed by being hanged upside down in a pit, dying after three days. In 1987, he was canonized by Pope John Paul II as the first Filipino saint, remembered for his unwavering faith and martyrdom.\n\n <b>—Source: franciscanmedia.org</b>"</string>
+
+    <string name="our_lady_peace_description">"Our Lady of Peace\n\nOur Lady of Peace, often shown with a dove and olive branch, is a title of the Virgin Mary. The devotion began in France in the 1500s when a statue, later called Our Lady of Peace, was entrusted to the Capuchins in Paris. It survived the French Revolution and became linked to the Congregation of the Sacred Hearts, which spread her devotion as far as Hawaii.\n\nShe is also the patroness of El Salvador, where a statue of Mary was credited with protecting San Salvador from a volcanic eruption in 1787. Both statues were later crowned, and her feast is celebrated on July 9 (France), January 24 (Hawaii and the U.S.), and in the Litany of the Blessed Virgin since World War I.\n\n <b>—Source: ourladyofpeace.caedm.ca/</b>"</string>
+
+    <string name="holy_rosary_description">"Holy Rosary\n\nThe word Rosary means \"Crown of Roses,\" and according to tradition, each Hail Mary prayed is like offering a rose to the Virgin Mary, with a full Rosary forming a crown. The Rosary is considered the \"rose of all devotions\" and is one of the most powerful and perfect prayers because it reflects the life, death, and resurrection of Jesus through the mysteries of Joy, Sorrow, Glory, and Light.\n\nSimple and humble-like Mary herself-the Rosary is a way of praying with the Mother of God. It is believed that Mary joins her prayers to ours, and because Jesus never denies His mother, this makes the Rosary especially powerful. In her apparitions, Mary has urged the faithful to pray the Rosary as a weapon against evil and a path to true peace. Daily devotion to the Rosary is said to protect against spiritual dangers, inspire conversion, and bring about a change of heart. Though repetitive, the prayer is likened to two lovers exchanging the words \"I love you\"-a constant reaffirmation of love and faith.\n\n<b>—Source: theholyrosary.org
+</b>"</string>
+
+    <string name="st_dominic_description">"St. Dominic\n\nSaint Dominic was born in Old Castile, Spain, and trained for the priesthood. While traveling in France, he encountered the Albigensian heresy, which promoted extreme asceticism and rejected key Christian beliefs. Dominic realized the Church's wealthy preachers were ineffective, so he adopted a life of poverty and simple preaching to better connect with the people.\n\nFor ten years, he preached across southern France, and in 1215 he founded the Order of Preachers (Dominicans) in Toulouse. His mission was to unite a life of study, prayer, and contemplation with active preaching. His guiding principle was contemplata tradere-\"to pass on the fruits of contemplation.\"\n\n<b> —Source: Adapted from Franciscan Media – Saint Dominic</b>"</string>
+
+    <string name="our_lady_fatima_description">"Our Lady of Fatima\n\nOn July 13, 1917, the Virgin Mary appeared at Fatima and showed the children a vision of hell. She asked for devotion to her Immaculate Heart, daily Rosary, sacrifices, and the First Saturday devotions to save souls. Mary warned that if Russia was not consecrated, its errors would spread, causing war and suffering. Still, she promised her Immaculate Heart would triumph.\n\nPrayer she taught: \"O Jesus, it is for love of You, for the conversion of sinners, and in reparation for the sins committed against the Immaculate Heart of Mary.\n\n <b> Source: fatimachurchabq.org</b>
+""</string>
+
+    <string name="st_catherine_description">"Saint Catherine of Siena\n\n(1347–1380) is remembered for her complete surrender to Christ, achieved through lifelong growth in prayer and devotion. Refusing marriage, she devoted herself to God and entered the Dominican Third Order at 18, living in solitude before gaining followers drawn to her wisdom.\n\nHer influence grew through letters and public action, addressing both spiritual and political issues, even advising the pope. Despite criticism, she became a key figure in Church reform and unity during the Great Schism. Catherine died at 33 and was canonized in 1461. Later, she was declared co-patron of Italy (1939) and a Doctor of the Church (1970) for her profound writings, especially The Dialogue.\n\n <b>—Source: franciscanmedia.org</b>
+"</string>
+
+    <string name="st_nicholas_desc">St. Nicholas Building</string>
+    <string name="san_lorenzo_desc">San Lorenzo Ruiz Building</string>
+    <string name="our_lady_peace_desc">Our Lady of Peace Building</string>
+    <string name="holy_rosary_desc">Holy Rosary Building</string>
+    <string name="st_dominic_desc">St. Dominic Building</string>
+    <string name="st_catherine_desc">St. Catherine of Siena Building</string>
+    <string name="our_lady_fatima_desc">Our Lady of Fatima Building</string>
+
+    <string name="course_overview_text">Orient 1 is a digital learning platform for Dominican College of Tarlac (DCT) students. This application provides lessons about DCT History, Student Life and values, along with assessment and AR campus tour. The application is capable of working offline which offers easy way to learn about DCT anytime.</string>
+
+    <string name="developer_credits_text">We are a team of developers dedicated to building user-friendly application designed to address real-world challenges. Our work aims to provide practical and effective solutions.</string>
 </resources>

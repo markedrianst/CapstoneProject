@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Orient1Capstone2" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+    <style name="Base.Theme.Orient1" parent="Theme.Material3.Light.NoActionBar">
+    <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+    <item name="colorAccent">@color/colorAccent</item> <!-- May be missing, see note below -->
+
     </style>
 
-    <style name="Theme.Orient1Capstone2" parent="Base.Theme.Orient1Capstone2" />
+    <style name="Theme.Orient1" parent="Base.Theme.Orient1" />
 </resources>
