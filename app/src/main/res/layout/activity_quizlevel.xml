@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9D9D9"
+    android:fitsSystemWindows="true"
+    tools:context=".quizlevel">
+    <!-- Back Button -->
+
+    <!-- Title Card -->
+
+    <!-- Mode Cards Layout -->
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/back"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:background="@drawable/textborder"
+        android:gravity="center"
+        android:text="Pick Level of Difficulty"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <!-- Easy Mode -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/easy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="#6BC359"
+                    android:gravity="center"
+                    android:text="Easy Mode"
+                    android:textColor="#D9D9D9"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="#35616E"
+                    android:gravity="center"
+                    android:text="True or False"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Medium Mode -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="#D1C45C"
+                    android:gravity="center"
+                    android:text="Medium Mode"
+                    android:textColor="#D9D9D9"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="#35616E"
+                    android:gravity="center"
+                    android:text="Multiple Choice"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Hard Mode -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/hard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="#D76161"
+                    android:gravity="center"
+                    android:text="Hard Mode"
+                    android:textColor="#D9D9D9"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="#35616E"
+                    android:gravity="center"
+                    android:text="Identification"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

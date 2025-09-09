@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#05FF00FF</color>
+    <color name="colorPrimary">#35616E</color>
+    <color name="colorPrimaryVariant">#2A4F5B</color>
+    <color name="colorAccent">#FFC107</color> <!-- Optional for buttons/fabs -->
+
 </resources>
