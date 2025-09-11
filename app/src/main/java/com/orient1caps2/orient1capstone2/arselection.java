@@ -2,6 +2,7 @@ package com.orient1caps2.orient1capstone2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -13,6 +14,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class arselection extends AppCompatActivity {
+ int LAUNCH_SECOND_ACTIVITY=1;
+    // Load Unity libraries manually to prevent UnsatisfiedLinkError
+    static {
+        try {
+            System.loadLibrary("main");
+            System.loadLibrary("Unity");
+            System.loadLibrary("il2cpp");
+        } catch (UnsatisfiedLinkError e) {
+            System.err.println("Native library loading failed: " + e.getMessage());
+        }
+    }
+
     @Override
     public void onBackPressed() {
         overridePendingTransition(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom);
@@ -21,7 +34,6 @@ public class arselection extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_arselection);
@@ -48,24 +60,17 @@ public class arselection extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-//////         Handle Unity AR button click
-//        // Handle Unity AR button click
-//        Button unityARButton = findViewById(R.id.ARbutton);
-//        unityARButton.setOnClickListener(v -> {
-//            Intent intent = new Intent(this, com.unity3d.player.UnityPlayerActivity.class);
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//        });
+        // Handle AR button click with proper error handling
+        Button btnLaunchUnity = findViewById(R.id.ARbutton);
 
-        // Example button to launch Unity
-//        findViewById(R.id.ARbutton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Start Unity's main activity
-//                Intent intent = new Intent(arselection.this, com.unity3d.player.UnityPlayerActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnLaunchUnity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClassName(arselection.this, "com.unity3d.player.UnityPlayerActivity");
+                startActivity(i);
 
+            }
+        });
     }
 }
