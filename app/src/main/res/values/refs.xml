@@ -1,0 +1,5 @@
+<resources>
+    <item name="button_height" type="dimen">@dimen/component_height_medium</item>
+    <item name="default_margin" type="dimen">@dimen/space_3</item>
+    <item name="card_radius" type="dimen">@dimen/corner_radius_medium</item>
+</resources>

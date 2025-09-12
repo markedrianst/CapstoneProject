@@ -1,0 +1,20 @@
+<resources>
+    <!-- Larger text for tablets -->
+    <dimen name="text_large_title">32sp</dimen>
+    <dimen name="button_icon_size">28dp</dimen>
+    <dimen name="text_button_medium">20sp</dimen>
+
+    <!-- Larger buttons -->
+    <dimen name="button_width_large">320dp</dimen>
+    <dimen name="button_height_large">110dp</dimen>
+
+    <dimen name="icon_size_large">56dp</dimen>
+    <dimen name="text_button_large">18sp</dimen>
+    <!-- Larger header -->
+    <dimen name="header_height">110dp</dimen>
+    <dimen name="header_width">260dp</dimen>
+
+    <!-- More spacing -->
+    <dimen name="margin_content">24dp</dimen>
+    <dimen name="margin_button">12dp</dimen>
+</resources>

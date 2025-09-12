@@ -1,0 +1,51 @@
+<resources>
+    <!-- Text sizes -->
+    <dimen name="text_large_title">28sp</dimen>
+    <dimen name="text_medium_title">24sp</dimen>
+
+    <dimen name="text_button_medium">18sp</dimen>
+    <dimen name="text_footer">10sp</dimen>
+
+        <dimen name="carousel_spacing">1dp</dimen>
+
+    <dimen name="icon_size_large">48dp</dimen>
+    <dimen name="text_button_large">16sp</dimen>
+    <!-- Spacing system -->
+    <dimen name="space_0">0dp</dimen>
+    <dimen name="space_1">4dp</dimen>
+    <dimen name="space_2">8dp</dimen>
+    <dimen name="space_3">16dp</dimen>
+    <dimen name="space_4">24dp</dimen>
+    <dimen name="space_5">32dp</dimen>
+    <dimen name="space_6">40dp</dimen>
+
+    <!-- Component sizes -->
+    <dimen name="button_width_large">280dp</dimen>
+    <dimen name="button_width_medium">240dp</dimen>
+    <dimen name="button_height_large">98dp</dimen>
+    <dimen name="button_height_medium">80dp</dimen>
+    <dimen name="header_height">96dp</dimen>
+    <dimen name="header_width">230dp</dimen>
+    <dimen name="button_icon_size">24dp</dimen>
+    <dimen name="icon_size_medium">40dp</dimen>
+
+    <!-- Corner radii -->
+    <dimen name="corner_radius_large">24dp</dimen>
+    <dimen name="corner_radius_medium">20dp</dimen>
+    <dimen name="corner_radius_small">4dp</dimen>
+
+    <!-- Elevations -->
+    <dimen name="elevation_low">4dp</dimen>
+    <dimen name="elevation_medium">6dp</dimen>
+    <dimen name="elevation_high">12dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_card">5dp</dimen>
+    <dimen name="margin_content">16dp</dimen>
+    <dimen name="margin_button">8dp</dimen>
+    <dimen name="margin_header_top">24dp</dimen>
+    <dimen name="margin_header_end">8dp</dimen>
+    <dimen name="margin_button_group_top">24dp</dimen>
+    <dimen name="margin_button_group_bottom">24dp</dimen>
+    <dimen name="component_height_medium">48dp</dimen>
+</resources>

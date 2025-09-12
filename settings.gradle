@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Orient 1 Capstone2"
-include ':app'
+rootProject.name = "Orient 1"
+include(":app")
+

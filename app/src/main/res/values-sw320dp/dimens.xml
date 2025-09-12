@@ -1,0 +1,13 @@
+<resources>
+    <!-- Smaller text for small phones -->
+    <dimen name="text_large_title">24sp</dimen>
+    <dimen name="text_button_large">24sp</dimen>
+
+    <!-- Smaller buttons -->
+    <dimen name="button_width_large">240dp</dimen>
+    <dimen name="button_height_large">80dp</dimen>
+
+    <!-- Smaller header -->
+    <dimen name="header_height">80dp</dimen>
+    <dimen name="header_width">200dp</dimen>
+</resources>
