@@ -6,6 +6,14 @@ android {
     namespace 'com.orient1caps2.orient1capstone2'
     compileSdk 35
 
+//    signingConfigs {
+////        release {
+////            storeFile file("C:\\CapstoneProject\\releasekey.jks")
+////            storePassword "orient1"
+////            keyAlias "Orient1"
+////            keyPassword "orient1"
+////        }
+//    }
 
     defaultConfig {
         applicationId "com.orient1caps2.orient1capstone2"
@@ -13,39 +21,47 @@ android {
         targetSdk 35
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
+//            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+        doNotStrip "**/*.so"
     }
 }
 
 dependencies {
     implementation(libs.appcompat)
     implementation("com.google.android.material:material:1.12.0")
-    implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("androidx.viewpager2:viewpager2:1.1.0")
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation ("me.relex:circleindicator:2.1.6")
-    implementation ("androidx.cardview:cardview:1.0.0")
-    implementation("com.github.bumptech.glide:glide:4.11.0")
-
-//implementation project(":unityLibrary")
-    // Add this line to depend on the unityLibrary
-
+    implementation("me.relex:circleindicator:2.1.6")
+    implementation("androidx.cardview:cardview:1.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Uncomment if you use Unity
+    // implementation project(':unityLibrary')
 }

@@ -66,9 +66,10 @@ public class arselection extends AppCompatActivity {
         btnLaunchUnity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClassName(arselection.this, "com.unity3d.player.UnityPlayerActivity");
-                startActivity(i);
+//
+//                Intent i = new Intent();
+//                i.setClassName(arselection.this, "com.unity3d.player.UnityActivityPlayer");
+//                startActivity(i);
 
             }
         });
