@@ -9,6 +9,8 @@
     android:fitsSystemWindows="true"
     tools:context=".IOEAL5">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/headerCard"
         android:layout_width="0dp"
@@ -82,6 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerCard"
         tools:ignore="SpeakableTextPresentCheck">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,6 +92,389 @@
             android:orientation="vertical"
             android:paddingBottom="24dp"
             tools:ignore="ExtraText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <!-- Dropdown 1 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="#3A6F75"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Reasons For Education"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/dropdownIcon1"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@android:drawable/arrow_down_float"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dropdownContent0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits.\n \n "
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1. It is Powerful: &quot;Education is one of the most powerful things in life.&quot;\n\n
+2. It Provides Meaning: It &quot;allows us to find the meaning behind everything.&quot;\n\n
+3. It Improves Lives: It &quot;helps improve lives in a massive way.&quot;\n\n
+4. It Fosters Understanding: It &quot;gives us an understanding of the world around us.&quot;\n\n
+5. It Enables Wise Application: It &quot;offers us an opportunity to use that knowledge wisely.&quot;"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Dropdown 2 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="#3A6F75"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Goals of education and learning?"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/dropdownIcon2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@android:drawable/arrow_down_float"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dropdownContent1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="WHAT IS EDUCATION?"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:text="is the
+process of facilitating learning, or the acquisition of knowledge,skills,
+values, beliefs, and habits.\n\n
+"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="WHAT IS LEARNING?"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" is the
+process of acquiring
+new, or modifying
+existing knowledge,
+behaviors, skills,
+values or
+preferences.\n
+"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Primary Goals of Education"
+                                android:textColor="#FFFFFF"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1. To Impart Knowledge"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="- This is the goal of transmitting understanding and information about the world. It is the foundational act of teaching that allows students to gain an understanding of the world around us."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <!-- Second Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="2. To Impart Skills"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="- This is the goal of providing practical abilities for tasks and problem-solving. It equips individuals with the capabilities needed to perform actions and address challenges effectively."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <!-- Third Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="3. To Impart Values and Beliefs"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="- This is the goal of shaping character and ethical foundations. It involves teaching the principles and beliefs that guide behavior and decision-making."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <!-- Fourth Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="4. To Impart Beneficial Habits"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="- This is the goal of instilling disciplined routines for personal success. It focuses on creating consistent, positive behaviors that are beneficial to an individual."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Primary Goals of Learning"
+                                android:textColor="#FFFFFF"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                            <!-- First Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1.To Acquire New Understanding"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="This is the goal of continuously gaining new knowledge and perspectives. It is the learner's active role in receiving the knowledge that education imparts."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <!-- Second Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="2.To Modify Behaviors and Skills"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="This is the goal of adapting and improving based on new experiences. It means changing existing actions and abilities to become more effective."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                            <!-- Third Point -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="3.To Reevaluate Values and Preferences"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="This is the goal of forming informed opinions and making better choices. It involves reflecting on and adjusting one's core values and likes/dislikes based on new learning."
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <!-- Add other dropdowns or content here -->
+            </LinearLayout>
+
+            <!-- ✅ Vision & Mission Section Added -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <!-- Vision Section -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#2C4C54"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="start"
+                            android:text="Vision"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/descriptionText6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_light"
+                            android:justificationMode="inter_word"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Mission Section -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#3E666A"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="start"
+                            android:text="Mission"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/descriptionText7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_light"
+                            android:justificationMode="inter_word"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"

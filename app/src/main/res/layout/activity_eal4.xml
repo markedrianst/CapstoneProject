@@ -169,6 +169,15 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Different Description on Education"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -178,7 +187,7 @@
                 android:padding="16dp"
                 android:text="3 Types of Education"
                 android:textColor="#FFFFFF"
-                android:textSize="22sp" />
+                android:textSize="16sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -743,6 +752,557 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Different Description on Learning"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:cardBackgroundColor="#5A9FA8"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Visual (spatial) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Visual (spatial)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/visualArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/visualContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/visual" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:textSize="15dp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• A style in which a learner utilizes graphs, charts,   maps and diagrams\n• Those who learn best through what they see\n• Prefer using pictures, images, and spatial understanding" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Aural (auditory-musical) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Aural (auditory-musical)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/auralArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/auralContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/aural" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer using pictures, images, and spatial understanding\n• A style in which individuals learn best through hearing directions and speaking answers\n• Common for learners to be proficient at speaking and acting\n• Prefer to listen to lectures rather than take notes" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Verbal (linguistic) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Verbal (linguistic)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/verbalArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/verbalContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/verbal" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer using words, both in speech and writing\n• Find it easy to express yourself, both in writing and speaking\n• Learners like playing on the meaning or sound of words, such as in tongue twisters, rhymes and limericks" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Physical (kinesthetic) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Physical (kinesthetic)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/physicalArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/physicalContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/physical111" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer using your body, hands and sense of touch\n• Ability to process information physically through hand and body movement, control, and expression\n• Also known as the physical learning style or tactile-kinesthetic learning style." />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Logical (mathematical) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Logical (mathematical)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/logicalArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/logicalContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/logical111" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer logical order in instruction and often works best in structured, organized environments\n• Has strong visual analysis, memory, and problem-solving skills" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Social (interpersonal) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Social (interpersonal)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/socialArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/socialContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/social111" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer to learn in groups or with other people\n• Communicate well with people, both verbally and non-verbally\n• People listen to you or come to you for advice, and you are sensitive to their motivations, feelings or moods\n• Prefer social activities, rather than doing your own thing." />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Solitary (intrapersonal) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Solitary (intrapersonal)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/solitaryArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/solitaryContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/solitary111" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:text="• Prefer to work alone and use self-study\n• More private, introspective and independent\n• You can concentrate well, focusing your thoughts and feelings on your current topic\n• Aware of your own thinking, and you may analyze the different ways you think and feel" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Naturalistic -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Naturalistic"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/naturalisticArrow"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/arrow_down_float" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/naturalisticContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                app:cardBackgroundColor="#5A9FA8"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="4dp">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="120dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitCenter"
+                                    android:layout_gravity="center
+"
+                                    android:src="@drawable/naturalistic111" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:justificationMode="inter_word"
+                                android:lineSpacingExtra="4dp"
+                                android:text="• Process information best when it is related to finding patterns in nature and applying scientific reasoning to the understanding of living creatures\n• They usually grow up to be farmers, naturalists or scientists\n• Enjoy being outdoors and connecting with Nature\n• Often found observing and appreciating plants and animals in rural settings\n• Very much like a kinesthetic learner in many ways\n• Hands-on learning, preferably outdoors is the best way to learn (Gardner)" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:layout_width="match_parent"

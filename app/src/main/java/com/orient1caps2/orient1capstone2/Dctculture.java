@@ -29,9 +29,9 @@ public class Dctculture extends AppCompatActivity {
         };
 
         String[] values = {
-                "FIDES – “Faith in God”",
-                "PATRIA – “Love for country and fellowmen”",
-                "SAPIENTIA – “Wisdom”"
+                "FIDES – \"Faith in God\"",
+                "PATRIA – \"Love for country and fellowmen\"",
+                "SAPIENTIA – \"Wisdom\""
         };
 
         // Descriptions
@@ -53,76 +53,84 @@ public class Dctculture extends AppCompatActivity {
         description2.setText(Html.fromHtml(htmlText2, Html.FROM_HTML_MODE_LEGACY));
 
         TextView description3 = findViewById(R.id.descriptionText3);
-        String htmlText3 = "1.Emphasizes the total integral formation of the human person.<br><br>" +
-                "2.Aims for union with God, community with others, and harmony with creation.";
+        String htmlText3 = "1. Emphasizes the total integral formation of the human person.<br><br>" +
+                "2. Aims for union with God, community with others, and harmony with creation.";
         description3.setText(Html.fromHtml(htmlText3, Html.FROM_HTML_MODE_LEGACY));
 
         TextView description4 = findViewById(R.id.descriptionText4);
-        String htmlText4 = "&emsp;&emsp;<b>Philosophy of Education</b>: Dominican College of Tarlac believes in the ultimate goal of education, that is the total integral formation of the human person that would lead him to attain the purpose for which he was created, namely";
+        String htmlText4 = "&emsp;&emsp;The Dominican College of Tarlac is a Catholic educational institution committed to the total integral formation of the human person with a deep sense of nationalism and global awareness. It aims to develop individuals who are:";
         description4.setText(Html.fromHtml(htmlText4, Html.FROM_HTML_MODE_LEGACY));
 
+        TextView philoed = findViewById(R.id.philoed);
+        StringBuilder philosophyText = new StringBuilder();
+        for (String item : philosophy) {
+            philosophyText.append("• ").append(item).append("\n");
+        }
+        philoed.setText(philosophyText.toString());
+
+        TextView valuesTextView = findViewById(R.id.valuesTextView);
+        StringBuilder valuesText = new StringBuilder();
+        for (String value : values) {
+            valuesText.append("• ").append(value).append("\n");
+        }
+        valuesTextView.setText(valuesText.toString());
+
         TextView description5 = findViewById(R.id.descriptionText5);
-        String htmlText5 = "";
+        String htmlText5 = "These virtues are represented by the three stars in the logo, symbolizing the institution's commitment to faith, love for country, and wisdom.";
         description5.setText(Html.fromHtml(htmlText5, Html.FROM_HTML_MODE_LEGACY));
 
-        TextView description6 = findViewById(R.id.descriptionText6);
-        String htmlText6 = "&emsp;&emsp;A God-loving educational community of servant leaders with passion for truth and compassion for humanity";
-        description6.setText(Html.fromHtml(htmlText6, Html.FROM_HTML_MODE_LEGACY));
 
-        TextView description7 = findViewById(R.id.descriptionText7);
-        String htmlText7 = "&emsp;&emsp;We commit ourselves to the total formation of the person, promotion of truth and transformation of values for the service of humanity.";
-        description7.setText(Html.fromHtml(htmlText7, Html.FROM_HTML_MODE_LEGACY));
-
-        // Philosophy bullets
-        TextView philoTextView = findViewById(R.id.philoed);
-        StringBuilder philoBuilder = new StringBuilder();
-        for (String item : philosophy) {
-            philoBuilder.append("• ").append(item).append("\n");
-        }
-        philoTextView.setText(philoBuilder.toString());
-
-        // Values list
-        TextView valuesTextView = findViewById(R.id.valuesTextView);
-        StringBuilder valuesBuilder = new StringBuilder();
-        for (int i = 0; i < values.length; i++) {
-            valuesBuilder.append((i + 1)).append(". ").append(values[i]).append("\n");
-        }
-        valuesTextView.setText(valuesBuilder.toString());
-
-        // Dropdown toggle (sisters section)
-        LinearLayout dropdownContent = findViewById(R.id.dropdownContent);
-        LinearLayout dropdownHeader = findViewById(R.id.dropdownHeader);
-        ImageView dropdownArrow = findViewById(R.id.dropdownArrow);
-
-        dropdownHeader.setOnClickListener(v -> {
-            if (dropdownContent.getVisibility() == View.VISIBLE) {
-                collapse(dropdownContent);
-                dropdownArrow.animate().rotation(0).start(); // arrow down
-            } else {
-                expand(dropdownContent);
-                dropdownArrow.animate().rotation(180).start(); // arrow up
+        // Back button functionality
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
-        // Home button
+        // Home button functionality
         ImageButton homeButton = findViewById(R.id.btnHome);
-        homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Dctculture.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dctculture.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
         });
 
-        // Back button
-        ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        // Setup dropdown functionality for all sections
+        setupDropdown(R.id.historyHeader, R.id.historyContent, R.id.historyArrow);
+        setupDropdown(R.id.gravissimumHeader, R.id.gravissimumContent, R.id.gravissimumArrow);
+        setupDropdown(R.id.dropdownHeader, R.id.dropdownContent, R.id.dropdownArrow);
+        setupDropdown(R.id.philosophyHeader, R.id.philosophyContent, R.id.philosophyArrow);
+        setupDropdown(R.id.objectivesHeader, R.id.objectivesContent, R.id.objectivesArrow);
+        setupDropdown(R.id.dctProgramsHeader, R.id.timelineContainer, R.id.dctProgramsArrow);
+
+    }
+
+    private void setupDropdown(int headerId, int contentId, int arrowId) {
+        LinearLayout header = findViewById(headerId);
+        final LinearLayout content = findViewById(contentId);
+        final ImageView arrow = findViewById(arrowId);
+
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (content.getVisibility() == View.GONE) {
+                    expand(content);
+                    arrow.setRotation(180f);
+                } else {
+                    collapse(content);
+                    arrow.setRotation(0f);
+                }
+            }
         });
     }
 
-    // Smooth expand animation
-    private void expand(View v) {
+    private void expand(final View v) {
         v.measure(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final int targetHeight = v.getMeasuredHeight();
 
@@ -142,12 +150,12 @@ public class Dctculture extends AppCompatActivity {
                 return true;
             }
         };
+
         a.setDuration((int) (targetHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
     }
 
-    // Smooth collapse animation
-    private void collapse(View v) {
+    private void collapse(final View v) {
         final int initialHeight = v.getMeasuredHeight();
 
         Animation a = new Animation() {
@@ -166,7 +174,14 @@ public class Dctculture extends AppCompatActivity {
                 return true;
             }
         };
+
         a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

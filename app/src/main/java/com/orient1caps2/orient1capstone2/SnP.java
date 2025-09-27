@@ -81,7 +81,7 @@ public class SnP extends AppCompatActivity {
             myVideo.setOnPreparedListener(mp -> myVideo.start());
         });
 
-// Tap video to play/pause
+        // Tap video to play/pause
         myVideo.setOnClickListener(v -> {
             if (myVideo.isPlaying()) {
                 myVideo.pause();
@@ -90,42 +90,8 @@ public class SnP extends AppCompatActivity {
             }
         });
 
-
-        // Dropdowns for Blessing & Hymn
-        View blessingHeader = findViewById(R.id.blessingHeader);
-        ImageView btnBlessing = findViewById(R.id.btnBlessingToggle);
-        View blessingContainer = findViewById(R.id.blessingContainer);
-
-        View hymnHeader = findViewById(R.id.hymnHeader);
-        ImageView btnHymn = findViewById(R.id.btnHymnToggle);
-        View hymnContainer = findViewById(R.id.hymnContainer);
-
-        blessingHeader.setOnClickListener(v -> {
-            if (blessingContainer.getVisibility() == View.GONE) {
-                expand(blessingContainer);
-                btnBlessing.setImageResource(android.R.drawable.arrow_up_float);
-            } else {
-                collapse(blessingContainer);
-                btnBlessing.setImageResource(android.R.drawable.arrow_down_float);
-            }
-        });
-
-        hymnHeader.setOnClickListener(v -> {
-            if (hymnContainer.getVisibility() == View.GONE) {
-                expand(hymnContainer);
-                btnHymn.setImageResource(android.R.drawable.arrow_up_float);
-            } else {
-                collapse(hymnContainer);
-                btnHymn.setImageResource(android.R.drawable.arrow_down_float);
-
-                // STOP video when collapsing hymn
-                if (myVideo.isPlaying()) {
-                    myVideo.stopPlayback();
-                    myVideo.setVisibility(View.GONE);
-                    myImage.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        // Setup all dropdown sections
+        setupDropdownSections();
 
         // Text content setup - only for views present in XML
         descriptionText = findViewById(R.id.descriptionText);
@@ -134,7 +100,42 @@ public class SnP extends AppCompatActivity {
         bishopSisonDescription = findViewById(R.id.bishopSisonDescription);
 
         // simple bullet list
-        String[] fruits = {"union with God", "community with others", "harmony with creation"};
+        String[] fruits = {"Order of the Preachers\n" +
+                "Founder\n" +
+                "\n" +
+                "St. Dominic De Guzman\n" +
+                "Born in Caleuega, Spain in 1170\n" +
+                "\n" +
+                "Parents: \n" +
+                "*Felix De Guzman\n" +
+                "*Juana De Aza\n" +
+                "\n" +
+                "Siblings:\n" +
+                "*Anthony\n" +
+                "*Mannes\n" +
+                "\n" +
+                "Education\n" +
+                "*University of Palencia - School\n" +
+                "*Kingdom of Leon - Location\n" +
+                "*Theology - Course\n" +
+                "*14 years old\n" +
+                "\n" +
+                "At the time, there was a terrible famine, to give alms to the poor, he sold his precious books\n" +
+                "\n" +
+                "He studied TRIVIUM consisting of:\n" +
+                "1. Grammar\n" +
+                "2. Rhetoric\n" +
+                "3. Logic\n" +
+                "\n" +
+                "Moved on to QUADRIVIUM:\n" +
+                "1. Arithmetic \n" +
+                "2. Geometry\n" +
+                "3. Music\n" +
+                "4. Astronomy\n\n" + "While traveling with Bishop Diego to Denmark in 1203, Dominic encountered the Albigensian heresy in southern France. He began preaching and engaging in debates, converting many, including an innkeeper after an all-night discussion. In 1206, he formed a community of nuns at Prouille to strengthen the faith.\n" +
+                "\n" +
+                "Dominic envisioned an order dedicated to preaching. After attending the Lateran Council in 1215, he received papal approval from Pope Honorius III on December 21, 1216, founding the Order of Preachers (Dominicans). From only six companions, the order grew rapidly across Europe.\n" +
+                "\n" +
+                "St. Dominic died on August 6, 1221, at the age of 51. Today, the Dominicans continue his mission of study, prayer, and preaching, and have produced many saints such as St. Thomas Aquinas, St. Albert the Great, St. Catherine of Siena, St. Rose of Lima, St. Martin de Porres, and many more."};
         StringBuilder builder = new StringBuilder();
         for (String fruit : fruits) {
             builder.append("• ").append(fruit).append("\n");
@@ -168,6 +169,54 @@ public class SnP extends AppCompatActivity {
         });
     }
 
+    private void setupDropdownSections() {
+        // Hero Section
+        View heroHeader = findViewById(R.id.heroHeader);
+        ImageView btnHeroToggle = findViewById(R.id.btnHeroToggle);
+        View heroContainer = findViewById(R.id.heroContainer);
+
+        // Bishop Section
+        View scholasticHeader = findViewById(R.id.scholasticHeader);
+        ImageView btnScholasticToggle = findViewById(R.id.btnScholasticToggle);
+        View scholasticContainer = findViewById(R.id.scholasticContainer);
+
+
+        // Existing Blessing & Hymn Sections
+        View blessingHeader = findViewById(R.id.blessingHeader);
+        ImageView btnBlessingToggle = findViewById(R.id.btnBlessingToggle);
+        View blessingContainer = findViewById(R.id.blessingContainer);
+
+        View hymnHeader = findViewById(R.id.hymnHeader);
+        ImageView btnHymnToggle = findViewById(R.id.btnHymnToggle);
+        View hymnContainer = findViewById(R.id.hymnContainer);
+
+        // Set up click listeners for all sections
+        setupDropdownSection(heroHeader, btnHeroToggle, heroContainer);
+        setupDropdownSection(scholasticHeader, btnScholasticToggle, scholasticContainer);
+        setupDropdownSection(blessingHeader, btnBlessingToggle, blessingContainer);
+        setupDropdownSection(hymnHeader, btnHymnToggle, hymnContainer);
+    }
+
+    private void setupDropdownSection(View header, ImageView toggleButton, View container) {
+        header.setOnClickListener(v -> {
+            if (container.getVisibility() == View.GONE) {
+                container.setVisibility(View.VISIBLE);
+                toggleButton.setImageResource(android.R.drawable.arrow_up_float);
+            } else {
+                container.setVisibility(View.GONE);
+                toggleButton.setImageResource(android.R.drawable.arrow_down_float);
+
+                // Special handling for hymn section to stop video
+                if (container.getId() == R.id.hymnContainer && myVideo != null && myVideo.isPlaying()) {
+                    myVideo.stopPlayback();
+                    myVideo.setVisibility(View.GONE);
+                    myImage.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
+    // Remove the expand() and collapse() methods entirely
     private void flipCard() {
         View rootLayout = findViewById(R.id.flip_container);
 
@@ -197,7 +246,7 @@ public class SnP extends AppCompatActivity {
         autoScrollHandler.postDelayed(runnable, SCROLL_DELAY);
     }
 
-    // Expand with slow animation
+    // Expand with animation
     private void expand(View view) {
         view.setVisibility(View.VISIBLE);
         view.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -206,7 +255,7 @@ public class SnP extends AppCompatActivity {
         view.requestLayout();
 
         ValueAnimator animator = ValueAnimator.ofInt(0, targetHeight);
-        animator.setDuration(300); // reduce duration to 300ms for snappier UX (adjust as desired)
+        animator.setDuration(300);
         animator.addUpdateListener(animation -> {
             view.getLayoutParams().height = (int) animation.getAnimatedValue();
             view.requestLayout();
@@ -214,11 +263,11 @@ public class SnP extends AppCompatActivity {
         animator.start();
     }
 
-    // Collapse with slow animation
+    // Collapse with animation
     private void collapse(View view) {
         final int initialHeight = view.getMeasuredHeight();
         ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 0);
-        animator.setDuration(300); // match expand duration
+        animator.setDuration(300);
         animator.addUpdateListener(animation -> {
             view.getLayoutParams().height = (int) animation.getAnimatedValue();
             view.requestLayout();

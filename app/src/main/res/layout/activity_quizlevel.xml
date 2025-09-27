@@ -5,175 +5,188 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D9D9D9"
+    android:background="#ECEFF1"
     android:fitsSystemWindows="true"
     tools:context=".quizlevel">
+
     <!-- Back Button -->
-
-    <!-- Title Card -->
-
-    <!-- Mode Cards Layout -->
-
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/back"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title"
+    <!-- Title Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/titleCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:background="@drawable/textborder"
-        android:gravity="center"
-        android:text="Pick Level of Difficulty"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#35616E"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton">
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="18dp"
+            android:gravity="center"
+            android:text="Pick Level of Difficulty"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Mode Cards Layout -->
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/titleCard">
 
         <!-- Easy Mode -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/easy"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardElevation="0dp"
-            app:strokeWidth="0dp">
+            android:layout_marginBottom="18dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp"
+            app:strokeColor="#6BC359"
+            app:strokeWidth="2dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:background="#6BC359"
                     android:gravity="center"
                     android:text="Easy Mode"
-                    android:textColor="#D9D9D9"
-                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="-4dp"
                     android:background="#35616E"
                     android:gravity="center"
                     android:text="True or False"
                     android:textColor="#FFFFFF"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    tools:ignore="TextSizeCheck" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Medium Mode -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/medium"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="18dp"
+            android:clickable="true"
+            android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardElevation="0dp"
-            app:strokeWidth="0dp">
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp"
+            app:strokeColor="#D1C45C"
+            app:strokeWidth="2dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:background="#D1C45C"
                     android:gravity="center"
                     android:text="Medium Mode"
-                    android:textColor="#D9D9D9"
-                    android:textSize="14dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="-4dp"
                     android:background="#35616E"
                     android:gravity="center"
                     android:text="Multiple Choice"
                     android:textColor="#FFFFFF"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    tools:ignore="TextSizeCheck" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Hard Mode -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/hard"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardElevation="0dp"
-            app:strokeWidth="0dp">
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp"
+            app:strokeColor="#D76161"
+            app:strokeWidth="2dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:background="#D76161"
                     android:gravity="center"
                     android:text="Hard Mode"
-                    android:textColor="#D9D9D9"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck,TextSizeCheck" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="-4dp"
                     android:background="#35616E"
                     android:gravity="center"
                     android:text="Identification"
                     android:textColor="#FFFFFF"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    tools:ignore="TextSizeCheck" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

@@ -115,6 +115,7 @@ public class EAL4 extends AppCompatActivity {
 
         // Evolution of Education sections
         setupEvolutionSections();
+        setupEvolutionSections1();
     }
 
     private void setupEvolutionSections() {
@@ -164,6 +165,81 @@ public class EAL4 extends AppCompatActivity {
                     R.id.technologyRoleArrow,
                     isTechnologyRoleExpanded
             );
+        });
+    }
+
+    private boolean isVisualExpanded = false;
+    private boolean isAuralExpanded = false;
+    private boolean isVerbalExpanded = false;
+    private boolean isPhysicalExpanded = false;
+    private boolean isLogicalExpanded = false;
+    private boolean isSocialExpanded = false;
+    private boolean isSolitaryExpanded = false;
+    private boolean isNaturalisticExpanded = false;
+
+    private void setupEvolutionSections1() {
+        // Visual (spatial)
+        View visualArrow = findViewById(R.id.visualArrow);
+        View visualHeader = (View) visualArrow.getParent();
+        visualHeader.setOnClickListener(v -> {
+            isVisualExpanded = !isVisualExpanded;
+            toggleSection(R.id.visualContent, R.id.visualArrow, isVisualExpanded);
+        });
+
+        // Aural (auditory-musical)
+        View auralArrow = findViewById(R.id.auralArrow);
+        View auralHeader = (View) auralArrow.getParent();
+        auralHeader.setOnClickListener(v -> {
+            isAuralExpanded = !isAuralExpanded;
+            toggleSection(R.id.auralContent, R.id.auralArrow, isAuralExpanded);
+        });
+
+        // Verbal (linguistic)
+        View verbalArrow = findViewById(R.id.verbalArrow);
+        View verbalHeader = (View) verbalArrow.getParent();
+        verbalHeader.setOnClickListener(v -> {
+            isVerbalExpanded = !isVerbalExpanded;
+            toggleSection(R.id.verbalContent, R.id.verbalArrow, isVerbalExpanded);
+        });
+
+        // Physical (kinesthetic)
+        View physicalArrow = findViewById(R.id.physicalArrow);
+        View physicalHeader = (View) physicalArrow.getParent();
+        physicalHeader.setOnClickListener(v -> {
+            isPhysicalExpanded = !isPhysicalExpanded;
+            toggleSection(R.id.physicalContent, R.id.physicalArrow, isPhysicalExpanded);
+        });
+
+        // Logical (mathematical)
+        View logicalArrow = findViewById(R.id.logicalArrow);
+        View logicalHeader = (View) logicalArrow.getParent();
+        logicalHeader.setOnClickListener(v -> {
+            isLogicalExpanded = !isLogicalExpanded;
+            toggleSection(R.id.logicalContent, R.id.logicalArrow, isLogicalExpanded);
+        });
+
+        // Social (interpersonal)
+        View socialArrow = findViewById(R.id.socialArrow);
+        View socialHeader = (View) socialArrow.getParent();
+        socialHeader.setOnClickListener(v -> {
+            isSocialExpanded = !isSocialExpanded;
+            toggleSection(R.id.socialContent, R.id.socialArrow, isSocialExpanded);
+        });
+
+        // Solitary (intrapersonal)
+        View solitaryArrow = findViewById(R.id.solitaryArrow);
+        View solitaryHeader = (View) solitaryArrow.getParent();
+        solitaryHeader.setOnClickListener(v -> {
+            isSolitaryExpanded = !isSolitaryExpanded;
+            toggleSection(R.id.solitaryContent, R.id.solitaryArrow, isSolitaryExpanded);
+        });
+
+        // Naturalistic
+        View naturalisticArrow = findViewById(R.id.naturalisticArrow);
+        View naturalisticHeader = (View) naturalisticArrow.getParent();
+        naturalisticHeader.setOnClickListener(v -> {
+            isNaturalisticExpanded = !isNaturalisticExpanded;
+            toggleSection(R.id.naturalisticContent, R.id.naturalisticArrow, isNaturalisticExpanded);
         });
     }
 

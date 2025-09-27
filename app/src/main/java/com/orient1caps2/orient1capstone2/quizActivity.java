@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -33,18 +34,18 @@ public class quizActivity extends AppCompatActivity {
     private EditText answerInput;
 
     // Question Lists
-    private List<Question> questions;
-    private List<QuestionMed> mediumquestions;
-    private List<QuestionHard> hardQuestions;
+    private List < Question > questions;
+    private List < QuestionMed > mediumquestions;
+    private List < QuestionHard > hardQuestions;
 
     // Game State
     private int currentIndex = 0;
     private int score = 0;
     private CountDownTimer countDownTimer;
     // Add these with other class variables
-    private final List<Boolean> userEasyAnswers = new ArrayList<>();
-    private final List<Integer> userMediumAnswers = new ArrayList<>();
-    private final List<String> userHardAnswers = new ArrayList<>();
+    private final List < Boolean > userEasyAnswers = new ArrayList < > ();
+    private final List < Integer > userMediumAnswers = new ArrayList < > ();
+    private final List < String > userHardAnswers = new ArrayList < > ();
 
     private boolean isReviewMode = false;
     private boolean isHardQuizFinished = false;
@@ -256,378 +257,867 @@ public class quizActivity extends AppCompatActivity {
 
     // Question loading methods
     public void loadQuestions() {
-        questions = new ArrayList<>();
-        questions.add(new Question("Fr.Mariano M Sablay is the Parish Priest of San Nicolas de Tolentino of Capas Tarlac.", true));
-        questions.add(new Question("San Nicolas was founded the year 1946.", false));
-        questions.add(new Question("San Nicolas Academy had 37 Students.", false));
-        questions.add(new Question("The First Commencement exercises is March 1950.", true));
-        questions.add(new Question("St. Dominic De Guzman was the Patron Saint of DCT.", false));
-        questions.add(new Question("Last commencement exercises is April 1973.", true));
-        questions.add(new Question("The Tertiary Education was open in 1980.", false));
-        questions.add(new Question("Sr. Caridad Bayani was the first Principalof San Nicolas Academy.", true));
-        questions.add(new Question("In April 20 1999, The School was officially renamed Dominican College of Tarlac.", false));
-        questions.add(new Question("Computer Secretarial was a 4 year course.", true));
-        questions.add(new Question("In 2005-2006, Dominica College of Tarlac has been given accreditation by TESDA.", false));
-        questions.add(new Question("In 2005-2006, Dominica College of Tarlac has been given accreditation by TESDA.", false));
-        questions.add(new Question("FIDES means “Faith in God.", false));
-        questions.add(new Question("PATRIA means “Love for country and fellowmen”.", true));
-        questions.add(new Question("SAPIENTIA means “Wisdom”", true));
+        questions = new ArrayList < > ();
+
+        questions.add(new Question("San Nicolas Academy was founded in 1939 by Fr. Mariano V. Saddy, O.P.", true));
+        questions.add(new Question("Dominican School was transferred to its present site in 1960.", true));
+        questions.add(new Question("Dominican College of Tarlac is run by the Dominican Sisters of St. Catherine of Siena.", false)); // Actually run by Dominican Order of Preachers - O.P.
+        questions.add(new Question("Gradualism in education means the school offers programs from preschool to college.", true));
+        questions.add(new Question("The Dominican Order is also known as the Order of Preachers.", true));
+        questions.add(new Question("The DCT logo emphasizes faith in God and love for humanity.", true));
+        questions.add(new Question("The motto in the DCT logo is “In the Service of Truth.”", false)); // Actually “Pro Deo et Patria” and “Caritas”
+        questions.add(new Question("The Order of Preachers was founded by St. Dominic de Guzman.", true));
+        questions.add(new Question("Sr. Ma. Asuncion M. Manalang, O.P. is one of the school administrators.", true));
+        questions.add(new Question("The philosophy of education of DCT is focused on forming responsible and Christ-centered individuals.", true));
+        questions.add(new Question("The objectives of DCT include helping students become academically competent and socially responsible.", true));
+        questions.add(new Question("The Bachelor of Arts and Computer Secretarial courses were introduced in 1980.", true));
+        questions.add(new Question("The Bachelor of Elementary Education program started in 1997.", true));
+        questions.add(new Question("In 2009, DCT opened the Bachelor of Science in Criminology program.", false)); // Introduced in 2015, 2009 was BS IT
+        questions.add(new Question("The Bachelor of Science in Business Administration program was first offered in 2011.", true));
     }
 
     public void loadQuestionStudyandPrayer() {
-        questions = new ArrayList<>();
-        questions.add(new Question("St. Dominic De Guzman was the founder of the Order of Preachers.", true));
-        questions.add(new Question("The Feast day of St. Dominic is August 6.", false));
-        questions.add(new Question(" Dominic attend the University of Palencia at age 14.", true));
-        questions.add(new Question(" A cross is what Dominic's godmother perceive on his forehead at baptism.", true));
-        questions.add(new Question("St. Dominic de Guzman was born in Caleruga, Spain.", true));
-        questions.add(new Question("St Dominic De Guzman was born in the year 1221.", false));
-        questions.add(new Question("St. Dominic De Guzman has 4 siblings.", false));
-        questions.add(new Question("St. Dominic de Guzman's parents were Flix de Guzman and Juana de Aza.", true));
-        questions.add(new Question("  He was a fisherman that gives alms to the poor.", false));
-        questions.add(new Question(" There are four subjects included in the Quadrivium that Dominic studied.", true));
-        questions.add(new Question(" Albigensianism belief considered all material things are good.", false));
-        questions.add(new Question("St. Dominic died on August 8, 1170.", false));
-        questions.add(new Question(" St Dominic gathered 9 women in Prouille and formed them as nuns.", true));
-        questions.add(new Question(" Dominic spoke to Pope Innocent III about starting a new group focused on preaching.", true));
-        questions.add(new Question("As a child, Dominic avoided games and slept on the floor instead of a bed.", true));
+        questions = new ArrayList < > ();
+
+        questions.add(new Question("St. Dominic De Guzman was born in Caleruega, Spain in 1170.", true));
+        questions.add(new Question("The parents of St. Dominic were Felix De Guzman and Juana De Aza.", true));
+        questions.add(new Question("St. Dominic had two siblings named Anthony and Mnemos.", false)); // Incorrect: it's Mannes
+        questions.add(new Question("At the age of 14, St. Dominic studied Theology at the University of Palencia.", true));
+        questions.add(new Question("During a famine, St. Dominic sold his precious books to feed the poor.", true));
+        questions.add(new Question("The TRIVIUM consisted of Grammar, Rhetoric, and Logic.", true));
+        questions.add(new Question("The QUADRIVIUM included Arithmetic, Geometry, Music, and Astronomy.", true));
+        questions.add(new Question("While traveling to Denmark with Bishop Diego in 1203, St. Dominic encountered the Albigensian heresy in southern France.", true));
+        questions.add(new Question("In 1206, St. Dominic formed a community of monks at Prouille.", false)); // It was nuns
+        questions.add(new Question("The Order of Preachers (Dominicans) was officially approved by Pope Honorius III in 1216.", true));
+        questions.add(new Question("St. Dominic died on August 6, 1231, at the age of 60.", false)); // He died in 1221 at 51
+        questions.add(new Question("The Dominican College of Tarlac believes that education should lead to union with God, community with others, and harmony with creation.", true));
+        questions.add(new Question("The Dominican learning system nurtures the human person through opportunities for reason, faith, and appreciation of values.", true));
+        questions.add(new Question("The Dominicans continue St. Dominic’s mission of study, prayer, and preaching up to the present time.", true));
+        questions.add(new Question("Scholastic (Thomistic) Philosophy emphasizes the rejection of faith in favor of pure reason.", false)); // It seeks harmony of faith and reason
     }
 
     public void loadQuestionIntroductionOnStudentLife() {
         questions = new ArrayList<>();
-        questions.add(new Question("Student life is considered the most important and golden period of development.", true));
-        questions.add(new Question("Doing homework and attending classes are main academic tasks of students.", true));
-        questions.add(new Question("Balancing schoolwork with hobbies and social life is part of time management.", true));
-        questions.add(new Question("Studying in a group helps students learn more effectively.", true));
-        questions.add(new Question("Students should compare themselves to others to improve faster.", false));
-        questions.add(new Question("Mental health issues are a common problem faced by students.", true));
-        questions.add(new Question("Students usually have no problems when it comes to finances.", false));
-        questions.add(new Question("Social issues can be a significant challenge in student life.", true));
-        questions.add(new Question("Technological barriers include lack of access to devices or internet..", true));
-        questions.add(new Question("Making a timeline of one’s educational journey is a good way to reflect.", true));
-        questions.add(new Question("Time management helps students do more and better work in less time.", true));
-        questions.add(new Question("Being rejected and forming friendships can be unforgettable student experiences.", true));
-        questions.add(new Question("A favorite teacher can have a significant impact on a student’s life.", true));
-        questions.add(new Question("Academic knowledge helps students learn discipline and good behavior.", true));
-        questions.add(new Question("Paying attention in class is one way to increase engagement.", true));
+
+        questions.add(new Question("Student life is considered the golden period of development.", true));
+        questions.add(new Question("Managing time means ignoring schoolwork and focusing on hobbies only.", false));
+        questions.add(new Question("College and school life are opportunities for personal growth.", true));
+        questions.add(new Question("Financial constraints mean having plenty of money for education.", false));
+        questions.add(new Question("Health issues can affect a student’s learning.", true));
+        questions.add(new Question("Mental health issues are not part of student challenges.", false));
+        questions.add(new Question("Social issues involve problems with friends, peers, or the community.", true));
+        questions.add(new Question("Technological barriers include lack of gadgets and internet access.", true));
+        questions.add(new Question("Lack of motivation makes students eager to study.", false));
+        questions.add(new Question("Family problems can cause stress and affect student performance.", true));
+        questions.add(new Question("A good student always puts studies as their top priority.", true));
+        questions.add(new Question("SMART goals are vague and not measurable.", false));
+        questions.add(new Question("Participating in classroom activities makes students passive learners.", false));
+        questions.add(new Question("Paying attention to teachers is necessary to become successful in life.", true));
+        questions.add(new Question("Studying in a group helps reinforce learning through discussion and explanation.", true));
     }
 
     public void loadQuestionEducationAndLearning() {
-        questions = new ArrayList<>();
-        questions.add(new Question("Education is the process of imparting knowledge, skills, values, beliefs, and habits.", true));
-        questions.add(new Question("Learning is the process of forgetting unnecessary information.", false));
-        questions.add(new Question("Formal education happens naturally through life experiences and self-directed learning.", false));
-        questions.add(new Question("Informal education occurs outside the classroom and is often unstructured.", true));
-        questions.add(new Question(" Non-formal education is highly structured with specific timeframes and learning goals.", false));
-        questions.add(new Question("Education helps individuals find meaning and can greatly improve lives.", true));
-        questions.add(new Question("Musical intelligence refers to a strong ability to recognize rhythms, sounds, and patterns.", true));
-        questions.add(new Question("Intrapersonal intelligence refers to the ability to interact well with other people.", false));
-        questions.add(new Question("Naturalistic intelligence involves being in tune with nature and the environment.", true));
-        questions.add(new Question("Verbal/Linguistic intelligence includes skills in writing and speaking.", true));
-        questions.add(new Question("Interpersonal intelligence is about understanding and interacting with others effectively.", true));
-        questions.add(new Question("Spatial intelligence is the ability to solve mathematical problems mentally.", false));
-        questions.add(new Question("Bodily-kinesthetic intelligence relates to control of body movements and physical actions.", true));
-        questions.add(new Question("Logical-mathematical intelligence involves reasoning and analyzing patterns.", true));
-        questions.add(new Question("Existential intelligence is the ability to explore deep questions about life and existence.", true));
+        questions = new ArrayList < > ();
+
+        questions.add(new Question("Education is the process of acquiring new knowledge, skills, values, and habits.", false)); // Education is about imparting
+        questions.add(new Question("Learning is the process of acquiring or modifying existing knowledge, skills, and behaviors.", true));
+        questions.add(new Question("Formal education happens outside schools and has no structured curriculum.", false));
+        questions.add(new Question("Informal education often happens naturally through daily life experiences.", true));
+        questions.add(new Question("Non-formal education includes workshops, community programs, and vocational training.", true));
+        questions.add(new Question("People with visual-spatial intelligence are good at visualizing things and understanding maps, images, and patterns.", true));
+        questions.add(new Question("Interpersonal intelligence means being more in tune with nature and caring for the environment.", false)); // That's naturalist
+        questions.add(new Question("Intrapersonal intelligence is about being aware of one’s own emotions, feelings, and motivations.", true));
+        questions.add(new Question("Musical intelligence refers to the ability to think in rhythms, sounds, and patterns.", true));
+        questions.add(new Question("People with strong logical-mathematical intelligence are skilled in reasoning and problem solving.", true));
+        questions.add(new Question("Bodily-kinesthetic intelligence is the ability to move objects with the mind instead of physical effort.", false)); // Misconception
+        questions.add(new Question("Verbal-linguistic intelligence refers to people who are good at using words in both speaking and writing.", true));
+        questions.add(new Question("Naturalist intelligence means being able to connect deeply with nature and explore the environment.", true));
+        questions.add(new Question("Existential intelligence deals with asking deeper questions about life and human existence.", true));
+        questions.add(new Question("Education is not important in improving lives or giving meaning to the world around us.", false)); // Incorrect view
     }
 
     public void loadQuestionImportanceEducationAndLearning() {
-        questions = new ArrayList<>();
-        questions.add(new Question("A stressor is something that reduces stress and promotes relaxation.", false));
-        questions.add(new Question("Stress is your body and mind's response to overwhelming, pressured, or worrying situations.", true));
-        questions.add(new Question("Eustress is a harmful type of stress that leads to health issues.", false));
-        questions.add(new Question("Distress refers to positive stress that helps you grow and perform better.", false));
-        questions.add(new Question("Personal stressors often arise from one's daily life and emotional well-being.", true));
-        questions.add(new Question("Academic stressors are mainly related to pressures at home, like chores and family conflict.", false));
-        questions.add(new Question("Professional stress can result from lack of job security or opportunities for career growth.", true));
-        questions.add(new Question("Financial pressure, such as budgeting problems, is an example of an environmental stressor.", false));
-        questions.add(new Question("Noise pollution in urban areas can contribute to environmental stress.", true));
-        questions.add(new Question("Muscle relaxation is a physical symptom of stress.", false));
-        questions.add(new Question("Job insecurity is a factor that can cause professional stress.", true));
-        questions.add(new Question("Indecisiveness is a behavioral symptom caused by physical exhaustion.", false));
-        questions.add(new Question("Maintaining a healthy lifestyle can significantly reduce stress levels.", true));
-        questions.add(new Question("Isolating yourself from friends and family is a healthy way to manage stress.", false));
-        questions.add(new Question("A poor work-life balance can lead to increased levels of stress.", true));
+        questions = new ArrayList < > ();
+
+        // From your quiz (Education and Learning)
+        questions.add(new Question("Education is the process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits.", true));
+        questions.add(new Question("Learning means only memorizing facts without changing behavior or skills.", false));
+        questions.add(new Question("One of the primary goals of education is to impart knowledge about the world.", true));
+        questions.add(new Question("Imparting skills equips individuals with practical abilities for tasks and problem-solving.", true));
+        questions.add(new Question("The vision emphasizes creating a God-loving community of servant leaders with truth and compassion.", true));
+
+        // From your quiz (Stress and Stressors)
+        questions.add(new Question("A stressor is anything that causes stress, either physical, emotional, or psychological.", true));
+        questions.add(new Question("Positive stress (eustress) can motivate people and lead to personal growth and achievement.", true));
+        questions.add(new Question("Negative stress (distress) always helps people perform better in every situation.", false));
+        questions.add(new Question("Permanent stress comes from ongoing problems in daily life, such as financial difficulties.", true));
+        questions.add(new Question("Academic stress can arise from exams, deadlines, and workload at school or university.", true));
+        questions.add(new Question("Professional stress is only experienced by doctors and nurses.", false));
+        questions.add(new Question("Environmental stressors include pollution, noise, disasters, and unsafe surroundings.", true));
+        questions.add(new Question("The “fight-or-flight” response is the body’s natural reaction to stress, preparing a person to face danger or escape.", true));
+        questions.add(new Question("Stress only affects emotions and never causes physical symptoms.", false));
+        questions.add(new Question("Symptoms of stress may include emotional changes, physical symptoms, and behavioral effects.", true));
     }
 
     // Medium question loading methods
     private void dctcultmedium() {
-        mediumquestions = new ArrayList<>();
-        mediumquestions.add(new QuestionMed("In the first commencement exercise in 1950, how many students graduated?",
-                new String[]{"11", "12", "13", "14"}, 3));
-        mediumquestions.add(new QuestionMed("San Nicolas Academy was established on February 14, 1947 founded by?",
-                new String[]{"Sr. Marisor Fabros", "Fr. Benny Lapitan", "Fr. Mariano M. Sablay", "Sr. Caridad Bayani"}, 2));
-        mediumquestions.add(new QuestionMed("When was the last commencement exercises?",
-                new String[]{"March 1971", "March 1973", "March 1961", "March 1980"}, 1));
-        mediumquestions.add(new QuestionMed("What course was recognized by the Government in 1997?",
-                new String[]{"Bachelor of Business Administration", "Bachelor of Hospitality Management", "Bachelor of Secondary Education", "Bachelor of Elementary Education"}, 3));
-        mediumquestions.add(new QuestionMed("When is the feast day of St. Dominic De Guzman?",
-                new String[]{"August 3", "August 7", "August 8", "August 4"}, 2));
-        mediumquestions.add(new QuestionMed("What does the STEM strand prepare students for?",
-                new String[]{"Careers in hospitality", "Careers in business", "Careers in STEM", "Undecided"}, 2));
-        mediumquestions.add(new QuestionMed("What industry is the F & B strand tailored for?",
-                new String[]{"Technology", "Education", "Hospitality and Culinary Industries", "Criminal Justice"}, 2));
-        mediumquestions.add(new QuestionMed("What is the focus of the BSIT program?",
-                new String[]{"Software Development, Cybersecurity, and Network Administration", "Marketing Management", "Forensic Science", "Event Planning"}, 0));
-        mediumquestions.add(new QuestionMed("San Nicolas Academy had _____ students.",
-                new String[]{"36", "35", "28", "30"}, 1));
-        mediumquestions.add(new QuestionMed("The First Commencement exercises is?",
-                new String[]{"March 1950", "April 1960", "March 1947", "April 1950"}, 0));
-        mediumquestions.add(new QuestionMed("Who is the first principal in San Nicolas Academy?",
-                new String[]{"Sr. Ma. Rosalina Mirabueno, O.P", "Sr. Caridad Bayani, O.P", "Sr. Ma. Magdalena Olfato, O.P", "Sr. Ma. Magdalena Olfato, O.P"}, 2));
-        mediumquestions.add(new QuestionMed("San Nicolas was founded the year _____ .",
-                new String[]{"1950", "1970", "1947", "1960"}, 2));
-        mediumquestions.add(new QuestionMed("The Tertiary Education was open in ______ .",
-                new String[]{"1950", "1960", "1947", "1980"}, 3));
-        mediumquestions.add(new QuestionMed("When was DCT given accreditation by TESDA?",
-                new String[]{"2005-2007", "2005-2006", "2004-2005", "2006-2007"}, 1));
-        mediumquestions.add(new QuestionMed("FIDES means?",
-                new String[]{"Faith in God", "Love for country and fellowmen", "Wisdom", "None of the above"}, 0));
+        mediumquestions = new ArrayList < > ();
+
+        mediumquestions.add(new QuestionMed("Who founded San Nicolas Academy in 1939?",
+                new String[] {
+                        "Fr. Juan de Salcedo",
+                        "Fr. Mariano V. Saddy, O.P.",
+                        "St. Dominic de Guzman",
+                        "Sr. Ma. Asuncion M. Manalang, O.P."
+                }, 1));
+        mediumquestions.add(new QuestionMed("In what year was the Dominican School transferred to its present site?",
+                new String[] {
+                        "1950",
+                        "1960",
+                        "1970",
+                        "1980"
+                }, 1));
+        mediumquestions.add(new QuestionMed("What religious order manages Dominican College of Tarlac?",
+                new String[] {
+                        "Augustinian Order",
+                        "Benedictine Order",
+                        "Dominican Order of Preachers (O.P.)",
+                        "Jesuit Order"
+                }, 2));
+        mediumquestions.add(new QuestionMed("What does Gradualism in Education mean in DCT?",
+                new String[] {
+                        "Learning only at the college level",
+                        "Step-by-step educational offerings from preschool to college",
+                        "Focus on extracurricular activities",
+                        "Online learning programs only"
+                }, 1));
+        mediumquestions.add(new QuestionMed("The Dominican Order is also called:",
+                new String[] {
+                        "The Order of Teachers",
+                        "The Order of Preachers",
+                        "The Order of Faith",
+                        "The Order of Saints"
+                }, 1));
+        mediumquestions.add(new QuestionMed("What two values are emphasized in the DCT logo?",
+                new String[] {
+                        "Wealth and Prosperity",
+                        "Faith in God and Love for Humanity",
+                        "Power and Justice",
+                        "Education and Discipline"
+                }, 1));
+        mediumquestions.add(new QuestionMed("What is written in the DCT logo?",
+                new String[] {
+                        "“Truth Shall Prevail”",
+                        "“Caritas – Uniform Love” and “Pro Deo et Patria”",
+                        "“Excellence for All”",
+                        "“Service and Honor”"
+                }, 1));
+        mediumquestions.add(new QuestionMed("Who founded the Order of Preachers?",
+                new String[] {
+                        "St. Francis of Assisi",
+                        "St. Augustine",
+                        "St. Dominic de Guzman",
+                        "St. Ignatius of Loyola"
+                }, 2));
+        mediumquestions.add(new QuestionMed("Who among the sisters is mentioned as part of DCT’s leadership?",
+                new String[] {
+                        "Sr. Ma. Lourdes O.P.",
+                        "Sr. Ma. Asuncion M. Manalang, O.P.",
+                        "Sr. Angela Gonzales, O.P.",
+                        "Sr. Clara Villanueva, O.P."
+                }, 1));
+        mediumquestions.add(new QuestionMed("The philosophy of DCT education focuses on:",
+                new String[] {
+                        "Training athletes only",
+                        "Forming responsible and Christ-centered individuals",
+                        "Political leadership",
+                        "Economic development"
+                }, 1));
+        mediumquestions.add(new QuestionMed("Which is NOT part of DCT objectives?",
+                new String[] {
+                        "Academic excellence",
+                        "Social responsibility",
+                        "Formation of criminals",
+                        "Christ-centered values"
+                }, 2));
+        mediumquestions.add(new QuestionMed("When were Bachelor of Arts and Computer Secretarial courses first offered?",
+                new String[] {
+                        "1970",
+                        "1980",
+                        "1990",
+                        "2000"
+                }, 1));
+        mediumquestions.add(new QuestionMed("In what year did the Bachelor of Elementary Education program start?",
+                new String[] {
+                        "1985",
+                        "1990",
+                        "1997",
+                        "2005"
+                }, 2));
+        mediumquestions.add(new QuestionMed("What program was introduced in 2009?",
+                new String[] {
+                        "Bachelor of Science in Criminology",
+                        "Bachelor of Science in Information Technology",
+                        "Bachelor of Science in Business Administration",
+                        "TESDA Restaurant Management"
+                }, 1));
+        mediumquestions.add(new QuestionMed("In what year did the Bachelor of Science in Criminology begin at DCT?",
+                new String[] {
+                        "2009",
+                        "2010",
+                        "2015",
+                        "2020"
+                }, 2));
     }
 
     //Study and Prayer Life
     private void studandpraymedium() {
-        mediumquestions = new ArrayList<>();
-        mediumquestions.add(new QuestionMed(" Who founded the Order of Preachers?",
-                new String[]{"St. Thomas Aquinas", "St. Francis of Assisi", "St. Dominic de Guzman", "St. Augustine"}, 2));
-        mediumquestions.add(new QuestionMed("Where was St. Dominic de Guzman born?",
-                new String[]{"Madrid, Spain", "Valencia, Spain", "Caleruga, Spain", "Barcelona, Spain"}, 2));
-        mediumquestions.add(new QuestionMed("In what year was St. Dominic de Guzman born?",
-                new String[]{"1203", "1170", "1185", "1221"}, 1));
-        mediumquestions.add(new QuestionMed("Who were the parents of St. Dominic de Guzman?",
-                new String[]{"Juan de Aza and Maria Guzman", "Felix de Guzman and Juana de Aza", "Peter Guzman and Juana de la Cruz", "Antonio de Guzman and Maria de Aza"}, 1));
+        mediumquestions = new ArrayList < > ();
+
+        mediumquestions.add(new QuestionMed("Where was St. Dominic De Guzman born?",
+                new String[] {
+                        "Madrid, Spain",
+                        "Caleruega, Spain",
+                        "Palencia, Spain",
+                        "Leon, Spain"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Who were the parents of St. Dominic?",
+                new String[] {
+                        "Diego De Guzman and Teresa De Aza",
+                        "Felix De Guzman and Juana De Aza",
+                        "Pedro De Guzman and Maria De Aza",
+                        "Anthony De Guzman and Clara De Aza"
+                }, 1));
+
         mediumquestions.add(new QuestionMed("Which of the following were siblings of St. Dominic?",
-                new String[]{"Paul and Matthew", "Anthony and Mannes", "James and Philip", "Peter and Simon"}, 1));
-        mediumquestions.add(new QuestionMed("What did Dominic’s godmother see on his forehead during baptism?",
-                new String[]{"A flame", "A dove", "A star", "A cross"}, 2));
-        mediumquestions.add(new QuestionMed("At what age did Dominic attend the University of Palencia?",
-                new String[]{"12", "14", "16", "18"}, 0));
-        mediumquestions.add(new QuestionMed("What did Dominic sell to help the poor?",
-                new String[]{"His precious books", "His clothes", "His jewelry", "His home"}, 0));
-        mediumquestions.add(new QuestionMed("Which of the following is part of the Quadrivium studied by Dominic?",
-                new String[]{"Music", "Literature", "Rhetoric", "Philosophy"}, 0));
-        mediumquestions.add(new QuestionMed("What heresy did Dominic encounter in 1203?",
-                new String[]{"Gnosticism", "Arianism", "Albigensianism", "Pelagianism"}, 2));
-        mediumquestions.add(new QuestionMed("What did the Albigensians believe about material things?",
-                new String[]{"They are holy", "They are temporary blessings", "They are necessary evils", "They are evil"}, 3));
-        mediumquestions.add(new QuestionMed("What was the name of the religious order approved in 1216 by Pope Honorius III?",
-                new String[]{"Society of Jesus", "Order of Preachers", "Order of St. Benedict", "Franciscan Order"}, 1));
-        mediumquestions.add(new QuestionMed("Who approved St. Dominic's Order?.",
-                new String[]{"A king", "A bishop", "Pope Honorius III", "Pope Innocent III"}, 2));
-        mediumquestions.add(new QuestionMed("What was St. Dominic's main profession?",
-                new String[]{"Farmer", "Teacher", "Preacher", "King"}, 2));
-        mediumquestions.add(new QuestionMed("Besides studying the Trivium, what other set of subjects did St. Dominic study? ",
-                new String[]{"The Classics", "The Quadrivium", "Canon Law", "Astrology"}, 1));
+                new String[] {
+                        "Anthony and Mannes",
+                        "Peter and Martin",
+                        "Diego and Francis",
+                        "Thomas and Augustine"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("At what age did St. Dominic study Theology at the University of Palencia?",
+                new String[] {
+                        "10",
+                        "12",
+                        "14",
+                        "16"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("What did St. Dominic do during a famine to help the poor?",
+                new String[] {
+                        "Sold his house",
+                        "Sold his clothes",
+                        "Sold his books",
+                        "Sold his crops"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Which subjects are included in the TRIVIUM?",
+                new String[] {
+                        "Grammar, Logic, Rhetoric",
+                        "Arithmetic, Geometry, Music",
+                        "Theology, Philosophy, History",
+                        "Science, Art, Literature"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Which subjects are included in the QUADRIVIUM?",
+                new String[] {
+                        "Theology, Philosophy, Ethics, Law",
+                        "Arithmetic, Geometry, Music, Astronomy",
+                        "Grammar, Rhetoric, Logic",
+                        "History, Literature, Arts, Medicine"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("In which year did St. Dominic travel with Bishop Diego to Denmark?",
+                new String[] {
+                        "1195",
+                        "1203",
+                        "1215",
+                        "1221"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Whom did St. Dominic form into a community at Prouille in 1206?",
+                new String[] {
+                        "Priests",
+                        "Monks",
+                        "Nuns",
+                        "Hermits"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Who officially approved the Order of Preachers in 1216?",
+                new String[] {
+                        "Pope Innocent III",
+                        "Pope Gregory IX",
+                        "Pope Honorius III",
+                        "Pope Urban II"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("When did St. Dominic die?",
+                new String[] {
+                        "August 6, 1216",
+                        "August 6, 1221",
+                        "August 6, 1225",
+                        "August 6, 1230"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("At what age did St. Dominic die?",
+                new String[] {
+                        "40",
+                        "45",
+                        "51",
+                        "60"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Which of the following is a goal of education according to Dominican College of Tarlac?",
+                new String[] {
+                        "Wealth and success",
+                        "Union with God",
+                        "Political influence",
+                        "Worldly achievements"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("According to DCT’s philosophy, education should also promote:",
+                new String[] {
+                        "Competition and rivalry",
+                        "Community with others and harmony with creation",
+                        "Authority and obedience only",
+                        "Innovation without values"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Scholastic (Thomistic) philosophy emphasizes:",
+                new String[] {
+                        "Faith alone without reason",
+                        "Reason alone without faith",
+                        "Harmony of faith and reason",
+                        "Rejection of philosophy"
+                }, 2));
     }
 
     private void introductiononStudentLifeMed() {
         mediumquestions = new ArrayList<>();
-        mediumquestions.add(new QuestionMed("What is considered the most important and golden period of development?",
-                new String[]{"Childhood", "Student Life", "Career stage", "Retirement"}, 1));
-        mediumquestions.add(new QuestionMed("Which of the following is an academic task students typically do?",
-                new String[]{"Going to classes", "Attending parties", "Traveling", "Watching TV"}, 0));
-        mediumquestions.add(new QuestionMed("What is one key aspect of managing time effectively as a student?",
-                new String[]{"Balancing schoolwork with hobbies", "Ignoring social life", "Focusing only on studies", "Avoiding physical activity"}, 0));
-        mediumquestions.add(new QuestionMed("What is one benefit of studying in a group?",
-                new String[]{"Learn more effectively", "Spend less time learning", "Avoid doing homework", "Skip class together"}, 0));
-        mediumquestions.add(new QuestionMed("Why should students avoid comparing themselves to others?",
-                new String[]{"It makes them more competitive", "It helps them be like everyone else", "Everyone has their own abilities and capabilities", "It improves their popularity"}, 2));
-        mediumquestions.add(new QuestionMed("What is a common mental health issue that students face?",
-                new String[]{"Anxiety and stress", "Laziness", "Sleepiness", "Disinterest in food"}, 0));
-        mediumquestions.add(new QuestionMed("What is a common financial challenge for students?",
-                new String[]{"Overspending on gadgets", "Financial constraints", "Owning too many things", "Budgeting excess money"}, 1));
-        mediumquestions.add(new QuestionMed("What is a significant social challenge a student might encounter?",
-                new String[]{"Managing group projects", "Learning a new skill", "Social issues", "Attending online classes"}, 2));
-        mediumquestions.add(new QuestionMed("What is a common technological barrier for students?",
-                new String[]{"Too many apps", "Noisy environment", "Lack of access to devices or internet", "Disliking social media"}, 2));
-        mediumquestions.add(new QuestionMed("What is one activity students can do to reflect on their educational journey?",
-                new String[]{"Write a poem", "Interview their friends", "Make a timeline of their education history", "Create a school vlog"}, 2));
-        mediumquestions.add(new QuestionMed("What is an unforgettable experience students might have?",
-                new String[]{"Memorizing a textbook", "Being rejected and forming friendships", "Missing a class", "Doing group work"}, 1));
-        mediumquestions.add(new QuestionMed("What impact can a favorite teacher have on a student?",
-                new String[]{"Provide snacks after class", "Significantly influence their life", "Allow more free time", "Skip lessons"}, 1));
-        mediumquestions.add(new QuestionMed("What is one importance of academic learning in student life?",
-                new String[]{"Winning competitions", "Learning manners and discipline", "Earning early income", "Traveling the world"}, 1));
-        mediumquestions.add(new QuestionMed("What is one way to enhance classroom engagement?",
-                new String[]{"Pay attention to what teachers teach", "Use your phone silently", "Talk to classmates", "Take random notes"}, 0));
+
+        mediumquestions.add(new QuestionMed("What is considered the golden period of development in a person’s life?",
+                new String[]{
+                        "Childhood",
+                        "Student life",
+                        "Adulthood",
+                        "Retirement"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following is the main academic task of students?",
+                new String[]{
+                        "Managing money",
+                        "Going to classes and learning",
+                        "Socializing only",
+                        "Traveling"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Balancing schoolwork with hobbies, sports, and part-time jobs refers to:",
+                new String[]{
+                        "Social issues",
+                        "Managing time",
+                        "Motivation",
+                        "Personal growth"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("College or school life is about discovering yourself, meeting new people, and learning life skills. This is called:",
+                new String[]{
+                        "Academic pressure",
+                        "Personal growth",
+                        "Financial constraint",
+                        "Time management"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following is an example of a challenge students face?",
+                new String[]{
+                        "Health issues",
+                        "Time management",
+                        "Lack of motivation",
+                        "All of the above"
+                }, 3));
+
+        mediumquestions.add(new QuestionMed("Setting SMART goals helps students:",
+                new String[]{
+                        "Waste time",
+                        "Achieve what they want in life",
+                        "Avoid responsibility",
+                        "Forget studies"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("What is the first priority of a good student?",
+                new String[]{
+                        "Social life",
+                        "Studies",
+                        "Traveling",
+                        "Leisure"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Paying attention in class is necessary because:",
+                new String[]{
+                        "It helps you become successful in life",
+                        "Teachers are strict",
+                        "Students like it",
+                        "It avoids punishment"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Which skill enables students to do more and better work in less time?",
+                new String[]{
+                        "Leadership",
+                        "Time management",
+                        "Motivation",
+                        "Social skills"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("A student’s involvement in classroom and school activities makes him/her:",
+                new String[]{
+                        "A passive learner",
+                        "An active member",
+                        "A lazy student",
+                        "A leader only"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following is NOT a common student issue?",
+                new String[]{
+                        "Family problems",
+                        "Financial constraints",
+                        "Job promotions",
+                        "Social issues"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("What does 'student life in school' mainly help with?",
+                new String[]{
+                        "Learning manners, discipline, and knowledge",
+                        "Skipping classes",
+                        "Playing games only",
+                        "Avoiding responsibilities"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Studying with peers helps students by:",
+                new String[]{
+                        "Wasting time",
+                        "Reinforcing learning through discussion",
+                        "Competing only",
+                        "Avoiding homework"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which among these is a technological barrier?",
+                new String[]{
+                        "Lack of gadgets and internet",
+                        "Lack of sleep",
+                        "Family arguments",
+                        "Peer pressure"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Which is a personal issue that might affect studies?",
+                new String[]{
+                        "Time management",
+                        "Family problems",
+                        "Health issues",
+                        "All of the above"
+                }, 3));
     }
 
     private void educationAndLearningmed() {
-        mediumquestions = new ArrayList<>();
-        mediumquestions.add(new QuestionMed("What is the process of imparting knowledge, skills, values, beliefs, and habits to individuals?",
-                new String[]{"Education", "Learning", "Training", "Discipline"}, 0));
-        mediumquestions.add(new QuestionMed("What refers to acquiring or modifying knowledge, behaviors, skills, or preferences?",
-                new String[]{"Teaching", "Learning", "Memorizing", "Instructing"}, 1));
-        mediumquestions.add(new QuestionMed("What kind of education is structured and usually takes place in schools with a set curriculum?",
-                new String[]{"Formal Education", "Informal Education", "Non-formal Education", "Self-Education"}, 0));
-        mediumquestions.add(new QuestionMed("What type of education occurs outside classrooms and often happens through life experiences?",
-                new String[]{"Structured Education", "Informal Education", "Formal Education", "Academic Education"}, 1));
-        mediumquestions.add(new QuestionMed("What kind of learning results from daily activities and is not organized or structured?",
-                new String[]{"Informal Education", "Non-formal Education", "Formal Education", "Advanced Learning"}, 1));
-        mediumquestions.add(new QuestionMed("Why is education considered powerful?",
-                new String[]{"It provides money", "It helps find meaning and improves lives", "It teaches physical strength", "It helps avoid responsibilities"}, 1));
-        mediumquestions.add(new QuestionMed("What intelligence involves thinking in patterns, rhythms, and sounds?",
-                new String[]{"Musical Intelligence", "Spatial Intelligence", "Logical-Mathematical Intelligence", "Interpersonal Intelligence"}, 0));
-        mediumquestions.add(new QuestionMed("Which intelligence is associated with self-awareness and understanding one’s emotions?",
-                new String[]{"Interpersonal Intelligence", "Intrapersonal Intelligence", "Existential Intelligence", "Naturalistic Intelligence"}, 1));
-        mediumquestions.add(new QuestionMed("What intelligence is shown by those in tune with nature and the environment?",
-                new String[]{"Intrapersonal Intelligence", "Spatial Intelligence", "Naturalistic Intelligence", "Logical-Mathematical Intelligence"}, 2));
-        mediumquestions.add(new QuestionMed("Which intelligence is demonstrated by individuals good at speaking and writing?",
-                new String[]{"Intrapersonal Intelligence", "Verbal/Linguistic Intelligence", "Musical Intelligence", "Naturalistic Intelligence"}, 1));
-        mediumquestions.add(new QuestionMed("People who are skilled at understanding and working with others possess what intelligence?",
-                new String[]{"Intrapersonal Intelligence", "Bodily-Kinesthetic Intelligence", "Interpersonal Intelligence", "Spatial Intelligence"}, 2));
-        mediumquestions.add(new QuestionMed("What intelligence is associated with the ability to visualize and mentally manipulate objects?",
-                new String[]{"Logical-Mathematical Intelligence", "Spatial Intelligence", "Musical Intelligence", "Verbal Intelligence"}, 1));
-        mediumquestions.add(new QuestionMed("Individuals who excel in physical movement and coordination have what intelligence?",
-                new String[]{"Spatial Intelligence", "Bodily-Kinesthetic Intelligence", "Intrapersonal Intelligence", "Naturalistic Intelligence"}, 1));
-        mediumquestions.add(new QuestionMed("What intelligence involves reasoning, pattern recognition, and problem-solving?",
-                new String[]{"Verbal/Linguistic Intelligence", "Spatial Intelligence", "Logical-Mathematical Intelligence", "Interpersonal Intelligence"}, 2));
-        mediumquestions.add(new QuestionMed("What intelligence refers to the ability to explore deeper life questions and existence?",
-                new String[]{"Naturalistic Intelligence", "Existential Intelligence", "Intrapersonal Intelligence", "Musical Intelligence"}, 1));
+        mediumquestions = new ArrayList < > ();
+
+        mediumquestions.add(new QuestionMed("What is the process of imparting knowledge, skills, values, and habits to others?",
+                new String[] {
+                        "Learning",
+                        "Education",
+                        "Training",
+                        "Informal knowledge"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following best defines learning?",
+                new String[] {
+                        "Teaching structured lessons",
+                        "Acquiring or modifying knowledge, skills, and behaviors",
+                        "Conducting assessments",
+                        "Giving instructions"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which type of education follows a structured curriculum, certified teachers, and formal assessments?",
+                new String[] {
+                        "Non-formal Education",
+                        "Informal Education",
+                        "Formal Education",
+                        "Experiential Education"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("When students learn through daily life experiences without a formal curriculum, it is called:",
+                new String[] {
+                        "Informal Education",
+                        "Formal Education",
+                        "Non-formal Education",
+                        "Professional Training"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Workshops, community-based programs, and vocational training are examples of:",
+                new String[] {
+                        "Formal Education",
+                        "Informal Education",
+                        "Non-formal Education",
+                        "Naturalist Learning"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Which intelligence is about being aware of your own emotions, feelings, and motivations?",
+                new String[] {
+                        "Interpersonal",
+                        "Intrapersonal",
+                        "Logical-Mathematical",
+                        "Spatial"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("A person who loves exploring nature, animals, and the environment has strong:",
+                new String[] {
+                        "Interpersonal Intelligence",
+                        "Naturalist Intelligence",
+                        "Musical Intelligence",
+                        "Physical Intelligence"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Who is most likely strong in verbal-linguistic intelligence?",
+                new String[] {
+                        "Someone who can solve math equations quickly",
+                        "Someone good at using words in writing and speaking",
+                        "Someone who enjoys gardening",
+                        "Someone who remembers faces easily"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("A teacher who can explain lessons clearly and write creatively shows which intelligence?",
+                new String[] {
+                        "Bodily-Kinesthetic",
+                        "Logical-Mathematical",
+                        "Verbal-Linguistic",
+                        "Musical"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("People who are good at understanding and interacting with others show:",
+                new String[] {
+                        "Intrapersonal Intelligence",
+                        "Interpersonal Intelligence",
+                        "Naturalist Intelligence",
+                        "Logical Intelligence"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which intelligence is about reasoning, recognizing patterns, and solving problems?",
+                new String[] {
+                        "Logical-Mathematical",
+                        "Bodily-Kinesthetic",
+                        "Spatial",
+                        "Musical"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("A dancer who has great body control and coordination demonstrates:",
+                new String[] {
+                        "Naturalist Intelligence",
+                        "Intrapersonal Intelligence",
+                        "Bodily-Kinesthetic Intelligence",
+                        "Verbal-Linguistic"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("People who are strong in musical intelligence usually:",
+                new String[] {
+                        "Think in patterns, rhythms, and sounds",
+                        "Prefer solving logical equations",
+                        "Enjoy nature and animals",
+                        "Work well in group activities"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Which intelligence focuses on asking deep questions about life and existence?",
+                new String[] {
+                        "Existential Intelligence",
+                        "Social Intelligence",
+                        "Naturalist Intelligence",
+                        "Logical-Mathematical"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("Which intelligence is about being good at visualizing objects, images, and spatial understanding?",
+                new String[] {
+                        "Verbal-Linguistic",
+                        "Visual-Spatial",
+                        "Logical-Mathematical",
+                        "Musical"
+                }, 1));
     }
 
     private void impeducationAndLearningmed() {
-        mediumquestions = new ArrayList<>();
-        mediumquestions.add(new QuestionMed("What is anything that causes stress or triggers a mental, emotional, or physical reaction?",
-                new String[]{"Emotion", "Stress", "Anxiety", "Stressor"}, 3));
-        mediumquestions.add(new QuestionMed("What is the body and mind’s reaction to overwhelming, pressured, or worrying situations?",
-                new String[]{"Calmness", "Stress", "Relief", "Peace"}, 1));
-        mediumquestions.add(new QuestionMed("Which type of stress is beneficial and helps motivate individuals?",
-                new String[]{"Anxiety", "Depression", "Eustress", "Distress"}, 2));
-        mediumquestions.add(new QuestionMed("What type of stress is harmful and leads to anxiety or health issues?",
-                new String[]{"Distress", "Eustress", "Motivation", "Calmness"}, 0));
-        mediumquestions.add(new QuestionMed("Which stressor arises from emotional well-being and daily life?",
-                new String[]{"Academic Stressor", "Environmental Stressor", "Personal Stressor", "Professional Stressor"}, 2));
-        mediumquestions.add(new QuestionMed("Which stressor is commonly experienced by students due to school pressure?",
-                new String[]{"Personal Stressor", "Academic Stressor", "Professional Stressor", "Social Stressor"}, 1));
-        mediumquestions.add(new QuestionMed("What stressor comes from work responsibilities and job-related pressures?",
-                new String[]{"Environmental Stressor", "Professional Stressor", "Personal Stressor", "Relationship Stressor"}, 1));
-        mediumquestions.add(new QuestionMed("Which of the following is an example of a personal stressor?",
-                new String[]{"Natural disasters", "Financial pressure", "Heavy traffic", "Group projects"}, 1));
-        mediumquestions.add(new QuestionMed("Which of the following contributes to environmental stress?",
-                new String[]{"Academic exams", "Job interviews", "Noise pollution", "Romantic breakups"}, 2));
-        mediumquestions.add(new QuestionMed("What physical symptom of stress results in soreness in the neck, shoulders, or back?",
-                new String[]{"Fatigue", "Muscle tension or pain", "Headache", "Skin irritation"}, 1));
-        mediumquestions.add(new QuestionMed("What workplace-related issue contributes to professional stress?",
-                new String[]{"Lack of internet", "Job insecurity", "Sleep schedule", "Weight loss"}, 1));
-        mediumquestions.add(new QuestionMed("What mental symptom involves difficulty choosing between options due to stress?",
-                new String[]{"Overconfidence", "Indecisiveness", "Alertness", "Motivation"}, 1));
-        mediumquestions.add(new QuestionMed("Which of the following helps in reducing stress through balanced nutrition and rest?",
-                new String[]{"Time management", "Breathing exercises", "Healthy lifestyle choices", "Isolation"}, 2));
-        mediumquestions.add(new QuestionMed("What strategy involves seeking emotional help from friends or family?",
-                new String[]{"Self-isolation", "Journaling", "Social support", "Denial"}, 2));
-        mediumquestions.add(new QuestionMed("Which situation describes a cause of stress due to imbalance between job and personal time?",
-                new String[]{"Noise pollution", "Poor work-life balance", "Academic pressure", "Mental illness"}, 1));
+        mediumquestions = new ArrayList < > ();
+
+        mediumquestions.add(new QuestionMed("What is the process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits?",
+                new String[] {
+                        "Teaching",
+                        "Education",
+                        "Training",
+                        "Memorization"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following BEST defines learning?",
+                new String[] {
+                        "Simply storing information",
+                        "Acquiring and modifying knowledge, skills, and behaviors",
+                        "Copying others’ actions",
+                        "Forgetting old habits"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("One of the primary goals of education is:",
+                new String[] {
+                        "To impart knowledge",
+                        "To avoid learning",
+                        "To memorize facts only",
+                        "To ignore values"
+                }, 0));
+
+        mediumquestions.add(new QuestionMed("What does “imparting skills” in education mean?",
+                new String[] {
+                        "Memorizing lessons",
+                        "Shaping beliefs",
+                        "Providing practical abilities for tasks and problem-solving",
+                        "Avoiding challenges"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("According to the vision, education should build:",
+                new String[] {
+                        "A rich society",
+                        "A God-loving community with servant leaders and compassion",
+                        "A competitive business environment",
+                        "A stress-free community"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("What is a stressor?",
+                new String[] {
+                        "A relaxing activity",
+                        "Something that causes stress",
+                        "A type of exercise",
+                        "A positive attitude"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which type of stress motivates people and leads to growth?",
+                new String[] {
+                        "Chronic stress",
+                        "Distress",
+                        "Eustress",
+                        "Environmental stress"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Negative stress that harms performance and health is called:",
+                new String[] {
+                        "Eustress",
+                        "Relaxation",
+                        "Distress",
+                        "Motivation"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Which of the following is an example of permanent stress?",
+                new String[] {
+                        "Loud noise for a few minutes",
+                        "Traffic jam for an hour",
+                        "Long-term financial difficulties",
+                        "A sudden surprise quiz"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Academic stress may be caused by:",
+                new String[] {
+                        "Watching TV",
+                        "Exams and deadlines",
+                        "Relaxing with friends",
+                        "Sleeping"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which statement about professional stress is TRUE?",
+                new String[] {
+                        "Only teachers experience it",
+                        "It can affect workers in many jobs",
+                        "It only occurs in hospitals",
+                        "It is always positive"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("Which of the following is an environmental stressor?",
+                new String[] {
+                        "Meditation",
+                        "Pollution",
+                        "Good grades",
+                        "Prayer"
+                }, 1));
+
+        mediumquestions.add(new QuestionMed("The body’s natural “fight-or-flight” response prepares a person to:",
+                new String[] {
+                        "Sleep deeply",
+                        "Relax instantly",
+                        "Face danger or escape",
+                        "Avoid exercise"
+                }, 2));
+
+        mediumquestions.add(new QuestionMed("Stress affects:",
+                new String[] {
+                        "Only emotions",
+                        "Only physical health",
+                        "Only behavior",
+                        "Emotions, body, and behavior"
+                }, 3));
+
+        mediumquestions.add(new QuestionMed("Which of the following is NOT a common symptom of stress?",
+                new String[] {
+                        "Headaches",
+                        "Fatigue",
+                        "Improved relaxation",
+                        "Stomach pain"
+                }, 2));
     }
 
     // Hard question loading methods
     private void dctcultHard() {
-        hardQuestions = new ArrayList<>();
-        hardQuestions.add(new QuestionHard("Who founded San Nicolas Academy?", "Fr. Mariano M. Sablay"));
-        hardQuestions.add(new QuestionHard("What year was San Nicolas Academy founded?", "1947"));
-        hardQuestions.add(new QuestionHard("How many students graduated in the first graduation in 1950?", "14"));
-        hardQuestions.add(new QuestionHard("What is the exact date of the feast day of St. Dominic de Guzman?", "August 8"));
-        hardQuestions.add(new QuestionHard("What course was recognized by the government in 1997?", "Bachelor of Elementary Education"));
-        hardQuestions.add(new QuestionHard("What religious group started managing the school in the 1960s?", "Dominican Sisters"));
-        hardQuestions.add(new QuestionHard("What year was the last graduation before it became Dominican-run?", "1973"));
-        hardQuestions.add(new QuestionHard("Who is the current principal of Dominican College of Tarlac as of 2025?", "Sister Ma. Alelee M. Masanque"));
-        hardQuestions.add(new QuestionHard("What SHS strand is for undecided students? (Write the acronym)", "GAS"));
-        hardQuestions.add(new QuestionHard("What SHS strand is for students who want to study business? (Write the acronym)", "ABM"));
-        hardQuestions.add(new QuestionHard("What strand in the TVL track is for hospitality and cooking careers?", "F&B"));
-        hardQuestions.add(new QuestionHard("What program teaches IT, cybersecurity, and networks?", "Information Technology"));
-        hardQuestions.add(new QuestionHard("What college program is for future police officers and investigators?", "Criminology"));
-        hardQuestions.add(new QuestionHard("What word in the DCT logo means 'Wisdom'?", "Sapientia"));
-        hardQuestions.add(new QuestionHard("Fill in the blank: “A God-loving educational community of servant leaders with passion for truth and compassion for _____.”", "humanity"));
+        hardQuestions = new ArrayList < > ();
 
+        hardQuestions.add(new QuestionHard("Who founded San Nicolas Academy?", "Fr. Mariano V. Saddy, O.P."));
+        hardQuestions.add(new QuestionHard("What year was San Nicolas Academy founded?", "1939"));
+        hardQuestions.add(new QuestionHard("In what year was the Dominican School transferred to its present site?", "1960"));
+        hardQuestions.add(new QuestionHard("What religious order manages Dominican College of Tarlac?", "Dominican Order of Preachers (O.P.)"));
+        hardQuestions.add(new QuestionHard("What term describes DCT’s step-by-step program offerings from preschool to college?", "Gradualism in Education"));
+        hardQuestions.add(new QuestionHard("Another name for the Dominican Order is?", "Order of Preachers"));
+        hardQuestions.add(new QuestionHard("What two values are emphasized in the DCT logo?", "Faith in God and Love for Humanity"));
+        hardQuestions.add(new QuestionHard("What Latin phrase in the DCT logo means 'For God and Country'?", "Pro Deo et Patria"));
+        hardQuestions.add(new QuestionHard("Who founded the Order of Preachers?", "St. Dominic de Guzman"));
+        hardQuestions.add(new QuestionHard("Name a sister mentioned as part of the leadership of DCT.", "Sr. Ma. Asuncion M. Manalang, O.P."));
+        hardQuestions.add(new QuestionHard("DCT’s philosophy focuses on forming ________ and ________ individuals.", "Responsible and Christ-centered"));
+        hardQuestions.add(new QuestionHard("One objective of DCT is to help students become academically ________.", "Competent"));
+        hardQuestions.add(new QuestionHard("In what year were Bachelor of Arts and Computer Secretarial courses first offered?", "1980"));
+        hardQuestions.add(new QuestionHard("When was the Bachelor of Elementary Education program introduced?", "1997"));
+        hardQuestions.add(new QuestionHard("Which academic program was introduced in 2009?", "Bachelor of Science in Information Technology"));
+        hardQuestions.add(new QuestionHard("In what year was the Bachelor of Science in Criminology program added?", "2015"));
     }
 
     private void studandprayHard() {
-        hardQuestions = new ArrayList<>();
-        hardQuestions.add(new QuestionHard("Who is the founder of the Order of Preachers?", "St. Dominic De Guzman"));
-        hardQuestions.add(new QuestionHard("Where was St. Dominic de Guzman born?", "Caleruga, Spain"));
-        hardQuestions.add(new QuestionHard("What year was St. Dominic de Guzman born?", "1170"));
-        hardQuestions.add(new QuestionHard("Who were the parents of St. Dominic de Guzman?", "Felix de Guzman and Juana de Aza"));
-        hardQuestions.add(new QuestionHard("Name the two siblings of St. Dominic de Guzman.", "Anthony and Mannes"));
-        hardQuestions.add(new QuestionHard("What did Dominic's godmother perceive on his forehead at baptism?", "Star"));
-        hardQuestions.add(new QuestionHard("At what age did Dominic attend the University of Palencia?", "14"));
-        hardQuestions.add(new QuestionHard("What did Dominic sell to give alms to the poor?", "His precious books"));
-        hardQuestions.add(new QuestionHard("Give one of the four subjects included in the Quadrivium that Dominic studied.", "Arithmetic"));
-        hardQuestions.add(new QuestionHard("What false teaching did Dominic encounter during his journey in 1203?", "Albigensianism"));
-        hardQuestions.add(new QuestionHard("What belief did Albigensianism hold regarding material things?", "Material things are evil"));
-        hardQuestions.add(new QuestionHard("What was the name of the religious order approved by Pope Honorius III in 1216?", "The Order of the Preachers"));
-        hardQuestions.add(new QuestionHard("Name one saint produced by the Order of Preachers.", "St. Thomas Aquinas"));
-        hardQuestions.add(new QuestionHard("When did St. Dominic de Guzman die?", "August 6, 1221"));
-        hardQuestions.add(new QuestionHard("When is the Feast day of Saint Dominic?", "August 8"));
+        hardQuestions = new ArrayList < > ();
 
-
+        hardQuestions.add(new QuestionHard("He was born in Caleruega, Spain in 1170 and later founded the Order of Preachers.", "St. Dominic De Guzman"));
+        hardQuestions.add(new QuestionHard("The father of St. Dominic.", "Felix De Guzman"));
+        hardQuestions.add(new QuestionHard("The mother of St. Dominic.", "Juana De Aza"));
+        hardQuestions.add(new QuestionHard("The two siblings of St. Dominic.", "Anthony and Mannes"));
+        hardQuestions.add(new QuestionHard("The school where St. Dominic studied Theology at age 14.", "University of Palencia"));
+        hardQuestions.add(new QuestionHard("The kingdom where the University of Palencia was located.", "Kingdom of Leon"));
+        hardQuestions.add(new QuestionHard("During a terrible famine, St. Dominic sold these to help the poor.", "His books"));
+        hardQuestions.add(new QuestionHard("The three subjects included in the Trivium.", "Grammar, Rhetoric, Logic"));
+        hardQuestions.add(new QuestionHard("The four subjects included in the Quadrivium.", "Arithmetic, Geometry, Music, Astronomy"));
+        hardQuestions.add(new QuestionHard("In 1203, St. Dominic traveled with this bishop to Denmark.", "Bishop Diego"));
+        hardQuestions.add(new QuestionHard("The heresy St. Dominic encountered in southern France.", "Albigensian heresy"));
+        hardQuestions.add(new QuestionHard("The community St. Dominic founded in Prouille in 1206.", "Community of nuns"));
+        hardQuestions.add(new QuestionHard("The Pope who approved the Order of Preachers in 1216.", "Pope Honorius III"));
+        hardQuestions.add(new QuestionHard("The date of St. Dominic’s death.", "August 6, 1221"));
+        hardQuestions.add(new QuestionHard("The philosophy that emphasizes harmony between faith and reason, adopted by the Dominican tradition.", "Scholastic (Thomistic) Philosophy"));
     }
 
     private void introinstudentlifeHard() {
         hardQuestions = new ArrayList<>();
-        hardQuestions.add(new QuestionHard("What is considered the most important and golden period of development?", "Student Life"));
-        hardQuestions.add(new QuestionHard("Give one of the main academic tasks that students engage in.", "Going to classes"));
-        hardQuestions.add(new QuestionHard("Give one of the key aspects of managing time as a student balancing schoolwork with activities.", "Sports"));
-        hardQuestions.add(new QuestionHard("Give one of the benefits of studying in a group.", "Gain Knowledge"));
-        hardQuestions.add(new QuestionHard("Why should students avoid comparing themselves to others?", "Everyone has their own abilities and capabilities"));
-        hardQuestions.add(new QuestionHard("What is one common issue related to mental health that students face?", "Mental health issues"));
-        hardQuestions.add(new QuestionHard("What is a common financial challenge faced by students?", "Financial constraints"));
-        hardQuestions.add(new QuestionHard("What is a significant social challenge students might encounter?", "Social Issues"));
-        hardQuestions.add(new QuestionHard("What is a common technological barrier for students?", "Technological Barriers"));
-        hardQuestions.add(new QuestionHard("What is one activity students can do to reflect on their educational journey?", "Make a timeline of their education history"));
-        hardQuestions.add(new QuestionHard("Why is time management important for students?", "It enables students to do more and better work in less time."));
-        hardQuestions.add(new QuestionHard("What is an unforgettable experience students might have?", "Experiences of being rejected and forming friendship."));
-        hardQuestions.add(new QuestionHard("What is the role of a favorite teacher in a student's life?", "A favorite teacher impacts their life significantly."));
-        hardQuestions.add(new QuestionHard("Give one importance of learning academic knowledge in student life.", "Learn manners"));
-        hardQuestions.add(new QuestionHard("What is one way to enhance classroom engagement?", "Pay attention to what teachers teach"));
 
+        hardQuestions.add(new QuestionHard(
+                "The stage in life considered as the golden period of development.",
+                "Student life"));
 
+        hardQuestions.add(new QuestionHard(
+                "The main academic task of students.",
+                "Learning"));
+
+        hardQuestions.add(new QuestionHard(
+                "Balancing schoolwork with hobbies and other activities.",
+                "Managing time"));
+
+        hardQuestions.add(new QuestionHard(
+                "Discovering your passion and meeting new people.",
+                "Personal growth"));
+
+        hardQuestions.add(new QuestionHard(
+                "Problems related to the body that may affect school performance.",
+                "Health issues"));
+
+        hardQuestions.add(new QuestionHard(
+                "Difficulty in handling studies, assignments, and exams.",
+                "Academic pressure"));
+
+        hardQuestions.add(new QuestionHard(
+                "Psychological struggles that affect learning.",
+                "Mental health issues"));
+
+        hardQuestions.add(new QuestionHard(
+                "Struggle due to insufficient money for education.",
+                "Financial constraints"));
+
+        hardQuestions.add(new QuestionHard(
+                "Lack of drive to continue studying.",
+                "Lack of motivation"));
+
+        hardQuestions.add(new QuestionHard(
+                "Problems with friends, peers, or the community.",
+                "Social issues"));
+
+        hardQuestions.add(new QuestionHard(
+                "The skill of finishing more work in less time.",
+                "Time management"));
+
+        hardQuestions.add(new QuestionHard(
+                "Challenge related to lack of gadgets or internet access.",
+                "Technological barriers"));
+
+        hardQuestions.add(new QuestionHard(
+                "Problems caused by arguments or responsibilities at home.",
+                "Family problems"));
+
+        hardQuestions.add(new QuestionHard(
+                "A strategy where students set specific, measurable, achievable, relevant, and time-bound goals.",
+                "SMART goals"));
+
+        hardQuestions.add(new QuestionHard(
+                "Participating in school and classroom activities makes a student an _____.",
+                "Active member"));
     }
 
     private void EducationandHard() {
-        hardQuestions = new ArrayList<>();
-        hardQuestions.add(new QuestionHard("What is the process of teaching, or the imparting of knowledge, skills, values, beliefs, and habits?", "Education"));
-        hardQuestions.add(new QuestionHard("What is the process of acquiring new or modifying existing knowledge, behaviors, skills, values, or preferences?", "Learning"));
-        hardQuestions.add(new QuestionHard("What type of education is structured, follows a specific curriculum, and is typically received in schools and colleges?", "Formal Education"));
-        hardQuestions.add(new QuestionHard("What type of education happens outside traditional classrooms and occurs naturally through life experiences?", "Informal Education"));
-        hardQuestions.add(new QuestionHard("What kind of learning results from daily life activities, not organized or structured?", "Non-formal Education"));
-        hardQuestions.add(new QuestionHard("Why is education considered one of the most powerful things in life?", "It allows us to find the meaning behind everything and helps improve lives in a massive way."));
-        hardQuestions.add(new QuestionHard("What intelligence is associated with thinking in patterns, rhythms, and sounds?", "Musical Intelligence"));
-        hardQuestions.add(new QuestionHard("Which type of intelligence involves being aware of one's own emotional states, feelings, and motivations?", "Intrapersonal Intelligence"));
-        hardQuestions.add(new QuestionHard("What type of intelligence is associated with being in tune with nature and exploring the environment?", "Naturalistic Intelligence"));
-        hardQuestions.add(new QuestionHard("Which intelligence is linked to using words well in writing and speaking?", "Verbal/Linguistic Intelligence"));
-        hardQuestions.add(new QuestionHard("Which type of intelligence is strong in understanding and interacting with other people?", "Interpersonal Intelligence"));
-        hardQuestions.add(new QuestionHard("Which intelligence is associated with visualizing things and spatial judgment?", "Spatial Intelligence"));
-        hardQuestions.add(new QuestionHard("What intelligence is related to body movement, performing actions, and physical control?", "Bodily Kinesthetic Intelligence"));
-        hardQuestions.add(new QuestionHard("Which intelligence excels in reasoning, pattern recognition, and problem analysis?", "Logical-Mathematical Intelligence"));
-        hardQuestions.add(new QuestionHard("What type of intelligence allows one to explore deep questions about life and existence?", "Existential Intelligence"));
+        hardQuestions = new ArrayList < > ();
 
-
+        hardQuestions.add(new QuestionHard("The process of acquiring or modifying knowledge, skills, values, and behaviors.", "Learning"));
+        hardQuestions.add(new QuestionHard("The process of imparting knowledge, skills, and values through teaching.", "Education"));
+        hardQuestions.add(new QuestionHard("The type of education that happens in schools with a structured curriculum.", "Formal Education"));
+        hardQuestions.add(new QuestionHard("Education that occurs naturally in daily life experiences.", "Informal Education"));
+        hardQuestions.add(new QuestionHard("Education that includes workshops, seminars, and community-based programs.", "Non-formal Education"));
+        hardQuestions.add(new QuestionHard("The intelligence that allows a person to think in rhythms, patterns, and sounds.", "Musical "));
+        hardQuestions.add(new QuestionHard("The intelligence that helps a person understand their own feelings and motivations.", "Intrapersonal "));
+        hardQuestions.add(new QuestionHard("The intelligence used when solving math problems and reasoning logically.", "Logical-Mathematical "));
+        hardQuestions.add(new QuestionHard("The intelligence of people who are skilled at using language effectively in speaking and writing.", "Verbal-Linguistic "));
+        hardQuestions.add(new QuestionHard("The intelligence of people who have strong awareness and connection with nature.", "Naturalist "));
+        hardQuestions.add(new QuestionHard("The intelligence of people who can visualize and imagine objects, maps, or spatial designs.", "Visual-Spatial "));
+        hardQuestions.add(new QuestionHard("The intelligence of people who can socialize, work well, and understand others’ feelings.", "Interpersonal "));
+        hardQuestions.add(new QuestionHard("The intelligence that focuses on movement, body control, and physical activity.", "Bodily-Kinesthetic "));
+        hardQuestions.add(new QuestionHard("The intelligence related to asking deep questions about human life and existence.", "Existential "));
+        hardQuestions.add(new QuestionHard("The most powerful tool that improves lives, provides opportunities, and gives meaning to the world.", "Education"));
     }
 
     private void impEducationandHard() {
-        hardQuestions = new ArrayList<>();
-        hardQuestions.add(new QuestionHard("What is anything that causes stress or triggers a response of mental, emotional, or physical tension?", "STRESSOR"));
-        hardQuestions.add(new QuestionHard("What is how your body and mind react when you're feeling overwhelmed, pressured, or worried about something?", "STRESS"));
-        hardQuestions.add(new QuestionHard("What type of stress is beneficial and motivating, helping individuals feel excited and energized?", "EUSTRESS"));
-        hardQuestions.add(new QuestionHard("What type of stress is harmful and debilitating, leading to anxiety, health problems, and a decrease in well-being?", "DISTRESS"));
-        hardQuestions.add(new QuestionHard("What stressors often arise from an individual's daily life and emotional well-being?", "PERSONAL STRESSOR"));
-        hardQuestions.add(new QuestionHard("What stressors are common for students and stem from school or university pressures?", "ACADEMIC STRESSORS"));
-        hardQuestions.add(new QuestionHard("What type of stress is work-related and may be due to demanding job responsibilities or lack of job security?", "PROFESSIONAL STRESS"));
-        hardQuestions.add(new QuestionHard("What financial issue can lead to personal stress?", "Financial pressure"));
-        hardQuestions.add(new QuestionHard("What environmental factor, especially in urban areas, contributes to stress?", "Noise pollution"));
-        hardQuestions.add(new QuestionHard("What is a physical reaction to stress that causes soreness in the neck, shoulders, and back?", "Muscle tension or pain"));
-        hardQuestions.add(new QuestionHard("What fear related to employment contributes to stress?", "Job insecurity"));
-        hardQuestions.add(new QuestionHard("What decision-making difficulty is often caused by stress?", "Indecisiveness"));
-        hardQuestions.add(new QuestionHard("What are examples of healthy lifestyle choices that reduce stress?", "Healthy Lifestyle Choices"));
-        hardQuestions.add(new QuestionHard("What kind of connection with others helps provide relief and perspective during stressful times?", "Social Support"));
-        hardQuestions.add(new QuestionHard("What imbalance between professional and personal life can lead to stress?", "Poor work-life balance"));
+        hardQuestions = new ArrayList < > ();
 
+        hardQuestions.add(new QuestionHard("The process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits.", "Education"));
+        hardQuestions.add(new QuestionHard("The process of acquiring new or modifying existing knowledge, behaviors, skills, values, or preferences.", "Learning"));
+        hardQuestions.add(new QuestionHard("The primary goal of education that transmits understanding and information about the world.", "Impart Knowledge"));
+        hardQuestions.add(new QuestionHard("The primary goal of education that provides practical abilities for tasks and problem-solving.", "Impart Skills"));
+        hardQuestions.add(new QuestionHard("The primary goal of education that helps shape character and guide decisions through ethical foundations.", "Impart Values and Beliefs"));
+        hardQuestions.add(new QuestionHard("The primary goal of education that instills disciplined routines for success.", "Impart Beneficial Habits"));
+        hardQuestions.add(new QuestionHard("The goal of learning that involves continuously gaining new knowledge and perspectives.", "Acquire New Understanding"));
+        hardQuestions.add(new QuestionHard("The goal of learning that means changing existing actions and abilities to improve effectiveness.", "Modify Behaviors and Skills"));
+        hardQuestions.add(new QuestionHard("The goal of learning that involves reflecting on and adjusting core values, likes, and dislikes.", "Reevaluate Values and Preferences"));
+        hardQuestions.add(new QuestionHard("The vision describes building a ________ educational community of servant leaders with truth and compassion.", "God-loving"));
+
+        hardQuestions.add(new QuestionHard("Anything that causes stress, whether physical, emotional, or psychological.", "Stressor"));
+        hardQuestions.add(new QuestionHard("The type of stress that motivates people and leads to growth and achievement.", "Eustress"));
+        hardQuestions.add(new QuestionHard("The type of stress that harms performance and health.", "Distress"));
+        hardQuestions.add(new QuestionHard("The body’s natural reaction to stress that prepares a person to face danger or escape.", "Fight-or-Flight Response"));
+        hardQuestions.add(new QuestionHard("Stress that comes from exams, deadlines, and workload in school or university.", "Academic Stress"));
     }
 
     // Question display methods
-// Add this helper method to check question length
+    // Add this helper method to check question length
     private boolean isLongQuestion(String questionText) {
-        return questionText.length() > 50;
+        return questionText.length() > 70;
     }
 
     // Update the startTimer methods to use dynamic timing
@@ -852,93 +1342,94 @@ public class quizActivity extends AppCompatActivity {
         StringBuilder reviewContent = new StringBuilder();
         String difficulty = getIntent().getStringExtra("difficulty");
 
+        // Set common header
+        headertext.setText("REVIEW ANSWERS");
+        scoretext.setText(String.format("Score: %d/%d", score, 15));
+
         switch (difficulty) {
             case "Easy":
-
-                headertext.setText("REVIEW ANSWERS");
-                scoretext.setText("Score: " + score + "/" + 15);
                 for (int i = 0; i < questions.size(); i++) {
                     Question q = questions.get(i);
                     Boolean userAnswer = i < userEasyAnswers.size() ? userEasyAnswers.get(i) : null;
                     boolean correctAnswer = q.isAnswerTrue();
 
-                    reviewContent.append("<b>").append(i + 1).append("</b>: ")
-                            .append(q.getText()).append("<br>");
+                    reviewContent.append(String.format("<b>%d</b>: %s<br>", i + 1, q.getText()));
 
                     if (userAnswer == null) {
-                        reviewContent.append("<b>Your Answer: <font color=\"#FFC107\">No answer</font></b><br>");
+                        reviewContent.append("<b>Your Answer: <font color=\"#FF8C42\">⚠️ No answer</font></b><br>");
                     } else if (userAnswer == correctAnswer) {
-                        reviewContent.append("<b><font color=\"#00BA00\">1 Point</font></b><br>");
+                        reviewContent.append("<b><font color=\"#00BA00\">✅ 1 Point</font></b><br>");
                     } else {
-                        reviewContent.append("<b>Your Answer: <font color=\"#EE685C\">")
-                                .append(userAnswer ? "True" : "False")
-                                .append("</font></b><br>");
+                        reviewContent.append(String.format(
+                                "<b>Your Answer: <font color=\"#EE685C\">%s ❌</font></b><br>",
+                                userAnswer ? "True" : "False"
+                        ));
                     }
 
-                    reviewContent.append("<b>Correct Answer: <font color=\"#00BA00\">")
-                            .append(correctAnswer ? "True" : "False")
-                            .append("</font></b><br><br>");
-
+                    reviewContent.append(String.format(
+                            "<b>Correct Answer: <font color=\"#00BA00\">%s</font></b><br><br>",
+                            correctAnswer ? "True" : "False"
+                    ));
                 }
                 break;
 
             case "Medium":
-                headertext.setText("REVIEW ANSWERS");
-                scoretext.setText("Score: " + score + "/" + 15);
                 for (int i = 0; i < mediumquestions.size(); i++) {
                     QuestionMed q = mediumquestions.get(i);
                     int correctIndex = q.getCorrectAnswerIndex();
                     Integer userAnswerIndex = i < userMediumAnswers.size() ? userMediumAnswers.get(i) : -1;
+
                     String correctAnswer = q.getOptions()[correctIndex];
-                    String userAnswer = userAnswerIndex != -1 ? q.getOptions()[userAnswerIndex] : "No answer";
+                    String userAnswer = userAnswerIndex != -1 ? q.getOptions()[userAnswerIndex] : null;
 
-                    reviewContent.append("<b>").append(i + 1).append("</b>: ")
-                            .append(q.getText()).append("<br>");
+                    reviewContent.append(String.format("<b>%d</b>: %s<br>", i + 1, q.getText()));
 
-                    if (userAnswerIndex == -1) {
-                        reviewContent.append("<b>Your Answer: <font color=\"#FFC107\">No answer</font></b><br>");
-                    } else if (userAnswerIndex == correctIndex) {
-                        reviewContent.append("<b><font color=\"#00BA00\">1 Point</font></b><br>");
+                    if (userAnswer == null) {
+                        reviewContent.append("<b>Your Answer: <font color=\"#FF8C42\">⚠️ No answer</font></b><br>");
+                    } else if (userAnswer.equals(correctAnswer)) {
+                        reviewContent.append("<b><font color=\"#00BA00\">✅ 1 Point</font></b><br>");
                     } else {
-                        reviewContent.append("<b>Your Answer: <font color=\"#EE685C\">")
-                                .append(userAnswer)
-                                .append("</font></b><br>");
+                        reviewContent.append(String.format(
+                                "<b>Your Answer: <font color=\"#EE685C\">%s ❌</font></b><br>",
+                                userAnswer
+                        ));
                     }
 
-                    reviewContent.append("<b>Correct Answer: <font color=\"#00BA00\">")
-                            .append(correctAnswer)
-                            .append("</font></b><br><br>");
+                    reviewContent.append(String.format(
+                            "<b>Correct Answer: <font color=\"#00BA00\">%s</font></b><br><br>",
+                            correctAnswer
+                    ));
                 }
                 break;
 
             case "Hard":
-                headertext.setText("REVIEW ANSWERS");
-                scoretext.setText("Score: " + score + "/" + 15);
                 for (int i = 0; i < hardQuestions.size(); i++) {
                     QuestionHard q = hardQuestions.get(i);
                     String correctAnswer = q.getAnswer();
-                    String userAnswer = i < userHardAnswers.size() ? userHardAnswers.get(i) : "No answer";
+                    String userAnswer = i < userHardAnswers.size() ? userHardAnswers.get(i) : null;
 
-                    reviewContent.append("<b>").append(i + 1).append("</b>: ")
-                            .append(q.getText()).append("<br>");
+                    reviewContent.append(String.format("<b>%d</b>: %s<br>", i + 1, q.getText()));
 
-                    if (userAnswer == null || userAnswer.equals("")) {
-                        reviewContent.append("<b>Your Answer: <font color=\"#FFC107\">No answer</font></b><br>");
+                    if (TextUtils.isEmpty(userAnswer)) {
+                        reviewContent.append("<b>Your Answer: <font color=\"#FF8C42\">⚠️ No answer</font></b><br>");
                     } else if (userAnswer.equals(correctAnswer)) {
-                        reviewContent.append("<b><font color=\"#00BA00\">1 Point</font></b><br>");
+                        reviewContent.append("<b><font color=\"#00BA00\">✅ 1 Point</font></b><br>");
                     } else {
-                        reviewContent.append("<b>Your Answer: <font color=\"#EE685C\">")
-                                .append(userAnswer)
-                                .append("</font></b><br>");
+                        reviewContent.append(String.format(
+                                "<b>Your Answer: <font color=\"#EE685C\">%s ❌</font></b><br>",
+                                userAnswer
+                        ));
                     }
 
-                    reviewContent.append("<b>Correct Answer: <font color=\"#00BA00\">")
-                            .append(correctAnswer)
-                            .append("</font></b><br><br>");
+                    reviewContent.append(String.format(
+                            "<b>Correct Answer: <font color=\"#00BA00\">%s</font></b><br><br>",
+                            correctAnswer
+                    ));
                 }
                 break;
         }
 
+        // Format and set styled text
         Spanned formattedText;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             formattedText = Html.fromHtml(reviewContent.toString(), Html.FROM_HTML_MODE_LEGACY);
@@ -947,9 +1438,9 @@ public class quizActivity extends AppCompatActivity {
         }
 
         reviewText.setText(formattedText);
+
         backButton.setOnClickListener(v -> finish());
     }
-
 
     // Question classes
     private static class Question {
@@ -1006,12 +1497,8 @@ public class quizActivity extends AppCompatActivity {
         public String getText() {
             return text;
         }
-
         public String getAnswer() {
             return answer;
         }
     }
-
-
 }
-

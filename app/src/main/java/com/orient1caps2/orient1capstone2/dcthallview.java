@@ -24,7 +24,7 @@ public class dcthallview extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
 
         // Load your web app URL
-        webview.loadUrl("https://domincan-college-of-tarlac-corridor.vercel.app/");
+        webview.loadUrl("https://dominican-college-of-tarlac-corridor.vercel.app/");
 
         // Make links open inside WebView instead of external browser
         webview.setWebViewClient(new WebViewClient());

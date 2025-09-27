@@ -29,38 +29,45 @@
             android:layout_height="match_parent"
             android:padding="16dp">
 
+            <!-- Header Layout with Responsive Sizing -->
             <LinearLayout
                 android:id="@+id/headerLayout"
-                android:layout_width="230dp"
-                android:layout_height="96dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/aboutButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <!-- App Title (adjust textSize if needed) -->
 
                 <ImageView
                     android:id="@+id/logoImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/logo" />
 
                 <TextView
                     android:id="@+id/textOrient"
-                    android:layout_width="133dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Orient 1"
                     android:textColor="#FFFFFF"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="16sp"
+                    android:autoSizeMaxTextSize="28sp" />
             </LinearLayout>
 
             <ImageButton
                 android:id="@+id/aboutButton"
-
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
@@ -74,100 +81,128 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/buttonGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <!-- Scrollable Button Group for Better Responsiveness -->
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:gravity="center"
-                android:orientation="vertical"
+                android:fillViewport="true"
                 app:layout_constraintBottom_toTopOf="@id/footerText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/headerLayout">
+                app:layout_constraintTop_toBottomOf="@id/headerLayout"
+                tools:ignore="SpeakableTextPresentCheck">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnOne"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="280dp"
-                    android:layout_height="98dp"
-                    android:layout_margin="8dp"
-                    android:drawableLeft="@drawable/lesson"
-                    android:fontFamily="@font/poppins_bold"
+                <LinearLayout
+                    android:id="@+id/buttonGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="50dp"
-                    android:text="Lessons"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="28dp"
-                    android:textStyle="bold"
-                    android:visibility="invisible"
-                    app:backgroundTint="#468288"
-                    app:cornerRadius="20dp"
-                    app:rippleColor="#5BA7A0"
-                    app:strokeColor="#2F2E41"
-                    app:strokeWidth="3dp" />
+                    android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnTwo"
-                    style="@style/Widget.MaterialComponents.Button"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOne"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="98dp"
+                        android:layout_margin="8dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:drawableLeft="@drawable/lesson"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:maxWidth="320dp"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="50dp"
+                        android:text="Lessons"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:visibility="invisible"
+                        app:autoSizeMaxTextSize="28sp"
+                        app:autoSizeMinTextSize="16sp"
+                        app:autoSizeTextType="uniform"
+                        app:backgroundTint="#468288"
+                        app:cornerRadius="20dp"
+                        app:rippleColor="#5BA7A0"
+                        app:strokeColor="#2F2E41"
+                        app:strokeWidth="3dp" />
 
-                    android:layout_width="280dp"
-                    android:layout_height="98dp"
-                    android:layout_margin="8dp"
-                    android:drawableLeft="@drawable/quiz"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="50dp"
-                    android:text="Quizzes"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="28dp"
-                    android:textStyle="bold"
-                    android:visibility="invisible"
-                    app:backgroundTint="#468288"
-                    app:cornerRadius="20dp"
-                    app:rippleColor="#5BA7A0"
-                    app:strokeColor="#2F2E41"
-                    app:strokeWidth="3dp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTwo"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="98dp"
+                        android:layout_margin="8dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:drawableLeft="@drawable/quiz"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:maxWidth="320dp"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="50dp"
+                        android:text="Quizzes"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:visibility="invisible"
+                        app:autoSizeMaxTextSize="28sp"
+                        app:autoSizeMinTextSize="16sp"
+                        app:autoSizeTextType="uniform"
+                        app:backgroundTint="#468288"
+                        app:cornerRadius="20dp"
+                        app:rippleColor="#5BA7A0"
+                        app:strokeColor="#2F2E41"
+                        app:strokeWidth="3dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnThree"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnThree"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="98dp"
+                        android:layout_margin="8dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:drawableLeft="@drawable/ar"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:maxWidth="320dp"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="30dp"
+                        android:text="Augmented Reality"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:visibility="invisible"
+                        app:autoSizeMaxTextSize="18sp"
+                        app:autoSizeMinTextSize="12sp"
+                        app:autoSizeTextType="uniform"
+                        app:backgroundTint="#468288"
+                        app:cornerRadius="20dp"
+                        app:rippleColor="#5BA7A0"
+                        app:strokeColor="#2F2E41"
+                        app:strokeWidth="3dp" />
+                </LinearLayout>
+            </ScrollView>
 
-                    android:layout_width="280dp"
-                    android:layout_height="98dp"
-                    android:layout_margin="8dp"
-                    android:drawableLeft="@drawable/ar"
-                    android:fontFamily="@font/poppins_bold"
-                    android:gravity="center"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="50dp"
-                    android:text="Augmented Reality"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:visibility="invisible"
-                    app:backgroundTint="#468288"
-                    app:cornerRadius="20dp"
-                    app:rippleColor="#5BA7A0"
-                    app:strokeColor="#2F2E41"
-                    app:strokeWidth="3dp" />
-            </LinearLayout>
-
-            <!-- Footer -->
+            <!-- Footer with Responsive Text -->
             <TextView
                 android:id="@+id/footerText"
-                android:layout_width="290dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:gravity="center"
                 android:text="© 2025 Dominican College Of Tarlac. All rights reserved."
                 android:textColor="#FFFFFF"
-                android:textSize="10dp"
+                android:textSize="10sp"
+                android:maxLines="2"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

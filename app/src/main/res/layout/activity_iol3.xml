@@ -555,11 +555,14 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/carouselRecycler"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="300dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="16dp"
-                            android:overScrollMode="never" />
+                            android:overScrollMode="never"
+                            android:clipToPadding="false"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -734,12 +737,12 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/carouselRecyclerView2"
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:layout_marginStart="16dp"
+                            android:layout_height="180dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
                             android:clipToPadding="false"
-                            android:overScrollMode="always" />
+                            android:overScrollMode="never"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -778,9 +781,7 @@
                             android:id="@+id/dropdownIcon6"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@android:drawable/arrow_down_float">
-
-                        </ImageView>
+                            android:src="@android:drawable/arrow_down_float" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -788,117 +789,122 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingBottom="16dp"
+                        android:paddingBottom="24dp"
                         android:visibility="gone">
 
-                        <androidx.cardview.widget.CardView
+                        <!-- Centered Jar Image -->
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/image38" />
+
+                        <!-- Life Priorities Grid -->
+                        <GridLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            app:cardBackgroundColor="#2C565C"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="1dp">
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:columnCount="1"
+                            android:rowCount="3"
+                            android:orientation="vertical">
 
+                            <!-- Small Stuff -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:padding="16dp">
+                                android:gravity="center_vertical"
+                                android:padding="8dp">
 
                                 <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/image38" />
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:src="@drawable/image39"
+                                    android:scaleType="centerCrop"
+                                    android:background="#33000000" />
 
-                                <LinearLayout
+                                <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/image39" />
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="8dp"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/poppins_light"
-                                            android:text="small stuff"
-                                            android:textColor="#FFFFFF"
-                                            android:textSize="14sp" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/image40" />
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="8dp"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/poppins_light"
-                                            android:text="car, job, home"
-                                            android:textColor="#FFFFFF"
-                                            android:textSize="14sp" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/image41" />
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="8dp"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/poppins_light"
-                                            android:text="family,friends,health,passions"
-                                            android:textColor="#FFFFFF"
-                                            android:textSize="14sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Small stuff"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="13sp" />
                             </LinearLayout>
-                        </androidx.cardview.widget.CardView>
 
-                        <!-- Quote -->
+                            <!-- Medium Stuff -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:src="@drawable/image40"
+                                    android:scaleType="centerCrop"
+                                    android:background="#33000000" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Car, Job, Home"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <!-- Big Stuff -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:src="@drawable/image41"
+                                    android:scaleType="centerCrop"
+                                    android:background="#33000000" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Family, Friends, Health, Passions"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                        </GridLayout>
+
+                        <!-- Wisdom Quote -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="32dp"
                             android:fontFamily="@font/poppins_light"
                             android:gravity="center"
-                            android:text="Focus on what truly matters. When you prioritize the big things first, the small ones will naturally find their place."
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp" />
+                            android:lineSpacingExtra="6dp"
+                            android:text="Focus on what truly matters. Prioritize the big things first, and the small ones will naturally find their place."
+                            android:textColor="#F9E6AC"
+                            android:textSize="14sp"
+                            android:textStyle="italic" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
