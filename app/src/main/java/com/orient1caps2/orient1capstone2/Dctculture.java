@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.view.animation.Transformation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,6 +16,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Dctculture extends AppCompatActivity {
+
+    private LinearLayout[] allContents;
+    private ImageView[] allArrows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,24 +86,35 @@ public class Dctculture extends AppCompatActivity {
 
         // Back button functionality
         ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(v -> onBackPressed());
 
         // Home button functionality
         ImageButton homeButton = findViewById(R.id.btnHome);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Dctculture.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-            }
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Dctculture.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
+
+        // Collect all dropdown contents and arrows for accordion behavior
+        allContents = new LinearLayout[]{
+                findViewById(R.id.historyContent),
+                findViewById(R.id.gravissimumContent),
+                findViewById(R.id.dropdownContent),
+                findViewById(R.id.philosophyContent),
+                findViewById(R.id.objectivesContent),
+                findViewById(R.id.timelineContainer)
+        };
+
+        allArrows = new ImageView[]{
+                findViewById(R.id.historyArrow),
+                findViewById(R.id.gravissimumArrow),
+                findViewById(R.id.dropdownArrow),
+                findViewById(R.id.philosophyArrow),
+                findViewById(R.id.objectivesArrow),
+                findViewById(R.id.dctProgramsArrow)
+        };
 
         // Setup dropdown functionality for all sections
         setupDropdown(R.id.historyHeader, R.id.historyContent, R.id.historyArrow);
@@ -108,7 +123,6 @@ public class Dctculture extends AppCompatActivity {
         setupDropdown(R.id.philosophyHeader, R.id.philosophyContent, R.id.philosophyArrow);
         setupDropdown(R.id.objectivesHeader, R.id.objectivesContent, R.id.objectivesArrow);
         setupDropdown(R.id.dctProgramsHeader, R.id.timelineContainer, R.id.dctProgramsArrow);
-
     }
 
     private void setupDropdown(int headerId, int contentId, int arrowId) {
@@ -116,16 +130,20 @@ public class Dctculture extends AppCompatActivity {
         final LinearLayout content = findViewById(contentId);
         final ImageView arrow = findViewById(arrowId);
 
-        header.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (content.getVisibility() == View.GONE) {
-                    expand(content);
-                    arrow.setRotation(180f);
-                } else {
-                    collapse(content);
-                    arrow.setRotation(0f);
+        header.setOnClickListener(v -> {
+            if (content.getVisibility() == View.GONE) {
+                // Close all other sections before opening this one
+                for (int i = 0; i < allContents.length; i++) {
+                    if (allContents[i] != content && allContents[i].getVisibility() == View.VISIBLE) {
+                        collapse(allContents[i]);
+                        rotateArrow(allArrows[i], 180f, 0f);
+                    }
                 }
+                expand(content);
+                rotateArrow(arrow, 0f, 180f);
+            } else {
+                collapse(content);
+                rotateArrow(arrow, 180f, 0f);
             }
         });
     }
@@ -177,6 +195,17 @@ public class Dctculture extends AppCompatActivity {
 
         a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
         v.startAnimation(a);
+    }
+
+    private void rotateArrow(ImageView arrow, float from, float to) {
+        RotateAnimation rotate = new RotateAnimation(
+                from, to,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+        );
+        rotate.setDuration(300);
+        rotate.setFillAfter(true);
+        arrow.startAnimation(rotate);
     }
 
     @Override

@@ -74,9 +74,6 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
 
-
-            <!-- Developer Credits Section -->
-            <!-- WebView for justified text -->
             <WebView
                 android:id="@+id/courseOverviewWebView"
                 android:layout_width="match_parent"
@@ -96,14 +93,349 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
 
-            <!-- WebView for justified text -->
             <WebView
                 android:id="@+id/developerCreditsWebView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 tools:ignore="WebViewLayout" />
-            <!-- Optional: Add team member cards here if needed -->
+
+            <!-- Organizational Chart -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Development Team"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="#FAFAFA"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <!-- Project Manager -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp">
+
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/projectManagerImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_project_manager"/>
+
+                        <ImageButton
+                            android:id="@+id/projectManagerFacebook"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_facebook"
+                            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Dandy John De Guzman\nProject Manager"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp"
+                        tools:ignore="TextSizeCheck" />
+                </LinearLayout>
+
+                <!-- Programmer + Co-Programmer -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="24dp">
+
+                    <!-- Programmer -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_margin="12dp">
+
+                        <FrameLayout
+                            android:layout_width="90dp"
+                            android:layout_height="90dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/programmerImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_programmer"/>
+
+                            <ImageButton
+                                android:id="@+id/programmerFacebook"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="bottom|end"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_facebook"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Mark Edrian Talavera\nProgrammer"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13dp"
+                            tools:ignore="TextSizeCheck" />
+                    </LinearLayout>
+
+                    <!-- Co-Programmer -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_margin="12dp">
+
+                        <FrameLayout
+                            android:layout_width="90dp"
+                            android:layout_height="90dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/coProgrammerImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_coprogrammer"/>
+
+                            <ImageButton
+                                android:id="@+id/coProgrammerFacebook"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="bottom|end"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_facebook"
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Lanz Justine Mallari\nCo Programmer"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13dp"
+                            tools:ignore="TextSizeCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Members"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="#FAFAFA"
+                    android:textSize="18dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <!-- First Row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Member 1 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_margin="8dp">
+
+                            <FrameLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/member1Image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_member1" />
+
+                                <ImageButton
+                                    android:id="@+id/member1Facebook"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_facebook"
+                                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="John Vincent Pantig"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12dp"
+                                tools:ignore="TextSizeCheck" />
+                        </LinearLayout>
+
+                        <!-- Member 2 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_margin="8dp">
+
+                            <FrameLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/member2Image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_member3" />
+
+                                <ImageButton
+                                    android:id="@+id/member2Facebook"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_facebook"
+                                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="John Rhendell Ong"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12dp"
+                                tools:ignore="TextSizeCheck" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Second Row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <!-- Member 3 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_margin="8dp">
+
+                            <FrameLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/member3Image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_member4" />
+
+                                <ImageButton
+                                    android:id="@+id/member3Facebook"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_facebook"
+                                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Edmar Perez"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12dp"
+                                tools:ignore="TextSizeCheck" />
+                        </LinearLayout>
+
+                        <!-- Member 4 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_margin="8dp">
+
+                            <FrameLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/member4Image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_member3" />
+
+                                <ImageButton
+                                    android:id="@+id/member4Facebook"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_facebook"
+                                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Ryan Christian Capili"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12dp"
+                                tools:ignore="TextSizeCheck" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
