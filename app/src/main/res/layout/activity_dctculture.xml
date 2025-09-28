@@ -354,14 +354,6 @@
                         android:orientation="vertical"
                         android:paddingTop="8dp"
                         android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="• Sr. Ma. Rosalina Mirabueno, O.P.\n• Sr. Ines Fider, O.P.\n• Sr. Irene Lapus, O.P.\n• Sr. Ma. Magdalena Olfato, O.P.\n• Sr. Catalina Saligumba, O.P.\n• Sr. Carmen Tiamzon, O.P.\n• Sr. Loreto Penuliar, O.P\n• Sr. Catherine Cachero, O.P.\n• Sr. Caridad Bayani, O.P.\n• Sr. Marisor Fabros, O.P\n• Sr. Ma. Alelee M. Masanque, O.P\n• Sr. Lorna Ablog O.P."
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="170dp"
                             android:layout_height="170dp"
@@ -371,10 +363,10 @@
                             app:cardElevation="6dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/sister" />
+                                android:src="@drawable/sister1" />
                         </androidx.cardview.widget.CardView>
 
                         <TextView
@@ -383,7 +375,7 @@
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
-                            android:text="Sr. Ma. Alelee M. Masanque, OP"
+                            android:text="Sr. Lorna Ablog, O.P."
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
@@ -395,8 +387,16 @@
                             android:layout_marginBottom="16dp"
                             android:fontFamily="@font/poppins_light"
                             android:gravity="center"
-                            android:text="Present School Administrator\n2021 to Present"
+                            android:text="Present School Administrator"
                             android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• Sr. Ma. Rosalina Mirabueno, O.P.\n• Sr. Ines Fider, O.P.\n• Sr. Irene Lapus, O.P.\n• Sr. Ma. Magdalena Olfato, O.P.\n• Sr. Catalina Saligumba, O.P.\n• Sr. Carmen Tiamzon, O.P.\n• Sr. Loreto Penuliar, O.P\n• Sr. Catherine Cachero, O.P.\n• Sr. Caridad Bayani, O.P.\n• Sr. Marisor Fabros, O.P\n• Sr. Ma. Alelee M. Masanque, O.P"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
