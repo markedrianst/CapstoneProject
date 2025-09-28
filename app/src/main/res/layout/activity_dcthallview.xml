@@ -13,8 +13,9 @@
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
+        android:paddingTop="5dp"
         android:layout_height="48dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:layout_margin="1dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_revert"

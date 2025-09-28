@@ -1,6 +1,9 @@
 package com.orient1caps2.orient1capstone2;
 
+import android.app.AlertDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,6 +18,9 @@ public class dcthallview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dcthallview);
+
+        // Show slightly transparent dialog
+        showNavigationDialog();
 
         // initialize WebView
         webview = findViewById(R.id.webview);
@@ -37,6 +43,34 @@ public class dcthallview extends AppCompatActivity {
             } else {
                 finish(); // close activity if no history
             }
+        });
+    }
+
+    private void showNavigationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Info...")
+                .setMessage("Use search to navigate the specific location.");
+
+        AlertDialog dialog = builder.create();
+
+        // Set slightly transparent background: #CC = 80% opacity
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0xCCD9D9D9));
+        }
+
+        // Make dialog cancelable on touch outside
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+
+        // Dismiss on any touch inside the dialog
+        dialog.setOnShowListener(d -> {
+            dialog.getWindow().getDecorView().setOnTouchListener((v, event) -> {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    dialog.dismiss();
+                    return true;
+                }
+                return false;
+            });
         });
     }
 

@@ -36,8 +36,7 @@
                 android:src="@drawable/back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="DuplicateClickableBoundsCheck" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/btnHome"
@@ -355,20 +354,14 @@
                         android:orientation="vertical"
                         android:paddingTop="8dp"
                         android:visibility="gone">
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="170dp"
-                            android:layout_height="170dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="16dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="6dp">
+
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:scaleType="centerCrop"
+                                android:layout_gravity="center"
                                 android:src="@drawable/sister1" />
-                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="match_parent"
