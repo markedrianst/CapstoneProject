@@ -142,9 +142,7 @@ public class quizActivity extends AppCompatActivity {
         Collections.shuffle(questions);
         showQuestion();
 
-        nextButton.setOnClickListener(v -> {
 
-        });
 
         nextButton.setOnClickListener(v -> {
             if (currentIndex < questions.size()) {
@@ -1129,7 +1127,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " secs");
+                timerText.setText((millisUntilFinished / 1000) + " s");
             }
 
             public void onFinish() {
@@ -1148,7 +1146,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " secs");
+                timerText.setText((millisUntilFinished / 1000) + " s");
             }
 
             public void onFinish() {
@@ -1167,7 +1165,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " secs");
+                timerText.setText((millisUntilFinished / 1000) + " s");
             }
 
             public void onFinish() {

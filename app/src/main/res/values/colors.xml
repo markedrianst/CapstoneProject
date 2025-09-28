@@ -7,5 +7,6 @@
     <color name="colorPrimaryVariant">#2A4F5B</color>
     <color name="colorAccent">#FFC107</color> <!-- Optional for buttons/fabs -->
     <color name="teal_200">#80CBC4</color>
+    <color name="green_500">#4CAF50</color>
 
 </resources>
