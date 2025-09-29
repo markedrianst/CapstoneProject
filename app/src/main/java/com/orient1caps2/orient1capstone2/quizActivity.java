@@ -257,7 +257,7 @@ public class quizActivity extends AppCompatActivity {
     public void loadQuestions() {
         questions = new ArrayList < > ();
 
-        questions.add(new Question("San Nicolas Academy was founded in 1939 by Fr. Mariano V. Saddy, O.P.", true));
+        questions.add(new Question("San Nicolas Academy was founded in 1939 by Fr. Mariano V. Sablay, O.P.", true));
         questions.add(new Question("Dominican School was transferred to its present site in 1960.", true));
         questions.add(new Question("Dominican College of Tarlac is run by the Dominican Sisters of St. Catherine of Siena.", false)); // Actually run by Dominican Order of Preachers - O.P.
         questions.add(new Question("Gradualism in education means the school offers programs from preschool to college.", true));
@@ -1127,7 +1127,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " s");
+                timerText.setText((millisUntilFinished / 1000) + "s");
             }
 
             public void onFinish() {
@@ -1146,7 +1146,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " s");
+                timerText.setText((millisUntilFinished / 1000) + "s");
             }
 
             public void onFinish() {
@@ -1165,7 +1165,7 @@ public class quizActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(timePerQuestion, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerText.setText((millisUntilFinished / 1000) + " s");
+                timerText.setText((millisUntilFinished / 1000) + "s");
             }
 
             public void onFinish() {

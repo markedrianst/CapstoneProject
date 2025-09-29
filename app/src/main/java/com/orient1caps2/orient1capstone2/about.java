@@ -22,6 +22,8 @@ public class about extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_about);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+// Show Disclaimer dialog on load
+        showDisclaimerDialog();
 
         // Apply window insets to root view
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -119,4 +121,22 @@ public class about extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+    private void showDisclaimerDialog() {
+        String disclaimerMessage =
+                "The <b>Orient 1 app</b> is provided for educational use within Dominican College of Tarlac, Inc.<br><br>" +
+                        "<big><big>•</big></big> Content may change without notice.<br>" +
+                        "<big><big>•</big></big> Most modules work offline.<br>" +
+                        "<big><big>•</big></big> DCT Campus View requires internet access.<br><br>" +
+                        "By tapping <b>“I Understand”</b>, you agree not to copy, modify, or misuse the app or its materials.";
+
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Disclaimer")
+                .setMessage(android.text.Html.fromHtml(disclaimerMessage, android.text.Html.FROM_HTML_MODE_LEGACY))
+                .setCancelable(false)
+                .setPositiveButton("I Understand", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .show();
+    }
+
 }

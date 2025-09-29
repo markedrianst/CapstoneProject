@@ -29,7 +29,7 @@
     <string name="st_catherine_desc">St. Catherine of Siena Building</string>
     <string name="our_lady_fatima_desc">Our Lady of Fatima Building</string>
 
-    <string name="course_overview_text"> &#160;&#160;Orient 1 is a digital learning platform for Dominican College of Tarlac (DCT) students. This application provides lessons about DCT History, Student Life and values, along with assessment and AR campus tour. The application is capable of working offline which offers easy way to learn about DCT anytime.</string>
+    <string name="course_overview_text"> &#160;&#160;Orient 1 is a digital learning platform for Dominican College of Tarlac (DCT) students. This application provides lessons about DCT History, Student Life and values, along with assessment and AR Campus View. The application functions both online and offline. Lessons and assessments can be accessed offline, but an internet connection is required for the AR Campus view.</string>
 
     <string name="developer_credits_text"> &#160;&#160;We are a team of developers dedicated to building user-friendly application designed to address real-world challenges. Our work aims to provide practical and effective solutions.</string>
 

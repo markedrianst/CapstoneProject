@@ -211,6 +211,8 @@ public class EAL4 extends AppCompatActivity {
         });
 
         // Logical (mathematical)
+
+        // Logical (mathematical)
         View logicalArrow = findViewById(R.id.logicalArrow);
         View logicalHeader = (View) logicalArrow.getParent();
         logicalHeader.setOnClickListener(v -> {
@@ -271,7 +273,7 @@ public class EAL4 extends AppCompatActivity {
     }
 
     private void setupCarousel() {
-        List<Integer> images = Arrays.asList(R.drawable.a1, R.drawable.a2, R.drawable.a2);
+        List<Integer> images = Arrays.asList(R.drawable.a1, R.drawable.a2, R.drawable.a3);
         List<String> texts = Arrays.asList("", "", "");
         itemCount = images.size();
 
@@ -329,7 +331,7 @@ public class EAL4 extends AppCompatActivity {
                 R.drawable.musical,
                 R.drawable.intrapersonal,
                 R.drawable.naturalist,
-                R.drawable.verbal,
+                R.drawable.visual1,
                 R.drawable.interpersonal,
                 R.drawable.spatial,
                 R.drawable.kinesthetic,

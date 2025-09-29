@@ -49,7 +49,7 @@ public class dcthallview extends AppCompatActivity {
     private void showNavigationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Info...")
-                .setMessage("Use search to navigate the specific location.");
+                .setMessage("Use search to navigate the specific location.  Tap to dismiss");
 
         AlertDialog dialog = builder.create();
 

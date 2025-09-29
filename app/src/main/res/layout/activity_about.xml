@@ -154,7 +154,9 @@
                                     android:id="@+id/programmerImage"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_programmer"/>
+                                    android:src="@drawable/ic_programmer"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/programmerFacebook"
@@ -204,7 +206,9 @@
                                     android:id="@+id/coProgrammerImage"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_coprogrammer"/>
+                                    android:src="@drawable/ic_coprogrammer"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/coProgrammerFacebook"
@@ -219,7 +223,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Lanz Justine Mallari"
+                                android:text="Lanz Justin Mallari"
                                 android:textColor="#FFFFFF"
                                 android:textAlignment="center"
                                 android:fontFamily="@font/poppins_bold"
@@ -264,7 +268,9 @@
                                     android:id="@+id/projectManagerImage"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_project_manager"/>
+                                    android:src="@drawable/ic_project_manager"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/projectManagerFacebook"
@@ -314,7 +320,9 @@
                                     android:id="@+id/member1Image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_member1" />
+                                    android:src="@drawable/ic_member1"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/member1Facebook"
@@ -374,7 +382,9 @@
                                     android:id="@+id/member2Image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_member2" />
+                                    android:src="@drawable/ic_member2"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/member2Facebook"
@@ -424,7 +434,9 @@
                                     android:id="@+id/member3Image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_member4" />
+                                    android:src="@drawable/ic_member4"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/member3Facebook"
@@ -484,7 +496,9 @@
                                     android:id="@+id/member4Image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_member3" />
+                                    android:src="@drawable/ic_member3"
+                                    app:civ_border_width="3dp"
+                                    app:civ_border_color="#468288"/>
 
                                 <ImageButton
                                     android:id="@+id/member4Facebook"
