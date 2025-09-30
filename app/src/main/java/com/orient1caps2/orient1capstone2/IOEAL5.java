@@ -142,11 +142,11 @@ public class IOEAL5 extends AppCompatActivity {
 
     private void setupExampleText() {
         TextView description6 = findViewById(R.id.descriptionText6);
-        String htmlText6 = "&emsp;&emsp;A God-loving educational community of servant leaders with passion for truth and compassion for humanity";
+        String htmlText6 = "&emsp;&emsp;A God-loving educational community with passion for truth and compassion for humanity.";
         description6.setText(Html.fromHtml(htmlText6, Html.FROM_HTML_MODE_LEGACY));
 
         TextView description7 = findViewById(R.id.descriptionText7);
-        String htmlText7 = "&emsp;&emsp;We commit ourselves to the total formation of the person, promotion of truth and transformation of values for the service of humanity.";
+        String htmlText7 = "&emsp;&emsp;We commit ourselves to promote the truth and holistically transform persons for the service of humanity.";
         description7.setText(Html.fromHtml(htmlText7, Html.FROM_HTML_MODE_LEGACY));
 
         TextView examplesTextView = findViewById(R.id.examplesTextView);
