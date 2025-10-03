@@ -192,19 +192,28 @@
             <!-- Footer with Responsive Text -->
             <TextView
                 android:id="@+id/footerText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:text="© 2025 Dominican College Of Tarlac, Inc. All rights reserved."
-            android:textColor="#FFFFFF"
-            android:textSize="10dp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeMinTextSize="6sp"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:inputType="textMultiLine"
+                android:lineSpacingExtra="1dp"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                android:text="© 2025 Dominican College Of Tarlac, Inc. All rights reserved."
+                android:textColor="#FFFFFF"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,5 +11,10 @@
     </style>
 
     <style name="UnityThemeSelector" parent="@android:style/Theme.NoTitleBar.Fullscreen" />
+    <style name="ModernDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">#3C7D8D</item> <!-- Accent color -->
+        <item name="android:textColorPrimary">#212121</item> <!-- Title/Message color -->
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
 
 </resources>

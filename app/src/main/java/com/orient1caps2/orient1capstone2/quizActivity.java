@@ -1,5 +1,9 @@
 package com.orient1caps2.orient1capstone2;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -50,12 +54,39 @@ public class quizActivity extends AppCompatActivity {
     private boolean isReviewMode = false;
     private boolean isHardQuizFinished = false;
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
         if (isReviewMode) {
-            // Do nothing when in review mode
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("Exit Review")
+                    .setMessage("Are you sure you want to exit the review?\nYour progress will not be saved.")
+                    .setPositiveButton("Yes", (dialog, which) -> handleBackAction())
+                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                    .setCancelable(true);
+
+            AlertDialog dialog = builder.create();
+
+            // Set solid background color instead of transparent
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF"))); // White
+            }
+
+            dialog.show();
+
+            // Customize buttons
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                    .setTextColor(Color.parseColor("#3C7D8D")); // Teal
+            dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                    .setTextColor(Color.parseColor("#EE685C")); // Red
+            dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setAllCaps(false);
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setAllCaps(false);
+
             return;
         }
+
+        // Original exit dialog for quiz mode
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.exit_dialog, null);
 
@@ -68,17 +99,20 @@ public class quizActivity extends AppCompatActivity {
         Button btnNo = dialogView.findViewById(R.id.btnNo);
 
         btnYes.setOnClickListener(v -> {
-
-            countDownTimer.cancel();
-
+            if (countDownTimer != null) {
+                countDownTimer.cancel();
+            }
             dialog.dismiss();
-            super.onBackPressed();
-
+            finish();
         });
 
         btnNo.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
+    }
+    private void handleBackAction() {
+        isReviewMode = false;
+        finish(); // Go back to quiz module selection
     }
 
     @Override
@@ -141,8 +175,6 @@ public class quizActivity extends AppCompatActivity {
 
         Collections.shuffle(questions);
         showQuestion();
-
-
 
         nextButton.setOnClickListener(v -> {
             if (currentIndex < questions.size()) {
@@ -263,7 +295,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("Gradualism in education means the school offers programs from preschool to college.", true));
         questions.add(new Question("The Dominican Order is also known as the Order of Preachers.", true));
         questions.add(new Question("The DCT logo emphasizes faith in God and love for humanity.", true));
-        questions.add(new Question("The motto in the DCT logo is “In the Service of Truth.”", false)); // Actually “Pro Deo et Patria” and “Caritas”
+        questions.add(new Question("The motto in the DCT logo is \"In the Service of Truth.\"", false)); // Actually "Pro Deo et Patria" and "Caritas"
         questions.add(new Question("The Order of Preachers was founded by St. Dominic de Guzman.", true));
         questions.add(new Question("Sr. Ma. Asuncion M. Manalang, O.P. is one of the school administrators.", true));
         questions.add(new Question("The philosophy of education of DCT is focused on forming responsible and Christ-centered individuals.", true));
@@ -290,7 +322,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("St. Dominic died on August 6, 1231, at the age of 60.", false)); // He died in 1221 at 51
         questions.add(new Question("The Dominican College of Tarlac believes that education should lead to union with God, community with others, and harmony with creation.", true));
         questions.add(new Question("The Dominican learning system nurtures the human person through opportunities for reason, faith, and appreciation of values.", true));
-        questions.add(new Question("The Dominicans continue St. Dominic’s mission of study, prayer, and preaching up to the present time.", true));
+        questions.add(new Question("The Dominicans continue St. Dominic's mission of study, prayer, and preaching up to the present time.", true));
         questions.add(new Question("Scholastic (Thomistic) Philosophy emphasizes the rejection of faith in favor of pure reason.", false)); // It seeks harmony of faith and reason
     }
 
@@ -301,7 +333,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("Managing time means ignoring schoolwork and focusing on hobbies only.", false));
         questions.add(new Question("College and school life are opportunities for personal growth.", true));
         questions.add(new Question("Financial constraints mean having plenty of money for education.", false));
-        questions.add(new Question("Health issues can affect a student’s learning.", true));
+        questions.add(new Question("Health issues can affect a student's learning.", true));
         questions.add(new Question("Mental health issues are not part of student challenges.", false));
         questions.add(new Question("Social issues involve problems with friends, peers, or the community.", true));
         questions.add(new Question("Technological barriers include lack of gadgets and internet access.", true));
@@ -324,7 +356,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("Non-formal education includes workshops, community programs, and vocational training.", true));
         questions.add(new Question("People with visual-spatial intelligence are good at visualizing things and understanding maps, images, and patterns.", true));
         questions.add(new Question("Interpersonal intelligence means being more in tune with nature and caring for the environment.", false)); // That's naturalist
-        questions.add(new Question("Intrapersonal intelligence is about being aware of one’s own emotions, feelings, and motivations.", true));
+        questions.add(new Question("Intrapersonal intelligence is about being aware of one's own emotions, feelings, and motivations.", true));
         questions.add(new Question("Musical intelligence refers to the ability to think in rhythms, sounds, and patterns.", true));
         questions.add(new Question("People with strong logical-mathematical intelligence are skilled in reasoning and problem solving.", true));
         questions.add(new Question("Bodily-kinesthetic intelligence is the ability to move objects with the mind instead of physical effort.", false)); // Misconception
@@ -352,7 +384,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("Academic stress can arise from exams, deadlines, and workload at school or university.", true));
         questions.add(new Question("Professional stress is only experienced by doctors and nurses.", false));
         questions.add(new Question("Environmental stressors include pollution, noise, disasters, and unsafe surroundings.", true));
-        questions.add(new Question("The “fight-or-flight” response is the body’s natural reaction to stress, preparing a person to face danger or escape.", true));
+        questions.add(new Question("The \"fight-or-flight\" response is the body's natural reaction to stress, preparing a person to face danger or escape.", true));
         questions.add(new Question("Stress only affects emotions and never causes physical symptoms.", false));
         questions.add(new Question("Symptoms of stress may include emotional changes, physical symptoms, and behavioral effects.", true));
     }
@@ -405,10 +437,10 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
         mediumquestions.add(new QuestionMed("What is written in the DCT logo?",
                 new String[] {
-                        "“Truth Shall Prevail”",
-                        "“Caritas – Uniform Love” and “Pro Deo et Patria”",
-                        "“Excellence for All”",
-                        "“Service and Honor”"
+                        "\"Truth Shall Prevail\"",
+                        "\"Caritas – Uniform Love\" and \"Pro Deo et Patria\"",
+                        "\"Excellence for All\"",
+                        "\"Service and Honor\""
                 }, 1));
         mediumquestions.add(new QuestionMed("Who founded the Order of Preachers?",
                 new String[] {
@@ -417,7 +449,7 @@ public class quizActivity extends AppCompatActivity {
                         "St. Dominic de Guzman",
                         "St. Ignatius of Loyola"
                 }, 2));
-        mediumquestions.add(new QuestionMed("Who among the sisters is mentioned as part of DCT’s leadership?",
+        mediumquestions.add(new QuestionMed("Who among the sisters is mentioned as part of DCT's leadership?",
                 new String[] {
                         "Sr. Ma. Lourdes O.P.",
                         "Sr. Ma. Asuncion M. Manalang, O.P.",
@@ -576,7 +608,7 @@ public class quizActivity extends AppCompatActivity {
                         "Worldly achievements"
                 }, 1));
 
-        mediumquestions.add(new QuestionMed("According to DCT’s philosophy, education should also promote:",
+        mediumquestions.add(new QuestionMed("According to DCT's philosophy, education should also promote:",
                 new String[] {
                         "Competition and rivalry",
                         "Community with others and harmony with creation",
@@ -596,7 +628,7 @@ public class quizActivity extends AppCompatActivity {
     private void introductiononStudentLifeMed() {
         mediumquestions = new ArrayList<>();
 
-        mediumquestions.add(new QuestionMed("What is considered the golden period of development in a person’s life?",
+        mediumquestions.add(new QuestionMed("What is considered the golden period of development in a person's life?",
                 new String[]{
                         "Childhood",
                         "Student life",
@@ -668,7 +700,7 @@ public class quizActivity extends AppCompatActivity {
                         "Social skills"
                 }, 1));
 
-        mediumquestions.add(new QuestionMed("A student’s involvement in classroom and school activities makes him/her:",
+        mediumquestions.add(new QuestionMed("A student's involvement in classroom and school activities makes him/her:",
                 new String[]{
                         "A passive learner",
                         "An active member",
@@ -856,7 +888,7 @@ public class quizActivity extends AppCompatActivity {
                 new String[] {
                         "Simply storing information",
                         "Acquiring and modifying knowledge, skills, and behaviors",
-                        "Copying others’ actions",
+                        "Copying others' actions",
                         "Forgetting old habits"
                 }, 1));
 
@@ -868,7 +900,7 @@ public class quizActivity extends AppCompatActivity {
                         "To ignore values"
                 }, 0));
 
-        mediumquestions.add(new QuestionMed("What does “imparting skills” in education mean?",
+        mediumquestions.add(new QuestionMed("What does \"imparting skills\" in education mean?",
                 new String[] {
                         "Memorizing lessons",
                         "Shaping beliefs",
@@ -940,7 +972,7 @@ public class quizActivity extends AppCompatActivity {
                         "Prayer"
                 }, 1));
 
-        mediumquestions.add(new QuestionMed("The body’s natural “fight-or-flight” response prepares a person to:",
+        mediumquestions.add(new QuestionMed("The body's natural \"fight-or-flight\" response prepares a person to:",
                 new String[] {
                         "Sleep deeply",
                         "Relax instantly",
@@ -973,13 +1005,13 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("What year was San Nicolas Academy founded?", "1939"));
         hardQuestions.add(new QuestionHard("In what year was the Dominican School transferred to its present site?", "1960"));
         hardQuestions.add(new QuestionHard("What religious order manages Dominican College of Tarlac?", "Dominican Order of Preachers (O.P.)"));
-        hardQuestions.add(new QuestionHard("What term describes DCT’s step-by-step program offerings from preschool to college?", "Gradualism in Education"));
+        hardQuestions.add(new QuestionHard("What term describes DCT's step-by-step program offerings from preschool to college?", "Gradualism in Education"));
         hardQuestions.add(new QuestionHard("Another name for the Dominican Order is?", "Order of Preachers"));
         hardQuestions.add(new QuestionHard("What two values are emphasized in the DCT logo?", "Faith in God and Love for Humanity"));
         hardQuestions.add(new QuestionHard("What Latin phrase in the DCT logo means 'For God and Country'?", "Pro Deo et Patria"));
         hardQuestions.add(new QuestionHard("Who founded the Order of Preachers?", "St. Dominic de Guzman"));
         hardQuestions.add(new QuestionHard("Name a sister mentioned as part of the leadership of DCT.", "Sr. Ma. Asuncion M. Manalang, O.P."));
-        hardQuestions.add(new QuestionHard("DCT’s philosophy focuses on forming ________ and ________ individuals.", "Responsible and Christ-centered"));
+        hardQuestions.add(new QuestionHard("DCT's philosophy focuses on forming ________ and ________ individuals.", "Responsible and Christ-centered"));
         hardQuestions.add(new QuestionHard("One objective of DCT is to help students become academically ________.", "Competent"));
         hardQuestions.add(new QuestionHard("In what year were Bachelor of Arts and Computer Secretarial courses first offered?", "1980"));
         hardQuestions.add(new QuestionHard("When was the Bachelor of Elementary Education program introduced?", "1997"));
@@ -1003,7 +1035,7 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("The heresy St. Dominic encountered in southern France.", "Albigensian heresy"));
         hardQuestions.add(new QuestionHard("The community St. Dominic founded in Prouille in 1206.", "Community of nuns"));
         hardQuestions.add(new QuestionHard("The Pope who approved the Order of Preachers in 1216.", "Pope Honorius III"));
-        hardQuestions.add(new QuestionHard("The date of St. Dominic’s death.", "August 6, 1221"));
+        hardQuestions.add(new QuestionHard("The date of St. Dominic's death.", "August 6, 1221"));
         hardQuestions.add(new QuestionHard("The philosophy that emphasizes harmony between faith and reason, adopted by the Dominican tradition.", "Scholastic (Thomistic) Philosophy"));
     }
 
@@ -1085,7 +1117,7 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("The intelligence of people who are skilled at using language effectively in speaking and writing.", "Verbal-Linguistic "));
         hardQuestions.add(new QuestionHard("The intelligence of people who have strong awareness and connection with nature.", "Naturalist "));
         hardQuestions.add(new QuestionHard("The intelligence of people who can visualize and imagine objects, maps, or spatial designs.", "Visual-Spatial "));
-        hardQuestions.add(new QuestionHard("The intelligence of people who can socialize, work well, and understand others’ feelings.", "Interpersonal "));
+        hardQuestions.add(new QuestionHard("The intelligence of people who can socialize, work well, and understand others' feelings.", "Interpersonal "));
         hardQuestions.add(new QuestionHard("The intelligence that focuses on movement, body control, and physical activity.", "Bodily-Kinesthetic "));
         hardQuestions.add(new QuestionHard("The intelligence related to asking deep questions about human life and existence.", "Existential "));
         hardQuestions.add(new QuestionHard("The most powerful tool that improves lives, provides opportunities, and gives meaning to the world.", "Education"));
@@ -1108,7 +1140,7 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("Anything that causes stress, whether physical, emotional, or psychological.", "Stressor"));
         hardQuestions.add(new QuestionHard("The type of stress that motivates people and leads to growth and achievement.", "Eustress"));
         hardQuestions.add(new QuestionHard("The type of stress that harms performance and health.", "Distress"));
-        hardQuestions.add(new QuestionHard("The body’s natural reaction to stress that prepares a person to face danger or escape.", "Fight-or-Flight Response"));
+        hardQuestions.add(new QuestionHard("The body's natural reaction to stress that prepares a person to face danger or escape.", "Fight-or-Flight Response"));
         hardQuestions.add(new QuestionHard("Stress that comes from exams, deadlines, and workload in school or university.", "Academic Stress"));
     }
 
@@ -1316,7 +1348,7 @@ public class quizActivity extends AppCompatActivity {
         Button buttonOk = dialogView.findViewById(R.id.buttonOk);
         buttonOk.setOnClickListener(v -> {
             dialog.dismiss();
-            finish();
+            finish(); // Go back to quiz module selection
         });
 
         Button buttonReview = dialogView.findViewById(R.id.buttonReview);
@@ -1437,7 +1469,8 @@ public class quizActivity extends AppCompatActivity {
 
         reviewText.setText(formattedText);
 
-        backButton.setOnClickListener(v -> finish());
+        // Handle return button - go back to quiz module selection
+        backButton.setOnClickListener(v -> handleBackAction());
     }
 
     // Question classes

@@ -1,13 +1,22 @@
 package com.orient1caps2.orient1capstone2;
 
 import android.app.AlertDialog;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,33 +57,35 @@ public class dcthallview extends AppCompatActivity {
 
     private void showNavigationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Info...")
-                .setMessage("Use search to navigate the specific location.  Tap to dismiss");
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom_message, null);
+        builder.setView(dialogView);
 
         AlertDialog dialog = builder.create();
 
-        // Set slightly transparent background: #CC = 80% opacity
         if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0xCCD9D9D9));
+            // Make background fully transparent so only your custom layout shows
+            dialog.getWindow().setBackgroundDrawable(
+                    new ColorDrawable(android.graphics.Color.TRANSPARENT)
+            );
         }
 
-        // Make dialog cancelable on touch outside
+        // Allow dismiss on outside touch
         dialog.setCanceledOnTouchOutside(true);
-        dialog.show();
 
-        // Dismiss on any touch inside the dialog
-        dialog.setOnShowListener(d -> {
-            dialog.getWindow().getDecorView().setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    dialog.dismiss();
-                    return true;
-                }
-                return false;
-            });
+        // Allow dismiss on tapping the dialog itself
+        dialogView.setOnClickListener(v -> dialog.dismiss());
+
+        // Handle back button dismissal
+        dialog.setOnKeyListener((d, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                dialog.dismiss();
+                return true;
+            }
+            return false;
         });
-    }
 
-    // To handle device back button for WebView navigation
+        dialog.show();
+    }
     @Override
     public void onBackPressed() {
         if (webview.canGoBack()) {

@@ -1,13 +1,17 @@
 package com.orient1caps2.orient1capstone2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
@@ -123,20 +127,32 @@ public class about extends AppCompatActivity {
     }
     private void showDisclaimerDialog() {
         String disclaimerMessage =
-                "The <b>Orient 1 app</b> is provided for educational use within Dominican College of Tarlac, Inc.<br><br>" +
-                        "<big><big>•</big></big> Content may change without notice.<br>" +
-                        "<big><big>•</big></big> Most modules work offline.<br>" +
-                        "<big><big>•</big></big> DCT Campus View requires internet access.<br><br>" +
+                "<b>Orient 1 app</b> is provided for educational use within Dominican College of Tarlac, Inc.<br><br>" +
+                        "• Content may change without notice.<br>" +
+                        "• Most modules work offline.<br>" +
+                        "• DCT Campus View requires internet access.<br><br>" +
                         "By tapping <b>“I Understand”</b>, you agree not to copy, modify, or misuse the app or its materials.";
 
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Disclaimer")
-                .setMessage(android.text.Html.fromHtml(disclaimerMessage, android.text.Html.FROM_HTML_MODE_LEGACY))
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.ModernDialogTheme);
+
+        builder.setTitle("Disclaimer")
+                .setMessage(Html.fromHtml(disclaimerMessage, Html.FROM_HTML_MODE_LEGACY))
                 .setCancelable(false)
-                .setPositiveButton("I Understand", (dialog, which) -> {
-                    dialog.dismiss();
-                })
-                .show();
+                .setPositiveButton("I Understand", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog dialog = builder.create();
+
+        // Customize background (rounded corners + subtle color)
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000"))); // Light gray
+        }
+
+        dialog.show();
+
+        // Make buttons modern
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                .setTextColor(Color.parseColor("#3C7D8D")); // Teal accent
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setAllCaps(false);
     }
 
 }
