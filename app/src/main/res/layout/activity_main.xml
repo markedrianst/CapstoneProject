@@ -172,7 +172,7 @@
                         android:maxWidth="320dp"
                         android:paddingLeft="40dp"
                         android:paddingRight="30dp"
-                        android:text="AR\nCampus View"
+                        android:text="360\nCampus View"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         android:textSize="14dp"
@@ -192,21 +192,19 @@
             <!-- Footer with Responsive Text -->
             <TextView
                 android:id="@+id/footerText"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:gravity="center"
-                android:text="© 2025 Dominican College Of Tarlac, Inc. All rights reserved."
-                android:textColor="#FFFFFF"
-                android:textSize="10dp"
-                android:maxLines="2"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8dp"
-                android:autoSizeMaxTextSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="TextSizeCheck" />
+                android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="© 2025 Dominican College Of Tarlac, Inc. All rights reserved."
+            android:textColor="#FFFFFF"
+            android:textSize="10dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

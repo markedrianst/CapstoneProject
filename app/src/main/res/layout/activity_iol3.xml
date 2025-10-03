@@ -58,16 +58,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_italic"
+                android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
-                android:text="III-Introduction on Student Life"
+                android:text="III - Introduction on Student Life"
                 android:textColor="#468288"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnHome"
                 app:layout_constraintStart_toEndOf="@id/backButton"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@id/btnHome" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
