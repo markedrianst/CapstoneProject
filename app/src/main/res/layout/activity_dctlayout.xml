@@ -12,16 +12,16 @@
     tools:context=".IOL3">
 
     <!-- Header Card -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/rectangleContainer"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_header"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        app:cardBackgroundColor="#F9E6AC"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,49 +30,51 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!-- Back Button -->
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:background="@drawable/circular_button"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/back"
                 android:src="@drawable/back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="DuplicateClickableBoundsCheck" />
+                tools:ignore="TouchTargetSizeCheck" />
 
+            <!-- Home Button -->
             <ImageButton
                 android:id="@+id/btnHome"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/circular_button"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/home"
                 android:src="@drawable/home"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
+            <!-- Title -->
             <TextView
                 android:id="@+id/lessonsText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
                 android:text="Dominican College of Tarlac Map"
-                android:textColor="#468288"
+                android:textColor="#35616E"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:textAlignment="center"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/backButton"
-                app:layout_constraintEnd_toStartOf="@id/btnHome" />
+                app:layout_constraintEnd_toStartOf="@id/btnHome"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
     <!-- Main Content Area -->
     <TextView
         android:id="@+id/instructionText"
