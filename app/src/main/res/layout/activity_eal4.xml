@@ -516,25 +516,6 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image132" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="120dp"
-                            android:layout_weight="1"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/image133" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -579,14 +560,15 @@
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image138" />
+                                android:src="@drawable/image132" />
 
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image139" />
+                                android:src="@drawable/image133" />
+
                         </LinearLayout>
                     </LinearLayout>
 
@@ -627,20 +609,20 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:visibility="gone">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image138" />
 
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image136" />
+                                android:src="@drawable/image139" />
 
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="120dp"
-                                android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/image137" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -682,19 +664,20 @@
                             android:orientation="horizontal"
                             android:visibility="gone">
 
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="120dp"
-                                android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/image134" />
 
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image135" />
+                                android:src="@drawable/image136" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/image137" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -741,14 +724,14 @@
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image136" />
+                                android:src="@drawable/image134" />
 
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="120dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/image137" />
+                                android:src="@drawable/image135" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

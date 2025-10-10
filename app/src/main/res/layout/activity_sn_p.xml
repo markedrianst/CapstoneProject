@@ -369,8 +369,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
                     android:paddingTop="20dp"
+                    android:padding="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:text="DCT has been given accreditation by TESDA by 2005-2006( Restaurant Management, Practical Nursing and Contact Center Training)"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"

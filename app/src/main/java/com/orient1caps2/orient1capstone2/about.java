@@ -94,6 +94,17 @@ public class about extends AppCompatActivity {
         String developerCreditsHtml = createJustifiedHtml(developerCreditsText);
         developerCreditsWebView.loadDataWithBaseURL(null, developerCreditsHtml, "text/html", "UTF-8", null);
         configureWebView(developerCreditsWebView);
+        WebView referencesWebView = findViewById(R.id.referencesWebView);
+
+        String referencesHtml = "<html><body style='color: white; font-family: Arial; text-align: justify; font-size: 14px; line-height: 1.6;'>" +
+                "<p>Atienza, A. D., & Talavera, P. P. Q. (2025). Orient 1 course materials [Unpublished instructional materials]. Dominican College of Tarlac.</p>" +
+                "<p>Sir Dan's Teaching Resources. (2020, August 23). " +
+                "<p>Dominican College of Tarlac (DCT) Hymn [Video]. YouTube. <a href='https://youtu.be/bN06vUuSsag'>https://youtu.be/bN06vUuSsag</a></p></p>"+
+                "<p style='margin-top: 16px; font-style: italic;font-size: 11px;'>&nbsp;&nbsp;&nbsp;&nbsp;Note. Images used within the app are derived from the instructional materials provided by the Orient 1 instructors of Dominican College of Tarlac Inc.</p>" +
+                "</body></html>";
+
+        referencesWebView.loadData(referencesHtml, "text/html", "UTF-8");
+        referencesWebView.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private String createJustifiedHtml(String text) {
@@ -127,11 +138,11 @@ public class about extends AppCompatActivity {
     }
     private void showDisclaimerDialog() {
         String disclaimerMessage =
-                "<b>Orient 1 app</b> is provided for educational use within Dominican College of Tarlac, Inc.<br><br>" +
-                        "• Content may change without notice.<br>" +
-                        "• Most modules work offline.<br>" +
+                "<b>Disclaimer</b> The Orient 1 app is provided for educational use within Dominican College of Tarlac Inc.<br><br>" +
+                        "• Most modules work offline, but 360 Campus View requires internet access.<br>" +
                         "• DCT Campus View requires internet access.<br><br>" +
-                        "By tapping <b>“I Understand”</b>, you agree not to copy, modify, or misuse the app or its materials.";
+                        "By tapping <b>“I Understand”</b>, you acknowledge that this app is intended for educational purposes only."
+                ;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.ModernDialogTheme);
 

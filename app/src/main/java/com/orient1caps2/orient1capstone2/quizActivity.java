@@ -61,7 +61,7 @@ public class quizActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setTitle("Exit Review")
-                    .setMessage("Are you sure you want to exit the review?\nYour progress will not be saved.")
+                    .setMessage("Are you sure you want to exit the review?\nYou won't be able to view it again after exiting.")
                     .setPositiveButton("Yes", (dialog, which) -> handleBackAction())
                     .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
                     .setCancelable(true);
@@ -1016,7 +1016,6 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("In what year were Bachelor of Arts and Computer Secretarial courses first offered?", "1980"));
         hardQuestions.add(new QuestionHard("When was the Bachelor of Elementary Education program introduced?", "1997"));
         hardQuestions.add(new QuestionHard("Which academic program was introduced in 2009?", "Bachelor of Science in Information Technology"));
-        hardQuestions.add(new QuestionHard("In what year was the Bachelor of Science in Criminology program added?", "2015"));
     }
 
     private void studandprayHard() {
@@ -1290,15 +1289,37 @@ public class quizActivity extends AppCompatActivity {
         }
     }
 
+    // UPDATED: Smart answer checking for hard questions
     private void evaluateHardAnswer() {
         String userAnswer = answerInput.getText().toString().trim();
         String correctAnswer = hardQuestions.get(currentIndex).getAnswer().trim();
 
         userHardAnswers.add(userAnswer);
 
-        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+        // Use smart answer checking
+        if (checkAnswerSmart(userAnswer, correctAnswer)) {
             score++;
         }
+    }
+
+    private boolean checkAnswerSmart(String userAnswer, String correctAnswer) {
+        if (userAnswer == null || userAnswer.trim().isEmpty()) {
+            return false;
+        }
+
+        String normalizedUser = normalizeAnswer(userAnswer);
+        String normalizedCorrect = normalizeAnswer(correctAnswer);
+
+        return normalizedUser.equals(normalizedCorrect);
+    }
+
+    private String normalizeAnswer(String answer) {
+        if (answer == null || answer.trim().isEmpty()) {
+            return "";
+        }
+
+        // Trim and convert to lowercase for consistent comparison
+        return answer.trim().toLowerCase();
     }
 
     // Navigation methods
@@ -1442,7 +1463,7 @@ public class quizActivity extends AppCompatActivity {
 
                     if (TextUtils.isEmpty(userAnswer)) {
                         reviewContent.append("<b>Your Answer: <font color=\"#FF8C42\">⚠️ No answer</font></b><br>");
-                    } else if (userAnswer.equals(correctAnswer)) {
+                    } else if (checkAnswerSmart(userAnswer, correctAnswer)) {
                         reviewContent.append("<b><font color=\"#00BA00\">✅ 1 Point</font></b><br>");
                     } else {
                         reviewContent.append(String.format(

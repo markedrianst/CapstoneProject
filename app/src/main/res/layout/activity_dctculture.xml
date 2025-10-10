@@ -132,12 +132,12 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingTop="8dp"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <!-- San Nicolas Academy Section -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
-                            android:layout_height="14m0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             app:cardCornerRadius="20dp"
@@ -146,7 +146,9 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/nicholas" />
+                                android:src="@drawable/nicholas"
+                                android:scaleType="centerCrop"
+                                android:layout_gravity="center"/>
                         </androidx.cardview.widget.CardView>
 
                         <TextView

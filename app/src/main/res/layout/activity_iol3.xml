@@ -738,8 +738,8 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/carouselRecyclerView2"
                             android:layout_width="match_parent"
-                            android:layout_height="180dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:clipToPadding="false"
                             android:overScrollMode="never"
                             android:paddingStart="16dp"
@@ -795,8 +795,8 @@
 
                         <!-- Centered Jar Image -->
                         <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="16dp"
                             android:scaleType="fitCenter"
@@ -822,8 +822,8 @@
                                 android:padding="8dp">
 
                                 <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:src="@drawable/image39"
                                     android:scaleType="centerCrop"
                                     android:background="#33000000" />
@@ -848,8 +848,8 @@
                                 android:padding="8dp">
 
                                 <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:src="@drawable/image40"
                                     android:scaleType="centerCrop"
                                     android:background="#33000000" />
@@ -874,8 +874,8 @@
                                 android:padding="8dp">
 
                                 <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:src="@drawable/image41"
                                     android:scaleType="centerCrop"
                                     android:background="#33000000" />
