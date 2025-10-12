@@ -132,22 +132,16 @@ public class Dctculture extends AppCompatActivity {
 
         header.setOnClickListener(v -> {
             if (content.getVisibility() == View.GONE) {
-                // Close all other sections before opening this one
-                for (int i = 0; i < allContents.length; i++) {
-                    if (allContents[i] != content && allContents[i].getVisibility() == View.VISIBLE) {
-                        collapse(allContents[i]);
-                        rotateArrow(allArrows[i], 180f, 0f);
-                    }
-                }
+                // Open this section
                 expand(content);
                 rotateArrow(arrow, 0f, 180f);
             } else {
+                // Close this section
                 collapse(content);
                 rotateArrow(arrow, 180f, 0f);
             }
         });
     }
-
     private void expand(final View v) {
         v.measure(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final int targetHeight = v.getMeasuredHeight();
