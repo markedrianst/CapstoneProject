@@ -26,8 +26,6 @@ public class about extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_about);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-// Show Disclaimer dialog on load
-        showDisclaimerDialog();
 
         // Apply window insets to root view
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -46,41 +44,50 @@ public class about extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
-        // 🔹 Setup FB links
-        setupFacebookLinks();
+        // 🔹 Setup Gmail links
+        setupGmailLinks();
     }
 
-    private void setupFacebookLinks() {
+    private void setupGmailLinks() {
         // Project Manager
-        findViewById(R.id.projectManagerImage).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/JustcallmeDY"));
+        findViewById(R.id.projectManagerGmail).setOnClickListener(v ->
+                openGmail("dandyjohndeguzman@gmail.com"));
 
         // Programmer
-        findViewById(R.id.programmerImage).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/markedrian70"));
+        findViewById(R.id.programmerGmail).setOnClickListener(v ->
+                openGmail("markedriantalavera070@gmail.com"));
 
         // Co-Programmer
-        findViewById(R.id.coProgrammerImage).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/lj.mallari.397"));
+        findViewById(R.id.coProgrammerGmail).setOnClickListener(v ->
+                openGmail("lanzmallari.edu@gmail.com"));
 
         // Members
-        findViewById(R.id.member1Image).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/johnvincent.pantig"));
+        findViewById(R.id.member1Gmail).setOnClickListener(v ->
+                openGmail("johnvincentpantig40@gmail.com"));
 
-        findViewById(R.id.member2Image).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/john.rhendell.ong"));
+        findViewById(R.id.member2Gmail).setOnClickListener(v ->
+                openGmail("john2004ong@gmail.com"));
 
-        findViewById(R.id.member3Image).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/edmar.perez.1690"));
+        findViewById(R.id.member3Gmail).setOnClickListener(v ->
+                openGmail("aidan09perez@gmail.com"));
 
-        findViewById(R.id.member4Image).setOnClickListener(v ->
-                openFacebook("https://www.facebook.com/capiliryan25"));
+        findViewById(R.id.member4Gmail).setOnClickListener(v ->
+                openGmail("capiliryan258@gmail.com"));
     }
 
-    private void openFacebook(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
+    private void openGmail(String emailAddress) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:" + emailAddress));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailAddress});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Inquiry from Orient1 App");
+
+        try {
+            startActivity(Intent.createChooser(intent, "Send email using:"));
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Handle case where no email app is installed
+        }
     }
+
 
     private void setupJustifiedTextViews() {
         WebView courseOverviewWebView = findViewById(R.id.courseOverviewWebView);
@@ -162,7 +169,7 @@ public class about extends AppCompatActivity {
 
                 "<li>Educational Resources. Pinterest. <a href='https://i.pinimg.com/1200x/40/5c/09/405c093cd19c8f0820329972b5deff0f.jpg'>https://i.pinimg.com/1200x/40/5c/09/405c093cd19c8f0820329972b5deff0f.jpg</a></li>" +
 
-                "<li>Educational  Video Reference [Dominican Hymn Youtube]. <a href='https://www.youtube.com/watch?v=qE92sjlxMW8'>https://www.youtube.com/watch?v=qE92sjlxMW8</a></li>" +
+                "<li>Educational  Video Reference [Dominican Hymn Youtube]. <a href='https://youtu.be/KD4940E4Nf8'>https://youtu.be/KD4940E4Nf8</a></li>" +
 
                 "<li>Environmental Awareness Image. <a href='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbq_R_cPKQuLp04nmD9eLnYrui6WEQYPI7RUqew_wMzHzA4Lwp'>Environmental Image Reference</a></li>" +
 
@@ -259,33 +266,6 @@ public class about extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-    private void showDisclaimerDialog() {
-        String disclaimerMessage =
-                " The Orient 1 app is provided for educational use within Dominican College of Tarlac Inc.<br><br>" +
-                        "Most modules work offline, but 360 Campus View requires internet access.<br>" +
-                        "<br>By tapping <b>“I Understand”</b>, you acknowledge that this app is intended for educational purposes only."
-                ;
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.ModernDialogTheme);
-
-        builder.setTitle("Disclaimer")
-                .setMessage(Html.fromHtml(disclaimerMessage, Html.FROM_HTML_MODE_LEGACY))
-                .setCancelable(false)
-                .setPositiveButton("I Understand", (dialog, which) -> dialog.dismiss());
-
-        AlertDialog dialog = builder.create();
-
-        // Customize background (rounded corners + subtle color)
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000"))); // Light gray
-        }
-
-        dialog.show();
-
-        // Make buttons modern
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE)
-                .setTextColor(Color.parseColor("#3C7D8D")); // Teal accent
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setAllCaps(false);
-    }
 
 }

@@ -495,12 +495,14 @@
                         android:visibility="gone">
 
                         <FrameLayout
-                            android:id="@+id/videoFrame"
+                            android:id="@+id/videoContainer"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="220dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp">
+                            android:layout_marginBottom="16dp"
+                            android:background="#000">
 
+                            <!-- Thumbnail shown before playback -->
                             <ImageView
                                 android:id="@+id/myImage"
                                 android:layout_width="match_parent"
@@ -509,6 +511,7 @@
                                 android:src="@drawable/philed" />
 
                             <TextView
+                                android:id="@+id/tapToPlay"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/poppins_italic"
@@ -516,17 +519,50 @@
                                 android:text="(tap image to play video)"
                                 android:textColor="#B80000" />
 
+                            <!-- Actual video -->
                             <VideoView
                                 android:id="@+id/myVideo"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:visibility="gone" />
+
+                            <!-- Fixed modern control bar -->
+                            <LinearLayout
+                                android:id="@+id/customControls"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:layout_gravity="bottom"
+                                android:orientation="horizontal"
+                                android:background="#80000000"
+                                android:padding="8dp"
+                                android:gravity="center_vertical"
+                                android:visibility="gone">
+
+                                <ImageButton
+                                    android:id="@+id/btnPlayPause"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:src="@android:drawable/ic_media_play"
+                                    app:tint="#FFFFFF"
+                                    tools:ignore="UseAppTint" />
+
+                                <SeekBar
+                                    android:id="@+id/seekBar"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:progressTint="#00BCD4"
+                                    android:thumbTint="#00BCD4" />
+                            </LinearLayout>
                         </FrameLayout>
+
                         <TextView
                             android:id="@+id/videoLink"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="https://youtu.be/bN06vUuSsag"
+                            android:text="https://youtu.be/KD4940E4Nf8"
                             android:textColor="#7979F5"
                             android:textStyle="bold"
                             android:clickable="true"

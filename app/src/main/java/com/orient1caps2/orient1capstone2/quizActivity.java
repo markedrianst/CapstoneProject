@@ -7,11 +7,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,6 +25,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +40,7 @@ public class quizActivity extends AppCompatActivity {
     private RadioButton optionTrue, optionFalse, optionA, optionB, optionC, optionD;
     private Button nextButton;
     private EditText answerInput;
+    private CardView questionCardView; // Add this for card view animation
 
     // Question Lists
     private List < Question > questions;
@@ -149,6 +154,7 @@ public class quizActivity extends AppCompatActivity {
         optionFalse = findViewById(R.id.optionFalse);
         timerText = findViewById(R.id.timerText);
         nextButton = findViewById(R.id.nextButton);
+        questionCardView = findViewById(R.id.questionCard); // Initialize card view
 
         // Set header
         TextView title = findViewById(R.id.header);
@@ -199,6 +205,7 @@ public class quizActivity extends AppCompatActivity {
         optionC = findViewById(R.id.optionC);
         optionD = findViewById(R.id.optionD);
         nextButton = findViewById(R.id.nextButton);
+        questionCardView = findViewById(R.id.questionCard); // Initialize card view
 
         // Set header
         TextView title = findViewById(R.id.header);
@@ -245,6 +252,7 @@ public class quizActivity extends AppCompatActivity {
         timerText = findViewById(R.id.timerText);
         answerInput = findViewById(R.id.answerInput);
         nextButton = findViewById(R.id.nextButton);
+        questionCardView = findViewById(R.id.questionCard); // Initialize card view
 
         // Set header
         TextView title = findViewById(R.id.header);
@@ -1143,13 +1151,50 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("Stress that comes from exams, deadlines, and workload in school or university.", "Academic Stress"));
     }
 
-    // Question display methods
+    // Animation methods for card view
+    private void animateQuestionTransition() {
+        if (questionCardView != null) {
+            // Animate the entire card view
+            Animation slideOut = AnimationUtils.loadAnimation(this, R.anim.slide_out_left);
+            Animation slideIn = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
+
+            questionCardView.startAnimation(slideOut);
+
+            new Handler().postDelayed(() -> {
+                questionCardView.startAnimation(slideIn);
+            }, 150);
+        }
+    }
+
+    private void updateButtonText() {
+        String difficulty = getIntent().getStringExtra("difficulty");
+        int totalQuestions = 0;
+
+        switch (difficulty) {
+            case "Easy":
+                totalQuestions = questions.size();
+                break;
+            case "Medium":
+                totalQuestions = mediumquestions.size();
+                break;
+            case "Hard":
+                totalQuestions = hardQuestions.size();
+                break;
+        }
+
+        if (currentIndex == totalQuestions - 1) {
+            nextButton.setText("SUBMIT");
+        } else {
+            nextButton.setText("NEXT");
+        }
+    }
+
     // Add this helper method to check question length
     private boolean isLongQuestion(String questionText) {
         return questionText.length() > 70;
     }
 
-    // Update the startTimer methods to use dynamic timing
+    // Update the startTimer methods to use dynamic timing and auto-submit
     private void startTimer() {
         if (countDownTimer != null) countDownTimer.cancel();
 
@@ -1163,6 +1208,7 @@ public class quizActivity extends AppCompatActivity {
 
             public void onFinish() {
                 Toast.makeText(quizActivity.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                evaluateAnswer(); // AUTO-SUBMIT: Evaluate current answer before moving on
                 goToNextQuestion();
             }
         };
@@ -1182,6 +1228,7 @@ public class quizActivity extends AppCompatActivity {
 
             public void onFinish() {
                 Toast.makeText(quizActivity.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                evaluateMediumAnswer(); // AUTO-SUBMIT: Evaluate current answer before moving on
                 goToNextMediumQuestion();
             }
         };
@@ -1201,6 +1248,7 @@ public class quizActivity extends AppCompatActivity {
 
             public void onFinish() {
                 Toast.makeText(quizActivity.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                evaluateHardAnswer(); // AUTO-SUBMIT: Evaluate current answer before moving on
                 goToNextHardQuestion();
             }
         };
@@ -1220,6 +1268,7 @@ public class quizActivity extends AppCompatActivity {
         optionsGroup.clearCheck();
         Question current = questions.get(currentIndex);
         questionText.setText((currentIndex + 1) + ". " + current.getText());
+        updateButtonText(); // Update button text
         startTimer(); // This will now use the dynamic timing
     }
 
@@ -1239,6 +1288,7 @@ public class quizActivity extends AppCompatActivity {
         optionB.setText(current.getOptions()[1]);
         optionC.setText(current.getOptions()[2]);
         optionD.setText(current.getOptions()[3]);
+        updateButtonText(); // Update button text
         startMediumTimer(); // This will now use the dynamic timing
     }
 
@@ -1254,6 +1304,7 @@ public class quizActivity extends AppCompatActivity {
         answerInput.setText("");
         QuestionHard current = hardQuestions.get(currentIndex);
         questionText.setText((currentIndex + 1) + ". " + current.getText());
+        updateButtonText(); // Update button text
         startHardTimer(); // This will now use the dynamic timing
     }
 
@@ -1289,19 +1340,32 @@ public class quizActivity extends AppCompatActivity {
         }
     }
 
-    // UPDATED: Smart answer checking for hard questions
+    // FIXED: Improved answer checking for hard questions with better whitespace handling
     private void evaluateHardAnswer() {
         String userAnswer = answerInput.getText().toString().trim();
         String correctAnswer = hardQuestions.get(currentIndex).getAnswer().trim();
 
         userHardAnswers.add(userAnswer);
 
-        // Use smart answer checking
+        // Use improved answer checking
         if (checkAnswerSmart(userAnswer, correctAnswer)) {
             score++;
         }
     }
 
+    // FIXED: Improved answer normalization to handle multiple spaces, whitespace variations, and case insensitivity
+    private String normalizeAnswer(String answer) {
+        if (answer == null || answer.trim().isEmpty()) {
+            return "";
+        }
+
+        // Trim, convert to lowercase, and normalize all whitespace (multiple spaces, tabs, etc.)
+        return answer.trim()
+                .toLowerCase() // This makes it case-insensitive
+                .replaceAll("\\s+", " "); // Replace multiple spaces with single space
+    }
+
+    // FIXED: Enhanced smart answer checking with better case handling
     private boolean checkAnswerSmart(String userAnswer, String correctAnswer) {
         if (userAnswer == null || userAnswer.trim().isEmpty()) {
             return false;
@@ -1310,37 +1374,59 @@ public class quizActivity extends AppCompatActivity {
         String normalizedUser = normalizeAnswer(userAnswer);
         String normalizedCorrect = normalizeAnswer(correctAnswer);
 
+        // Debug logging (you can remove this in production)
+        // Log.d("AnswerCheck", "User: '" + normalizedUser + "' | Correct: '" + normalizedCorrect + "'");
+
         return normalizedUser.equals(normalizedCorrect);
     }
 
-    private String normalizeAnswer(String answer) {
-        if (answer == null || answer.trim().isEmpty()) {
-            return "";
-        }
-
-        // Trim and convert to lowercase for consistent comparison
-        return answer.trim().toLowerCase();
-    }
-
-    // Navigation methods
+    // Navigation methods with animations
     private void goToNextQuestion() {
         if (countDownTimer != null) countDownTimer.cancel();
-        currentIndex++;
-        showQuestion();
+
+        // Don't animate on last question
+        if (currentIndex < questions.size() - 1) {
+            animateQuestionTransition();
+            new Handler().postDelayed(() -> {
+                currentIndex++;
+                showQuestion();
+            }, 300);
+        } else {
+            currentIndex++;
+            showQuestion(); // No animation for last question
+        }
     }
 
     private void goToNextMediumQuestion() {
         if (countDownTimer != null) countDownTimer.cancel();
-        currentIndex++;
-        showMediumQuestion();
-    }
 
+        // Don't animate on last question
+        if (currentIndex < mediumquestions.size() - 1) {
+            animateQuestionTransition();
+            new Handler().postDelayed(() -> {
+                currentIndex++;
+                showMediumQuestion();
+            }, 300);
+        } else {
+            currentIndex++;
+            showMediumQuestion(); // No animation for last question
+        }
+    }
     private void goToNextHardQuestion() {
         if (countDownTimer != null) countDownTimer.cancel();
-        currentIndex++;
-        showHardQuestion();
-    }
 
+        // Don't animate on last question
+        if (currentIndex < hardQuestions.size() - 1) {
+            animateQuestionTransition();
+            new Handler().postDelayed(() -> {
+                currentIndex++;
+                showHardQuestion();
+            }, 300);
+        } else {
+            currentIndex++;
+            showHardQuestion(); // No animation for last question
+        }
+    }
     // Finish methods
     private void finishQuiz() {
         showResultDialog(questions.size());

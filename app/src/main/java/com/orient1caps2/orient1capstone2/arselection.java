@@ -44,6 +44,9 @@ public class arselection extends AppCompatActivity {
             return insets;
         });
 
+        // ✅ Show disclaimer immediately when activity opens
+        showDisclaimerDialog();
+
         // Handle back button
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> {
@@ -73,6 +76,17 @@ public class arselection extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+    }
+
+    // ⚠️ DISCLAIMER DIALOG shown onCreate
+    private void showDisclaimerDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("360 Campus View Disclaimer");
+        builder.setMessage("The arrangement of rooms may not be accurate.\nSeek help from staff for directions.");
+
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setCancelable(false);
+        builder.show();
     }
 
     // Instant internet check using NetworkCapabilities

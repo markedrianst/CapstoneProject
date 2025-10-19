@@ -2,6 +2,7 @@ package com.orient1caps2.orient1capstone2;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -66,29 +69,63 @@ public class SnP extends AppCompatActivity {
         cardFront.setOnClickListener(v -> flipCard());
         cardBack.setOnClickListener(v -> flipCard());
 
-        // Video / Image for hymn
-        myImage = findViewById(R.id.myImage);
-        myVideo = findViewById(R.id.myVideo);
+        VideoView myVideo = findViewById(R.id.myVideo);
+        ImageView myImage = findViewById(R.id.myImage);
+        TextView tapToPlay = findViewById(R.id.tapToPlay);
+        LinearLayout customControls = findViewById(R.id.customControls);
+        ImageButton btnPlayPause = findViewById(R.id.btnPlayPause);
+        SeekBar seekBar = findViewById(R.id.seekBar);
 
+// Click thumbnail to play
         myImage.setOnClickListener(v -> {
             myImage.setVisibility(View.GONE);
+            tapToPlay.setVisibility(View.GONE);
             myVideo.setVisibility(View.VISIBLE);
+            customControls.setVisibility(View.VISIBLE);
 
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.dcthymn);
             myVideo.setVideoURI(videoUri);
 
-            // Start video automatically when ready
-            myVideo.setOnPreparedListener(mp -> myVideo.start());
+            myVideo.setOnPreparedListener(mp -> {
+                myVideo.start();
+                btnPlayPause.setImageResource(android.R.drawable.ic_media_pause);
+
+                seekBar.setMax(myVideo.getDuration());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (myVideo.isPlaying()) {
+                            seekBar.setProgress(myVideo.getCurrentPosition());
+                        }
+                        seekBar.postDelayed(this, 500);
+                    }
+                }, 500);
+            });
         });
 
-        // Tap video to play/pause
-        myVideo.setOnClickListener(v -> {
+// Play / Pause
+        btnPlayPause.setOnClickListener(v -> {
             if (myVideo.isPlaying()) {
                 myVideo.pause();
+                btnPlayPause.setImageResource(android.R.drawable.ic_media_play);
             } else {
                 myVideo.start();
+                btnPlayPause.setImageResource(android.R.drawable.ic_media_pause);
             }
         });
+
+// SeekBar
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) myVideo.seekTo(progress);
+            }
+
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+
 
         // Setup all dropdown sections
         setupDropdownSections();

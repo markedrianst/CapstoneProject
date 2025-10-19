@@ -48,4 +48,7 @@
     <dimen name="margin_button_group_top">24dp</dimen>
     <dimen name="margin_button_group_bottom">24dp</dimen>
     <dimen name="component_height_medium">48dp</dimen>
+
+    <dimen name="video_default_height">200dp</dimen>
+
 </resources>

@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Developement Team"
+                android:text="Development Team"
                 android:textColor="#FAFAFA"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -172,12 +172,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/programmerFacebook"
+                                android:id="@+id/programmerGmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -225,12 +225,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/coProgrammerFacebook"
+                                android:id="@+id/coProgrammerGmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -291,12 +291,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/projectManagerFacebook"
+                                android:id="@+id/projectManagerGmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -344,12 +344,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/member1Facebook"
+                                android:id="@+id/member1Gmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -410,12 +410,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/member2Facebook"
+                                android:id="@+id/member2Gmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -463,12 +463,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/member3Facebook"
+                                android:id="@+id/member3Gmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 
@@ -527,12 +527,12 @@
                                 app:civ_border_color="#468288" />
 
                             <ImageButton
-                                android:id="@+id/member4Facebook"
+                                android:id="@+id/member4Gmail"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/ic_facebook"
+                                android:src="@drawable/ic_gmail"
                                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         </FrameLayout>
 

@@ -9,4 +9,7 @@
     <color name="teal_200">#80CBC4</color>
     <color name="green_500">#4CAF50</color>
 
+    <color name="background">#D9D9D9</color>
+    <color name="primary">#35616E</color>
+    <color name="accent">#F9E6AC</color>
 </resources>

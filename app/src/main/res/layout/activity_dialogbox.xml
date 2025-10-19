@@ -1,41 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
-    android:layout_gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/modern_rounded_corners"
+    android:padding="0dp">
 
-    <TextView
-        android:id="@+id/dialogTitle"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center" />
-
-    <ImageView
-        android:id="@+id/dialogImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:contentDescription="Dialog image" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="0dp"
         android:fillViewport="true"
-        tools:ignore="WebViewLayout">
+        android:scrollbars="vertical">
 
-        <WebView
-            android:id="@+id/webViewDescription"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent" />
-    </ScrollView>
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Dialog Title -->
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1A365D"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <!-- Building Image -->
+            <ImageView
+                android:id="@+id/dialogImage"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/image_rounded_corners" />
+
+            <!-- WebView Description -->
+            <WebView
+                android:id="@+id/webViewDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="150dp"
+                tools:ignore="WebViewLayout" />
+
+            <!-- Close Button INSIDE the dialog content -->
+            <Button
+                android:id="@+id/closeButton"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:text="Close"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>
