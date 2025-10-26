@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-        // ✅ Show disclaimer only once
+         //✅ Show disclaimer only once
         SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         boolean disclaimerShown = prefs.getBoolean("disclaimerShown", false);
 
@@ -223,14 +222,22 @@ public class MainActivity extends AppCompatActivity {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF"))); // White background
             // Force light mode
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                dialog.getWindow().getDecorView().setForceDarkAllowed(false);
+                dialog.getWindow().getDecorView().setForceDarkAllowed(true);
             }
         }
 
         dialog.show();
 
-        // Set button text color
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE)
-                .setTextColor(Color.parseColor("#3C7D8D"));
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setAllCaps(false);
+// Customize "I Understand" button
+        Button positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        positiveButton.setTextColor(Color.parseColor("#3C7D8D")); // keep your preferred text color
+        positiveButton.setAllCaps(false);
+
+// 🔹 Fully remove background tint, ripple, and shadow
+        positiveButton.setBackgroundColor(Color.TRANSPARENT);
+        positiveButton.setBackgroundTintList(null);
+        positiveButton.setStateListAnimator(null);
+        positiveButton.setElevation(0);
+        positiveButton.setPadding(0, 0, 0, 0);
     }}
+
