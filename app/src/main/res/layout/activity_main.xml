@@ -116,7 +116,7 @@
                         android:maxWidth="320dp"
                         android:paddingLeft="40dp"
                         android:paddingRight="50dp"
-                        android:text="Lesson"
+                        android:text="Lessons"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         android:textSize="28dp"

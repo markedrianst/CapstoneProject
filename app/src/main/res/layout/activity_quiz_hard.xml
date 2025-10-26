@@ -84,7 +84,7 @@
                         android:textColor="#2E2E3A"
                         android:layout_marginBottom="20dp" />
 
-                    <!-- Answer Input -->
+                    <!-- Single Answer Input -->
                     <EditText
                         android:id="@+id/answerInput"
                         android:layout_width="match_parent"
@@ -94,6 +94,19 @@
                         android:inputType="textCapSentences|textAutoCorrect"
                         android:padding="14dp"
                         android:background="@drawable/edittext_bg"/>
+
+                    <!-- Multiple Answers Layout -->
+                    <LinearLayout
+                        android:id="@+id/answerInputsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_marginTop="10dp">
+
+                        <!-- Dynamic input fields will be added here programmatically -->
+
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

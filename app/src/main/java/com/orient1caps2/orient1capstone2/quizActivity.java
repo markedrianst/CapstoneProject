@@ -17,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -40,21 +41,21 @@ public class quizActivity extends AppCompatActivity {
     private RadioButton optionTrue, optionFalse, optionA, optionB, optionC, optionD;
     private Button nextButton;
     private EditText answerInput;
-    private CardView questionCardView; // Add this for card view animation
+    private LinearLayout answerInputsLayout; // For multiple input fields
+    private CardView questionCardView;
 
     // Question Lists
-    private List < Question > questions;
-    private List < QuestionMed > mediumquestions;
-    private List < QuestionHard > hardQuestions;
+    private List<Question> questions;
+    private List<QuestionMed> mediumquestions;
+    private List<QuestionHard> hardQuestions;
 
     // Game State
     private int currentIndex = 0;
     private int score = 0;
     private CountDownTimer countDownTimer;
-    // Add these with other class variables
-    private final List < Boolean > userEasyAnswers = new ArrayList < > ();
-    private final List < Integer > userMediumAnswers = new ArrayList < > ();
-    private final List < String > userHardAnswers = new ArrayList < > ();
+    private final List<Boolean> userEasyAnswers = new ArrayList<>();
+    private final List<Integer> userMediumAnswers = new ArrayList<>();
+    private final List<String[]> userHardAnswers = new ArrayList<>(); // Changed to array for multiple answers
 
     private boolean isReviewMode = false;
     private boolean isHardQuizFinished = false;
@@ -115,6 +116,7 @@ public class quizActivity extends AppCompatActivity {
 
         dialog.show();
     }
+
     private void handleBackAction() {
         isReviewMode = false;
         finish(); // Go back to quiz module selection
@@ -251,6 +253,7 @@ public class quizActivity extends AppCompatActivity {
         questionText = findViewById(R.id.questionText);
         timerText = findViewById(R.id.timerText);
         answerInput = findViewById(R.id.answerInput);
+        answerInputsLayout = findViewById(R.id.answerInputsLayout); // Initialize multiple inputs layout
         nextButton = findViewById(R.id.nextButton);
         questionCardView = findViewById(R.id.questionCard); // Initialize card view
 
@@ -295,7 +298,7 @@ public class quizActivity extends AppCompatActivity {
 
     // Question loading methods
     public void loadQuestions() {
-        questions = new ArrayList < > ();
+        questions = new ArrayList<>();
 
         questions.add(new Question("San Nicolas Academy was founded in 1939 by Fr. Mariano V. Sablay, O.P.", true));
         questions.add(new Question("Dominican School was transferred to its present site in 1960.", true));
@@ -305,7 +308,7 @@ public class quizActivity extends AppCompatActivity {
         questions.add(new Question("The DCT logo emphasizes faith in God and love for humanity.", true));
         questions.add(new Question("The motto in the DCT logo is \"In the Service of Truth.\"", false)); // Actually "Pro Deo et Patria" and "Caritas"
         questions.add(new Question("The Order of Preachers was founded by St. Dominic de Guzman.", true));
-        questions.add(new Question("Sr. Ma. Asuncion M. Manalang, O.P. is one of the school administrators.", true));
+        questions.add(new Question("Sr.Lorna Ablog, O.P. is one of the school administrators.", true));
         questions.add(new Question("The philosophy of education of DCT is focused on forming responsible and Christ-centered individuals.", true));
         questions.add(new Question("The objectives of DCT include helping students become academically competent and socially responsible.", true));
         questions.add(new Question("The Bachelor of Arts and Computer Secretarial courses were introduced in 1980.", true));
@@ -315,7 +318,7 @@ public class quizActivity extends AppCompatActivity {
     }
 
     public void loadQuestionStudyandPrayer() {
-        questions = new ArrayList < > ();
+        questions = new ArrayList<>();
 
         questions.add(new Question("St. Dominic De Guzman was born in Caleruega, Spain in 1170.", true));
         questions.add(new Question("The parents of St. Dominic were Felix De Guzman and Juana De Aza.", true));
@@ -355,7 +358,7 @@ public class quizActivity extends AppCompatActivity {
     }
 
     public void loadQuestionEducationAndLearning() {
-        questions = new ArrayList < > ();
+        questions = new ArrayList<>();
 
         questions.add(new Question("Education is the process of acquiring new knowledge, skills, values, and habits.", false)); // Education is about imparting
         questions.add(new Question("Learning is the process of acquiring or modifying existing knowledge, skills, and behaviors.", true));
@@ -375,7 +378,7 @@ public class quizActivity extends AppCompatActivity {
     }
 
     public void loadQuestionImportanceEducationAndLearning() {
-        questions = new ArrayList < > ();
+        questions = new ArrayList<>();
 
         // From your quiz (Education and Learning)
         questions.add(new Question("Education is the process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits.", true));
@@ -399,108 +402,108 @@ public class quizActivity extends AppCompatActivity {
 
     // Medium question loading methods
     private void dctcultmedium() {
-        mediumquestions = new ArrayList < > ();
+        mediumquestions = new ArrayList<>();
 
         mediumquestions.add(new QuestionMed("Who founded San Nicolas Academy in 1939?",
-                new String[] {
+                new String[]{
                         "Fr. Juan de Salcedo",
-                        "Fr. Mariano V. Saddy, O.P.",
+                        "Fr. Mariano M. Sablay, O.P.",
                         "St. Dominic de Guzman",
-                        "Sr. Ma. Asuncion M. Manalang, O.P."
+                        "Sr. Ma. Rosalina Mirabueni, O.P."
                 }, 1));
         mediumquestions.add(new QuestionMed("In what year was the Dominican School transferred to its present site?",
-                new String[] {
+                new String[]{
                         "1950",
                         "1960",
                         "1970",
                         "1980"
                 }, 1));
         mediumquestions.add(new QuestionMed("What religious order manages Dominican College of Tarlac?",
-                new String[] {
+                new String[]{
                         "Augustinian Order",
                         "Benedictine Order",
                         "Dominican Order of Preachers (O.P.)",
                         "Jesuit Order"
                 }, 2));
         mediumquestions.add(new QuestionMed("What does Gradualism in Education mean in DCT?",
-                new String[] {
+                new String[]{
                         "Learning only at the college level",
                         "Step-by-step educational offerings from preschool to college",
                         "Focus on extracurricular activities",
                         "Online learning programs only"
                 }, 1));
         mediumquestions.add(new QuestionMed("The Dominican Order is also called:",
-                new String[] {
+                new String[]{
                         "The Order of Teachers",
                         "The Order of Preachers",
                         "The Order of Faith",
                         "The Order of Saints"
                 }, 1));
         mediumquestions.add(new QuestionMed("What two values are emphasized in the DCT logo?",
-                new String[] {
+                new String[]{
                         "Wealth and Prosperity",
                         "Faith in God and Love for Humanity",
                         "Power and Justice",
                         "Education and Discipline"
                 }, 1));
         mediumquestions.add(new QuestionMed("What is written in the DCT logo?",
-                new String[] {
+                new String[]{
                         "\"Truth Shall Prevail\"",
                         "\"Caritas – Uniform Love\" and \"Pro Deo et Patria\"",
                         "\"Excellence for All\"",
                         "\"Service and Honor\""
                 }, 1));
         mediumquestions.add(new QuestionMed("Who founded the Order of Preachers?",
-                new String[] {
+                new String[]{
                         "St. Francis of Assisi",
                         "St. Augustine",
                         "St. Dominic de Guzman",
                         "St. Ignatius of Loyola"
                 }, 2));
         mediumquestions.add(new QuestionMed("Who among the sisters is mentioned as part of DCT's leadership?",
-                new String[] {
+                new String[]{
                         "Sr. Ma. Lourdes O.P.",
-                        "Sr. Ma. Asuncion M. Manalang, O.P.",
+                        "Sr. Ma. Rosalina Mirabueno, O.P.",
                         "Sr. Angela Gonzales, O.P.",
                         "Sr. Clara Villanueva, O.P."
                 }, 1));
         mediumquestions.add(new QuestionMed("The philosophy of DCT education focuses on:",
-                new String[] {
+                new String[]{
                         "Training athletes only",
                         "Forming responsible and Christ-centered individuals",
                         "Political leadership",
                         "Economic development"
                 }, 1));
         mediumquestions.add(new QuestionMed("Which is NOT part of DCT objectives?",
-                new String[] {
+                new String[]{
                         "Academic excellence",
                         "Social responsibility",
                         "Formation of criminals",
                         "Christ-centered values"
                 }, 2));
         mediumquestions.add(new QuestionMed("When were Bachelor of Arts and Computer Secretarial courses first offered?",
-                new String[] {
+                new String[]{
                         "1970",
                         "1980",
                         "1990",
                         "2000"
                 }, 1));
         mediumquestions.add(new QuestionMed("In what year did the Bachelor of Elementary Education program start?",
-                new String[] {
+                new String[]{
                         "1985",
                         "1990",
                         "1997",
                         "2005"
                 }, 2));
         mediumquestions.add(new QuestionMed("What program was introduced in 2009?",
-                new String[] {
+                new String[]{
                         "Bachelor of Science in Criminology",
                         "Bachelor of Science in Information Technology",
                         "Bachelor of Science in Business Administration",
                         "TESDA Restaurant Management"
                 }, 1));
         mediumquestions.add(new QuestionMed("In what year did the Bachelor of Science in Criminology begin at DCT?",
-                new String[] {
+                new String[]{
                         "2009",
                         "2010",
                         "2015",
@@ -510,10 +513,10 @@ public class quizActivity extends AppCompatActivity {
 
     //Study and Prayer Life
     private void studandpraymedium() {
-        mediumquestions = new ArrayList < > ();
+        mediumquestions = new ArrayList<>();
 
         mediumquestions.add(new QuestionMed("Where was St. Dominic De Guzman born?",
-                new String[] {
+                new String[]{
                         "Madrid, Spain",
                         "Caleruega, Spain",
                         "Palencia, Spain",
@@ -521,7 +524,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Who were the parents of St. Dominic?",
-                new String[] {
+                new String[]{
                         "Diego De Guzman and Teresa De Aza",
                         "Felix De Guzman and Juana De Aza",
                         "Pedro De Guzman and Maria De Aza",
@@ -529,7 +532,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which of the following were siblings of St. Dominic?",
-                new String[] {
+                new String[]{
                         "Anthony and Mannes",
                         "Peter and Martin",
                         "Diego and Francis",
@@ -537,7 +540,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("At what age did St. Dominic study Theology at the University of Palencia?",
-                new String[] {
+                new String[]{
                         "10",
                         "12",
                         "14",
@@ -545,7 +548,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("What did St. Dominic do during a famine to help the poor?",
-                new String[] {
+                new String[]{
                         "Sold his house",
                         "Sold his clothes",
                         "Sold his books",
@@ -553,7 +556,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Which subjects are included in the TRIVIUM?",
-                new String[] {
+                new String[]{
                         "Grammar, Logic, Rhetoric",
                         "Arithmetic, Geometry, Music",
                         "Theology, Philosophy, History",
@@ -561,7 +564,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("Which subjects are included in the QUADRIVIUM?",
-                new String[] {
+                new String[]{
                         "Theology, Philosophy, Ethics, Law",
                         "Arithmetic, Geometry, Music, Astronomy",
                         "Grammar, Rhetoric, Logic",
@@ -569,7 +572,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("In which year did St. Dominic travel with Bishop Diego to Denmark?",
-                new String[] {
+                new String[]{
                         "1195",
                         "1203",
                         "1215",
@@ -577,7 +580,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Whom did St. Dominic form into a community at Prouille in 1206?",
-                new String[] {
+                new String[]{
                         "Priests",
                         "Monks",
                         "Nuns",
@@ -585,7 +588,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Who officially approved the Order of Preachers in 1216?",
-                new String[] {
+                new String[]{
                         "Pope Innocent III",
                         "Pope Gregory IX",
                         "Pope Honorius III",
@@ -593,7 +596,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("When did St. Dominic die?",
-                new String[] {
+                new String[]{
                         "August 6, 1216",
                         "August 6, 1221",
                         "August 6, 1225",
@@ -601,7 +604,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("At what age did St. Dominic die?",
-                new String[] {
+                new String[]{
                         "40",
                         "45",
                         "51",
@@ -609,7 +612,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Which of the following is a goal of education according to Dominican College of Tarlac?",
-                new String[] {
+                new String[]{
                         "Wealth and success",
                         "Union with God",
                         "Political influence",
@@ -617,7 +620,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("According to DCT's philosophy, education should also promote:",
-                new String[] {
+                new String[]{
                         "Competition and rivalry",
                         "Community with others and harmony with creation",
                         "Authority and obedience only",
@@ -625,7 +628,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Scholastic (Thomistic) philosophy emphasizes:",
-                new String[] {
+                new String[]{
                         "Faith alone without reason",
                         "Reason alone without faith",
                         "Harmony of faith and reason",
@@ -758,10 +761,10 @@ public class quizActivity extends AppCompatActivity {
     }
 
     private void educationAndLearningmed() {
-        mediumquestions = new ArrayList < > ();
+        mediumquestions = new ArrayList<>();
 
         mediumquestions.add(new QuestionMed("What is the process of imparting knowledge, skills, values, and habits to others?",
-                new String[] {
+                new String[]{
                         "Learning",
                         "Education",
                         "Training",
@@ -769,7 +772,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which of the following best defines learning?",
-                new String[] {
+                new String[]{
                         "Teaching structured lessons",
                         "Acquiring or modifying knowledge, skills, and behaviors",
                         "Conducting assessments",
@@ -777,7 +780,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which type of education follows a structured curriculum, certified teachers, and formal assessments?",
-                new String[] {
+                new String[]{
                         "Non-formal Education",
                         "Informal Education",
                         "Formal Education",
@@ -785,7 +788,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("When students learn through daily life experiences without a formal curriculum, it is called:",
-                new String[] {
+                new String[]{
                         "Informal Education",
                         "Formal Education",
                         "Non-formal Education",
@@ -793,7 +796,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("Workshops, community-based programs, and vocational training are examples of:",
-                new String[] {
+                new String[]{
                         "Formal Education",
                         "Informal Education",
                         "Non-formal Education",
@@ -801,7 +804,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Which intelligence is about being aware of your own emotions, feelings, and motivations?",
-                new String[] {
+                new String[]{
                         "Interpersonal",
                         "Intrapersonal",
                         "Logical-Mathematical",
@@ -809,7 +812,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("A person who loves exploring nature, animals, and the environment has strong:",
-                new String[] {
+                new String[]{
                         "Interpersonal Intelligence",
                         "Naturalist Intelligence",
                         "Musical Intelligence",
@@ -817,7 +820,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Who is most likely strong in verbal-linguistic intelligence?",
-                new String[] {
+                new String[]{
                         "Someone who can solve math equations quickly",
                         "Someone good at using words in writing and speaking",
                         "Someone who enjoys gardening",
@@ -825,7 +828,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("A teacher who can explain lessons clearly and write creatively shows which intelligence?",
-                new String[] {
+                new String[]{
                         "Bodily-Kinesthetic",
                         "Logical-Mathematical",
                         "Verbal-Linguistic",
@@ -833,7 +836,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("People who are good at understanding and interacting with others show:",
-                new String[] {
+                new String[]{
                         "Intrapersonal Intelligence",
                         "Interpersonal Intelligence",
                         "Naturalist Intelligence",
@@ -841,7 +844,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which intelligence is about reasoning, recognizing patterns, and solving problems?",
-                new String[] {
+                new String[]{
                         "Logical-Mathematical",
                         "Bodily-Kinesthetic",
                         "Spatial",
@@ -849,7 +852,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("A dancer who has great body control and coordination demonstrates:",
-                new String[] {
+                new String[]{
                         "Naturalist Intelligence",
                         "Intrapersonal Intelligence",
                         "Bodily-Kinesthetic Intelligence",
@@ -857,7 +860,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("People who are strong in musical intelligence usually:",
-                new String[] {
+                new String[]{
                         "Think in patterns, rhythms, and sounds",
                         "Prefer solving logical equations",
                         "Enjoy nature and animals",
@@ -865,7 +868,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("Which intelligence focuses on asking deep questions about life and existence?",
-                new String[] {
+                new String[]{
                         "Existential Intelligence",
                         "Social Intelligence",
                         "Naturalist Intelligence",
@@ -873,7 +876,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("Which intelligence is about being good at visualizing objects, images, and spatial understanding?",
-                new String[] {
+                new String[]{
                         "Verbal-Linguistic",
                         "Visual-Spatial",
                         "Logical-Mathematical",
@@ -882,10 +885,10 @@ public class quizActivity extends AppCompatActivity {
     }
 
     private void impeducationAndLearningmed() {
-        mediumquestions = new ArrayList < > ();
+        mediumquestions = new ArrayList<>();
 
         mediumquestions.add(new QuestionMed("What is the process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits?",
-                new String[] {
+                new String[]{
                         "Teaching",
                         "Education",
                         "Training",
@@ -893,7 +896,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which of the following BEST defines learning?",
-                new String[] {
+                new String[]{
                         "Simply storing information",
                         "Acquiring and modifying knowledge, skills, and behaviors",
                         "Copying others' actions",
@@ -901,7 +904,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("One of the primary goals of education is:",
-                new String[] {
+                new String[]{
                         "To impart knowledge",
                         "To avoid learning",
                         "To memorize facts only",
@@ -909,7 +912,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 0));
 
         mediumquestions.add(new QuestionMed("What does \"imparting skills\" in education mean?",
-                new String[] {
+                new String[]{
                         "Memorizing lessons",
                         "Shaping beliefs",
                         "Providing practical abilities for tasks and problem-solving",
@@ -917,7 +920,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("According to the vision, education should build:",
-                new String[] {
+                new String[]{
                         "A rich society",
                         "A God-loving community with servant leaders and compassion",
                         "A competitive business environment",
@@ -925,7 +928,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("What is a stressor?",
-                new String[] {
+                new String[]{
                         "A relaxing activity",
                         "Something that causes stress",
                         "A type of exercise",
@@ -933,7 +936,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which type of stress motivates people and leads to growth?",
-                new String[] {
+                new String[]{
                         "Chronic stress",
                         "Distress",
                         "Eustress",
@@ -941,7 +944,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Negative stress that harms performance and health is called:",
-                new String[] {
+                new String[]{
                         "Eustress",
                         "Relaxation",
                         "Distress",
@@ -949,7 +952,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Which of the following is an example of permanent stress?",
-                new String[] {
+                new String[]{
                         "Loud noise for a few minutes",
                         "Traffic jam for an hour",
                         "Long-term financial difficulties",
@@ -957,7 +960,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Academic stress may be caused by:",
-                new String[] {
+                new String[]{
                         "Watching TV",
                         "Exams and deadlines",
                         "Relaxing with friends",
@@ -965,7 +968,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which statement about professional stress is TRUE?",
-                new String[] {
+                new String[]{
                         "Only teachers experience it",
                         "It can affect workers in many jobs",
                         "It only occurs in hospitals",
@@ -973,7 +976,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("Which of the following is an environmental stressor?",
-                new String[] {
+                new String[]{
                         "Meditation",
                         "Pollution",
                         "Good grades",
@@ -981,7 +984,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 1));
 
         mediumquestions.add(new QuestionMed("The body's natural \"fight-or-flight\" response prepares a person to:",
-                new String[] {
+                new String[]{
                         "Sleep deeply",
                         "Relax instantly",
                         "Face danger or escape",
@@ -989,7 +992,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
 
         mediumquestions.add(new QuestionMed("Stress affects:",
-                new String[] {
+                new String[]{
                         "Only emotions",
                         "Only physical health",
                         "Only behavior",
@@ -997,7 +1000,7 @@ public class quizActivity extends AppCompatActivity {
                 }, 3));
 
         mediumquestions.add(new QuestionMed("Which of the following is NOT a common symptom of stress?",
-                new String[] {
+                new String[]{
                         "Headaches",
                         "Fatigue",
                         "Improved relaxation",
@@ -1005,9 +1008,9 @@ public class quizActivity extends AppCompatActivity {
                 }, 2));
     }
 
-    // Hard question loading methods
+    // Hard question loading methods - UPDATED with multiple answer questions
     private void dctcultHard() {
-        hardQuestions = new ArrayList < > ();
+        hardQuestions = new ArrayList<>();
 
         hardQuestions.add(new QuestionHard("Who founded San Nicolas Academy?", "Fr. Mariano V. Saddy, O.P."));
         hardQuestions.add(new QuestionHard("What year was San Nicolas Academy founded?", "1939"));
@@ -1015,11 +1018,29 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("What religious order manages Dominican College of Tarlac?", "Dominican Order of Preachers (O.P.)"));
         hardQuestions.add(new QuestionHard("What term describes DCT's step-by-step program offerings from preschool to college?", "Gradualism in Education"));
         hardQuestions.add(new QuestionHard("Another name for the Dominican Order is?", "Order of Preachers"));
-        hardQuestions.add(new QuestionHard("What two values are emphasized in the DCT logo?", "Faith in God and Love for Humanity"));
+
+        // Multiple answer questions
+        hardQuestions.add(new QuestionHard("The DCT logo emphasizes ________ in God and ________ for humanity.",
+                new String[]{"faith", "love"}));
         hardQuestions.add(new QuestionHard("What Latin phrase in the DCT logo means 'For God and Country'?", "Pro Deo et Patria"));
         hardQuestions.add(new QuestionHard("Who founded the Order of Preachers?", "St. Dominic de Guzman"));
-        hardQuestions.add(new QuestionHard("Name a sister mentioned as part of the leadership of DCT.", "Sr. Ma. Asuncion M. Manalang, O.P."));
-        hardQuestions.add(new QuestionHard("DCT's philosophy focuses on forming ________ and ________ individuals.", "Responsible and Christ-centered"));
+        hardQuestions.add(new QuestionHard("Name one of the Dominican sisters who served as administrator of Dominican College of Tarlac",
+                new String[]{
+                        "Sr. Ma. Rosalina Mirabueno, O.P.",
+                        "Sr. Ines Fider, O.P.",
+                        "Sr. Irene Lapus, O.P.",
+                        "Sr. Ma. Magdalena Olfato, O.P.",
+                        "Sr. Catalina Saligumba, O.P.",
+                        "Sr. Carmen Tiamzon, O.P.",
+                        "Sr. Loreto Penuliar, O.P.",
+                        "Sr. Catherine Cachero, O.P.",
+                        "Sr. Caridad Bayani, O.P.",
+                        "Sr. Marisor Fabros, O.P.",
+                        "Sr. Ma. Alelee M. Masanque, O.P.",
+                        "Sr. Lorna Ablog, O.P."
+                }, true)); // true indicates single input with multiple correct answers
+         hardQuestions.add(new QuestionHard("DCT's philosophy focuses on forming ________ and ________ individuals.",
+                new String[]{"responsible", "Christ-centered"}));
         hardQuestions.add(new QuestionHard("One objective of DCT is to help students become academically ________.", "Competent"));
         hardQuestions.add(new QuestionHard("In what year were Bachelor of Arts and Computer Secretarial courses first offered?", "1980"));
         hardQuestions.add(new QuestionHard("When was the Bachelor of Elementary Education program introduced?", "1997"));
@@ -1027,17 +1048,26 @@ public class quizActivity extends AppCompatActivity {
     }
 
     private void studandprayHard() {
-        hardQuestions = new ArrayList < > ();
+        hardQuestions = new ArrayList<>();
 
         hardQuestions.add(new QuestionHard("He was born in Caleruega, Spain in 1170 and later founded the Order of Preachers.", "St. Dominic De Guzman"));
-        hardQuestions.add(new QuestionHard("The father of St. Dominic.", "Felix De Guzman"));
-        hardQuestions.add(new QuestionHard("The mother of St. Dominic.", "Juana De Aza"));
+
+        // Multiple answer questions
+        hardQuestions.add(new QuestionHard("The parents of St. Dominic were ________ De Guzman and ________ De Aza.",
+                new String[]{"Felix", "Juana"}));
         hardQuestions.add(new QuestionHard("The two siblings of St. Dominic.", "Anthony and Mannes"));
         hardQuestions.add(new QuestionHard("The school where St. Dominic studied Theology at age 14.", "University of Palencia"));
         hardQuestions.add(new QuestionHard("The kingdom where the University of Palencia was located.", "Kingdom of Leon"));
         hardQuestions.add(new QuestionHard("During a terrible famine, St. Dominic sold these to help the poor.", "His books"));
-        hardQuestions.add(new QuestionHard("The three subjects included in the Trivium.", "Grammar, Rhetoric, Logic"));
-        hardQuestions.add(new QuestionHard("The four subjects included in the Quadrivium.", "Arithmetic, Geometry, Music, Astronomy"));
+
+        // Multiple answer for Trivium
+        hardQuestions.add(new QuestionHard("The three subjects included in the Trivium were ________, ________, and ________.",
+                new String[]{"Grammar", "Rhetoric", "Logic"}));
+
+        // Multiple answer for Quadrivium
+        hardQuestions.add(new QuestionHard("The four subjects included in the Quadrivium were ________, ________, ________, and ________.",
+                new String[]{"Arithmetic", "Geometry", "Music", "Astronomy"}));
+
         hardQuestions.add(new QuestionHard("In 1203, St. Dominic traveled with this bishop to Denmark.", "Bishop Diego"));
         hardQuestions.add(new QuestionHard("The heresy St. Dominic encountered in southern France.", "Albigensian heresy"));
         hardQuestions.add(new QuestionHard("The community St. Dominic founded in Prouille in 1206.", "Community of nuns"));
@@ -1111,27 +1141,27 @@ public class quizActivity extends AppCompatActivity {
     }
 
     private void EducationandHard() {
-        hardQuestions = new ArrayList < > ();
+        hardQuestions = new ArrayList<>();
 
         hardQuestions.add(new QuestionHard("The process of acquiring or modifying knowledge, skills, values, and behaviors.", "Learning"));
         hardQuestions.add(new QuestionHard("The process of imparting knowledge, skills, and values through teaching.", "Education"));
         hardQuestions.add(new QuestionHard("The type of education that happens in schools with a structured curriculum.", "Formal Education"));
         hardQuestions.add(new QuestionHard("Education that occurs naturally in daily life experiences.", "Informal Education"));
         hardQuestions.add(new QuestionHard("Education that includes workshops, seminars, and community-based programs.", "Non-formal Education"));
-        hardQuestions.add(new QuestionHard("The intelligence that allows a person to think in rhythms, patterns, and sounds.", "Musical "));
-        hardQuestions.add(new QuestionHard("The intelligence that helps a person understand their own feelings and motivations.", "Intrapersonal "));
-        hardQuestions.add(new QuestionHard("The intelligence used when solving math problems and reasoning logically.", "Logical-Mathematical "));
-        hardQuestions.add(new QuestionHard("The intelligence of people who are skilled at using language effectively in speaking and writing.", "Verbal-Linguistic "));
-        hardQuestions.add(new QuestionHard("The intelligence of people who have strong awareness and connection with nature.", "Naturalist "));
-        hardQuestions.add(new QuestionHard("The intelligence of people who can visualize and imagine objects, maps, or spatial designs.", "Visual-Spatial "));
-        hardQuestions.add(new QuestionHard("The intelligence of people who can socialize, work well, and understand others' feelings.", "Interpersonal "));
-        hardQuestions.add(new QuestionHard("The intelligence that focuses on movement, body control, and physical activity.", "Bodily-Kinesthetic "));
-        hardQuestions.add(new QuestionHard("The intelligence related to asking deep questions about human life and existence.", "Existential "));
+        hardQuestions.add(new QuestionHard("The intelligence that allows a person to think in rhythms, patterns, and sounds.", "Musical"));
+        hardQuestions.add(new QuestionHard("The intelligence that helps a person understand their own feelings and motivations.", "Intrapersonal"));
+        hardQuestions.add(new QuestionHard("The intelligence used when solving math problems and reasoning logically.", "Logical-Mathematical"));
+        hardQuestions.add(new QuestionHard("The intelligence of people who are skilled at using language effectively in speaking and writing.", "Verbal-Linguistic"));
+        hardQuestions.add(new QuestionHard("The intelligence of people who have strong awareness and connection with nature.", "Naturalist"));
+        hardQuestions.add(new QuestionHard("The intelligence of people who can visualize and imagine objects, maps, or spatial designs.", "Visual-Spatial"));
+        hardQuestions.add(new QuestionHard("The intelligence of people who can socialize, work well, and understand others' feelings.", "Interpersonal"));
+        hardQuestions.add(new QuestionHard("The intelligence that focuses on movement, body control, and physical activity.", "Bodily-Kinesthetic"));
+        hardQuestions.add(new QuestionHard("The intelligence related to asking deep questions about human life and existence.", "Existential"));
         hardQuestions.add(new QuestionHard("The most powerful tool that improves lives, provides opportunities, and gives meaning to the world.", "Education"));
     }
 
     private void impEducationandHard() {
-        hardQuestions = new ArrayList < > ();
+        hardQuestions = new ArrayList<>();
 
         hardQuestions.add(new QuestionHard("The process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits.", "Education"));
         hardQuestions.add(new QuestionHard("The process of acquiring new or modifying existing knowledge, behaviors, skills, values, or preferences.", "Learning"));
@@ -1142,7 +1172,10 @@ public class quizActivity extends AppCompatActivity {
         hardQuestions.add(new QuestionHard("The goal of learning that involves continuously gaining new knowledge and perspectives.", "Acquire New Understanding"));
         hardQuestions.add(new QuestionHard("The goal of learning that means changing existing actions and abilities to improve effectiveness.", "Modify Behaviors and Skills"));
         hardQuestions.add(new QuestionHard("The goal of learning that involves reflecting on and adjusting core values, likes, and dislikes.", "Reevaluate Values and Preferences"));
-        hardQuestions.add(new QuestionHard("The vision describes building a ________ educational community of servant leaders with truth and compassion.", "God-loving"));
+
+        // Multiple answer question
+        hardQuestions.add(new QuestionHard("The vision describes building a ________ educational community of servant leaders with truth and compassion.",
+                new String[]{"God-loving"}));
 
         hardQuestions.add(new QuestionHard("Anything that causes stress, whether physical, emotional, or psychological.", "Stressor"));
         hardQuestions.add(new QuestionHard("The type of stress that motivates people and leads to growth and achievement.", "Eustress"));
@@ -1292,6 +1325,9 @@ public class quizActivity extends AppCompatActivity {
         startMediumTimer(); // This will now use the dynamic timing
     }
 
+    // UPDATED: showHardQuestion to handle multiple inputs
+// UPDATED: showHardQuestion to handle multiple inputs PROPERLY
+// UPDATED: showHardQuestion to handle multiple inputs PROPERLY
     private void showHardQuestion() {
         if (currentIndex >= hardQuestions.size()) {
             if (!isHardQuizFinished) {
@@ -1301,14 +1337,57 @@ public class quizActivity extends AppCompatActivity {
             return;
         }
 
+        // Clear previous input fields
+        answerInputsLayout.removeAllViews();
         answerInput.setText("");
+
         QuestionHard current = hardQuestions.get(currentIndex);
         questionText.setText((currentIndex + 1) + ". " + current.getText());
-        updateButtonText(); // Update button text
-        startHardTimer(); // This will now use the dynamic timing
-    }
 
-    // Evaluation methods
+        // Check if this question requires multiple SEPARATE answers (like fill-in-the-blanks)
+        boolean requiresMultipleInputs = current.hasMultipleAnswers() &&
+                (current.getText().contains("________") ||
+                        current.getText().contains("blank") ||
+                        current.getAnswers().length > 2); // More than 2 answers usually means multiple inputs
+
+        if (requiresMultipleInputs) {
+            // Show multiple input fields for fill-in-the-blank questions
+            answerInput.setVisibility(View.GONE);
+
+            String[] correctAnswers = current.getAnswers();
+            for (int i = 0; i < correctAnswers.length; i++) {
+                EditText inputField = new EditText(this);
+                inputField.setHint("Type your answer here " );
+                inputField.setBackgroundResource(R.drawable.edittext_bg);
+                inputField.setPadding(20, 20, 20, 20);
+                inputField.setTextSize(16);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+                params.setMargins(0, 10, 0, 10);
+                inputField.setLayoutParams(params);
+
+                answerInputsLayout.addView(inputField);
+            }
+            answerInputsLayout.setVisibility(View.VISIBLE);
+        } else {
+            // Show single input field (for questions with multiple POSSIBLE answers but only one input needed)
+            answerInput.setVisibility(View.VISIBLE);
+            answerInputsLayout.setVisibility(View.GONE);
+
+            // Set appropriate hint
+            if (current.hasMultipleAnswers()) {
+                answerInput.setHint("Type your answer here (multiple answers accepted)");
+            } else {
+                answerInput.setHint("Type your answer here");
+            }
+        }
+
+        updateButtonText();
+        startHardTimer();
+    }    // Evaluation methods
     private void evaluateAnswer() {
         int selectedId = optionsGroup.getCheckedRadioButtonId();
         if (selectedId == -1) {
@@ -1340,17 +1419,70 @@ public class quizActivity extends AppCompatActivity {
         }
     }
 
-    // FIXED: Improved answer checking for hard questions with better whitespace handling
+    // UPDATED: evaluateHardAnswer to handle multiple inputs
     private void evaluateHardAnswer() {
-        String userAnswer = answerInput.getText().toString().trim();
-        String correctAnswer = hardQuestions.get(currentIndex).getAnswer().trim();
+        QuestionHard current = hardQuestions.get(currentIndex);
+        String[] userAnswers;
 
-        userHardAnswers.add(userAnswer);
-
-        // Use improved answer checking
-        if (checkAnswerSmart(userAnswer, correctAnswer)) {
-            score++;
+        if (current.hasMultipleAnswers()) {
+            // Multiple input fields for multiple answers
+            int childCount = answerInputsLayout.getChildCount();
+            userAnswers = new String[childCount];
+            for (int i = 0; i < childCount; i++) {
+                EditText inputField = (EditText) answerInputsLayout.getChildAt(i);
+                userAnswers[i] = inputField.getText().toString().trim();
+            }
+        } else {
+            // Single answer from single input field
+            userAnswers = new String[]{answerInput.getText().toString().trim()};
         }
+
+        userHardAnswers.add(userAnswers);
+
+        // Check answers based on question type
+        if (current.hasSingleInputMultipleCorrect()) {
+            // For single input with multiple correct options
+            if (checkSingleInputMultipleCorrect(userAnswers[0], current.getAnswers())) {
+                score++;
+            }
+        } else if (current.hasMultipleAnswers()) {
+            // For multiple inputs with multiple answers
+            if (checkMultipleAnswersSmart(userAnswers, current.getAnswers())) {
+                score++;
+            }
+        } else {
+            // For single input with single answer
+            if (checkAnswerSmart(userAnswers[0], current.getAnswer())) {
+                score++;
+            }
+        }
+    }
+    // ADDED: Method to check multiple answers
+    private boolean checkMultipleAnswersSmart(String[] userAnswers, String[] correctAnswers) {
+        if (userAnswers.length != correctAnswers.length) {
+            return false;
+        }
+
+        for (int i = 0; i < userAnswers.length; i++) {
+            if (!checkAnswerSmart(userAnswers[i], correctAnswers[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean checkSingleInputMultipleCorrect(String userAnswer, String[] correctAnswers) {
+        if (userAnswer == null || userAnswer.trim().isEmpty()) {
+            return false;
+        }
+
+        String normalizedUser = normalizeAnswer(userAnswer);
+
+        for (String correctAnswer : correctAnswers) {
+            if (normalizedUser.equals(normalizeAnswer(correctAnswer))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // FIXED: Improved answer normalization to handle multiple spaces, whitespace variations, and case insensitivity
@@ -1359,12 +1491,13 @@ public class quizActivity extends AppCompatActivity {
             return "";
         }
 
-        // Trim, convert to lowercase, and normalize all whitespace (multiple spaces, tabs, etc.)
         return answer.trim()
-                .toLowerCase() // This makes it case-insensitive
-                .replaceAll("\\s+", " "); // Replace multiple spaces with single space
+                .toLowerCase()
+                .replaceAll("\\s+", " ") // Multiple spaces to single space
+                .replaceAll("[.,]", "")  // Remove periods and commas
+                .replaceAll("\\s*,\\s*", " ")   // Remove commas with spaces
+                .trim();
     }
-
     // FIXED: Enhanced smart answer checking with better case handling
     private boolean checkAnswerSmart(String userAnswer, String correctAnswer) {
         if (userAnswer == null || userAnswer.trim().isEmpty()) {
@@ -1373,9 +1506,6 @@ public class quizActivity extends AppCompatActivity {
 
         String normalizedUser = normalizeAnswer(userAnswer);
         String normalizedCorrect = normalizeAnswer(correctAnswer);
-
-        // Debug logging (you can remove this in production)
-        // Log.d("AnswerCheck", "User: '" + normalizedUser + "' | Correct: '" + normalizedCorrect + "'");
 
         return normalizedUser.equals(normalizedCorrect);
     }
@@ -1412,6 +1542,7 @@ public class quizActivity extends AppCompatActivity {
             showMediumQuestion(); // No animation for last question
         }
     }
+
     private void goToNextHardQuestion() {
         if (countDownTimer != null) countDownTimer.cancel();
 
@@ -1427,6 +1558,7 @@ public class quizActivity extends AppCompatActivity {
             showHardQuestion(); // No animation for last question
         }
     }
+
     // Finish methods
     private void finishQuiz() {
         showResultDialog(questions.size());
@@ -1467,6 +1599,7 @@ public class quizActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    // UPDATED: showReviewScreen method to handle multiple answers
     private void showReviewScreen() {
         isReviewMode = true;
         setContentView(R.layout.activity_review_answers);
@@ -1542,26 +1675,88 @@ public class quizActivity extends AppCompatActivity {
             case "Hard":
                 for (int i = 0; i < hardQuestions.size(); i++) {
                     QuestionHard q = hardQuestions.get(i);
-                    String correctAnswer = q.getAnswer();
-                    String userAnswer = i < userHardAnswers.size() ? userHardAnswers.get(i) : null;
+                    String[] correctAnswers = q.getAnswers();
+                    String[] userAnswers = i < userHardAnswers.size() ? userHardAnswers.get(i) : new String[0];
 
                     reviewContent.append(String.format("<b>%d</b>: %s<br>", i + 1, q.getText()));
 
-                    if (TextUtils.isEmpty(userAnswer)) {
+                    boolean isCorrect = false;
+                    boolean hasUserAnswer = userAnswers.length > 0 && !TextUtils.isEmpty(userAnswers[0]);
+
+                    if (!hasUserAnswer) {
                         reviewContent.append("<b>Your Answer: <font color=\"#FF8C42\">⚠️ No answer</font></b><br>");
-                    } else if (checkAnswerSmart(userAnswer, correctAnswer)) {
-                        reviewContent.append("<b><font color=\"#00BA00\">✅ 1 Point</font></b><br>");
-                    } else {
+                    } else if (q.hasSingleInputMultipleCorrect()) {
+                        // Use the single input multiple correct check
+                        isCorrect = checkSingleInputMultipleCorrect(userAnswers[0], correctAnswers);
                         reviewContent.append(String.format(
-                                "<b>Your Answer: <font color=\"#EE685C\">%s ❌</font></b><br>",
-                                userAnswer
+                                "<b>Your Answer: <font color=\"%s\">%s %s</font></b><br>",
+                                isCorrect ? "#00BA00" : "#EE685C",
+                                userAnswers[0],
+                                isCorrect ? "✅" : "❌"
+                        ));
+                    } else if (q.hasMultipleAnswers() && userAnswers.length > 1) {
+                        // For multiple inputs with multiple answers - show separate labels
+                        isCorrect = checkMultipleAnswersSmart(userAnswers, correctAnswers);
+
+                        // Show each user answer with its own label
+                        for (int j = 0; j < userAnswers.length; j++) {
+                            String userAns = userAnswers[j];
+                            String correctAns = j < correctAnswers.length ? correctAnswers[j] : "";
+                            boolean answerCorrect = j < correctAnswers.length &&
+                                    checkAnswerSmart(userAns, correctAns);
+
+                            reviewContent.append(String.format(
+                                    "<b>Your Answer %d: <font color=\"%s\">%s %s</font></b><br>",
+                                    j + 1,
+                                    answerCorrect ? "#00BA00" : "#EE685C",
+                                    userAns.isEmpty() ? "[Blank]" : userAns,
+                                    answerCorrect ? "✅" : "❌"
+                            ));
+                        }
+                    } else if (q.hasMultipleAnswers()) {
+                        // Fallback for multiple answers but single input
+                        isCorrect = checkMultipleAnswersSmart(userAnswers, correctAnswers);
+                        reviewContent.append("<b>Your Answers: <font color=\"" + (isCorrect ? "#00BA00" : "#EE685C") + "\">");
+                        for (int j = 0; j < userAnswers.length; j++) {
+                            if (j > 0) reviewContent.append(", ");
+                            reviewContent.append(userAnswers[j]);
+                        }
+                        reviewContent.append(isCorrect ? " ✅</font></b><br>" : " ❌</font></b><br>");
+                    } else {
+                        // Use single answer check
+                        isCorrect = checkAnswerSmart(userAnswers[0], correctAnswers[0]);
+                        reviewContent.append(String.format(
+                                "<b>Your Answer: <font color=\"%s\">%s %s</font></b><br>",
+                                isCorrect ? "#00BA00" : "#EE685C",
+                                userAnswers[0],
+                                isCorrect ? "✅" : "❌"
                         ));
                     }
 
-                    reviewContent.append(String.format(
-                            "<b>Correct Answer: <font color=\"#00BA00\">%s</font></b><br><br>",
-                            correctAnswer
-                    ));
+                    // Show correct answers with separate labels when there are multiple
+                    if (q.hasMultipleAnswers() && correctAnswers.length > 1) {
+                        reviewContent.append("<b>Correct Answers:</b><br>");
+                        for (int j = 0; j < correctAnswers.length; j++) {
+                            reviewContent.append(String.format(
+                                    "<b>Answer %d: <font color=\"#00BA00\">%s</font></b><br>",
+                                    j + 1,
+                                    correctAnswers[j]
+                            ));
+                        }
+                        reviewContent.append("<br>");
+                    } else if (q.hasSingleInputMultipleCorrect() || q.hasMultipleAnswers()) {
+                        reviewContent.append("<b>Correct Answers: <font color=\"#00BA00\">");
+                        for (int j = 0; j < correctAnswers.length; j++) {
+                            if (j > 0) reviewContent.append(", ");
+                            reviewContent.append(correctAnswers[j]);
+                        }
+                        reviewContent.append("</font></b><br><br>");
+                    } else {
+                        reviewContent.append(String.format(
+                                "<b>Correct Answer: <font color=\"#00BA00\">%s</font></b><br><br>",
+                                correctAnswers[0]
+                        ));
+                    }
                 }
                 break;
         }
@@ -1580,6 +1775,55 @@ public class quizActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> handleBackAction());
     }
 
+    // UPDATED: QuestionHard class to handle multiple answers
+    private static class QuestionHard {
+        private final String text;
+        private final String[] answers;
+        private final boolean multipleAnswers;
+        private final boolean singleInputMultipleCorrect; // Add this field
+
+        public QuestionHard(String text, String answer) {
+            this.text = text;
+            this.answers = new String[]{answer};
+            this.multipleAnswers = false;
+            this.singleInputMultipleCorrect = false;
+        }
+
+        public QuestionHard(String text, String[] answers) {
+            this.text = text;
+            this.answers = answers;
+            this.multipleAnswers = true;
+            this.singleInputMultipleCorrect = false;
+        }
+
+        // New constructor for single input with multiple correct answers
+        public QuestionHard(String text, String[] answers, boolean singleInputMultipleCorrect) {
+            this.text = text;
+            this.answers = answers;
+            this.multipleAnswers = false;
+            this.singleInputMultipleCorrect = singleInputMultipleCorrect;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public String getAnswer() {
+            return answers[0];
+        }
+
+        public String[] getAnswers() {
+            return answers;
+        }
+
+        public boolean hasMultipleAnswers() {
+            return multipleAnswers;
+        }
+
+        public boolean hasSingleInputMultipleCorrect() {
+            return singleInputMultipleCorrect;
+        }
+    }
     // Question classes
     private static class Question {
         private final String text;
@@ -1617,26 +1861,8 @@ public class quizActivity extends AppCompatActivity {
         public String[] getOptions() {
             return options;
         }
-
         public int getCorrectAnswerIndex() {
             return correctAnswerIndex;
-        }
-    }
-
-    private static class QuestionHard {
-        private final String text;
-        private final String answer;
-
-        public QuestionHard(String text, String answer) {
-            this.text = text;
-            this.answer = answer;
-        }
-
-        public String getText() {
-            return text;
-        }
-        public String getAnswer() {
-            return answer;
         }
     }
 }

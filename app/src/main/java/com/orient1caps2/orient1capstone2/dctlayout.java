@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,25 +18,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 public class dctlayout extends AppCompatActivity {
-    private Handler popupHandler = new Handler();
-    private String[] buildingMessages = {
-            "SLR Building: Clinic at 1st Floor near Canteen",
-            "St. Nicholas: Science Lab at 1st Floor",
-            "OLP Building: Resurrection Chapel at 1st Floor",
-            "Holy Rosary: Dean's Office at 1st Floor",
-            "St. Dominic: Offices at 1st Floor",
-            "St. Catherine: MIS at 1st Floor",
-            "Our Lady of Fatima: Registrar and Accounting Office at 1st Floor"
-    };
-    private int currentMessageIndex = 0;
-    private AlertDialog currentPopup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dctlayout);
         initializeButtons();
+        initializeLocationButtons();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        // HIDE ALL CLOUD LABELS INITIALLY
+        hideAllCloudLabels();
 
         ImageButton homeButton = findViewById(R.id.btnHome);
         homeButton.setOnClickListener(v -> {
@@ -48,74 +37,47 @@ public class dctlayout extends AppCompatActivity {
             finish();
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
-
-        // Start showing automatic building popups when activity starts
-        startAutoPopups();
     }
 
-    private void startAutoPopups() {
-        // Show first popup after 3 second delay
-        popupHandler.postDelayed(() -> {
-            showBottomPopup(buildingMessages[currentMessageIndex]);
-        }, 3000);
-    }
+    // Method to hide all cloud labels
+    private void hideAllCloudLabels() {
+        int[] cloudLabelIds = {
+                R.id.label_st_nicholas,
+                R.id.label_san_lorenzo,
+                R.id.label_our_lady_peace,
+                R.id.label_holy_rosary,
+                R.id.label_st_dominic,
+                R.id.label_st_catherine,
+                R.id.label_our_lady_fatima
+        };
 
-    private void showBottomPopup(String message) {
-        // Dismiss any existing popup first
-        if (currentPopup != null && currentPopup.isShowing()) {
-            currentPopup.dismiss();
+        for (int id : cloudLabelIds) {
+            findViewById(id).setVisibility(View.GONE);
         }
-
-        View popupView = LayoutInflater.from(this).inflate(R.layout.bottom_popup, null);
-
-        TextView popupText = popupView.findViewById(R.id.popupText);
-        popupText.setText(message);
-
-        currentPopup = new AlertDialog.Builder(this)
-                .setView(popupView)
-                .create();
-
-        Window window = currentPopup.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-
-            // Set window properties to not affect main UI
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.width = WindowManager.LayoutParams.MATCH_PARENT;
-            params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            params.y = 100; // 100px from bottom
-
-            // REMOVE these problematic flags:
-            // params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-            //               WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE |
-            //               WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
-
-            // Use these flags instead:
-            params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
-
-            window.setAttributes(params);
-
-            // Add this to ensure the dialog doesn't dim the background
-            window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
-
-        currentPopup.show();
-
-        // Auto dismiss after 4 seconds and show next message
-        popupHandler.postDelayed(() -> {
-            if (currentPopup != null && currentPopup.isShowing()) {
-                currentPopup.dismiss();
-            }
-
-            // Show next message after a delay
-            currentMessageIndex = (currentMessageIndex + 1) % buildingMessages.length;
-            popupHandler.postDelayed(() -> {
-                showBottomPopup(buildingMessages[currentMessageIndex]);
-            }, 2000); // 2 second delay between messages
-        }, 4000);
     }
+
+    // Add this new method to initialize location buttons
+    private void initializeLocationButtons() {
+        setupLocationButton(R.id.location_st_nicholas, R.id.label_st_nicholas);
+        setupLocationButton(R.id.location_san_lorenzo, R.id.label_san_lorenzo);
+        setupLocationButton(R.id.location_our_lady_peace, R.id.label_our_lady_peace);
+        setupLocationButton(R.id.location_holy_rosary, R.id.label_holy_rosary);
+        setupLocationButton(R.id.location_st_dominic, R.id.label_st_dominic);
+        setupLocationButton(R.id.location_st_catherine, R.id.label_st_catherine);
+        setupLocationButton(R.id.location_our_lady_fatima, R.id.label_our_lady_fatima);
+    }
+
+    // Updated method to setup location button click listeners - ONLY SHOWS CLOUD LABELS
+    private void setupLocationButton(int locationIconId, int cloudLabelId) {
+        findViewById(locationIconId).setOnClickListener(v -> {
+            // Hide all other cloud labels first
+            hideAllCloudLabels();
+            // Show this cloud label
+            TextView cloudLabel = findViewById(cloudLabelId);
+            cloudLabel.setVisibility(View.VISIBLE);
+        });
+    }
+
     private void initializeButtons() {
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
@@ -189,9 +151,6 @@ public class dctlayout extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        popupHandler.removeCallbacksAndMessages(null);
-        if (currentPopup != null && currentPopup.isShowing()) {
-            currentPopup.dismiss();
-        }
+        // Handler cleanup removed since we removed popup functionality
     }
 }
