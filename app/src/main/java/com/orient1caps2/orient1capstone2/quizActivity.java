@@ -1012,7 +1012,7 @@ public class quizActivity extends AppCompatActivity {
     private void dctcultHard() {
         hardQuestions = new ArrayList<>();
 
-        hardQuestions.add(new QuestionHard("Who founded San Nicolas Academy?", "Fr. Mariano V. Saddy, O.P."));
+        hardQuestions.add(new QuestionHard("Who founded San Nicolas Academy?", "Fr. Mariano V. Sablay, O.P."));
         hardQuestions.add(new QuestionHard("What year was San Nicolas Academy founded?", "1939"));
         hardQuestions.add(new QuestionHard("In what year was the Dominican School transferred to its present site?", "1960"));
         hardQuestions.add(new QuestionHard("What religious order manages Dominican College of Tarlac?", "Dominican Order of Preachers (O.P.)"));
